@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>05 Tracks: Technical Grid</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2a60d",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .technical-grid {
+            background-image: radial-gradient(circle, #333 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-gray-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="w-64 border-r-2 border-gray-200 dark:border-[#2a2a2a] flex flex-col justify-between p-6 bg-background-light dark:bg-background-dark">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 bg-primary rounded-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-background-dark font-bold">terminal</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-sm font-bold tracking-widest leading-none">TRACK_SYS</h1>
+<p class="text-[10px] text-gray-500 font-mono">V0.5.1-STABLE</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-gray-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">grid_view</span>
+<span class="text-xs font-bold tracking-tighter uppercase">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary border-l-2 border-primary" href="#">
+<span class="material-symbols-outlined" data-icon="table_chart">layers</span>
+<span class="text-xs font-bold tracking-tighter uppercase">Tracks</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-gray-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="history">database</span>
+<span class="text-xs font-bold tracking-tighter uppercase">Logs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-gray-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="security">verified_user</span>
+<span class="text-xs font-bold tracking-tighter uppercase">Security</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-gray-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings_cinematic_blur</span>
+<span class="text-xs font-bold tracking-tighter uppercase">Settings</span>
+</a>
+</nav>
+</div>
+<button class="w-full py-3 bg-primary text-background-dark text-[10px] font-black tracking-[0.2em] uppercase rounded-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">charging_station</span>
+                SYSTEM_STATUS: NOMINAL
+            </button>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col overflow-y-auto technical-grid">
+<!-- PageHeading -->
+<header class="p-8 border-b-2 border-gray-200 dark:border-[#2a2a2a] bg-background-light dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-10">
+<div class="flex flex-wrap justify-between items-end gap-4">
+<div class="flex flex-col gap-1">
+<h2 class="text-5xl font-black leading-none tracking-tighter uppercase italic">05 / TRACKS</h2>
+<p class="text-xs text-primary font-mono tracking-widest">ELITE_ACCOUNTABILITY_GRID</p>
+</div>
+<div class="flex gap-2">
+<button class="h-10 px-6 border-2 border-gray-200 dark:border-[#2a2a2a] text-xs font-bold uppercase tracking-widest hover:border-primary hover:text-primary transition-all">
+                            Export_Report
+                        </button>
+<button class="h-10 px-6 bg-primary text-background-dark text-xs font-bold uppercase tracking-widest hover:brightness-110 transition-all">
+                            Sync_Grid
+                        </button>
+</div>
+</div>
+</header>
+<div class="p-8 max-w-7xl mx-auto w-full flex flex-col gap-8">
+<!-- Stats Ribbon -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-2 border-gray-200 dark:border-[#2a2a2a] bg-background-light dark:bg-background-dark">
+<div class="p-6 border-r-2 border-gray-200 dark:border-[#2a2a2a] flex flex-col gap-1">
+<p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Active_Tracks</p>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black leading-none">12</span>
+<span class="text-xs font-bold text-green-500 font-mono">+2.5%</span>
+</div>
+</div>
+<div class="p-6 border-r-2 border-gray-200 dark:border-[#2a2a2a] flex flex-col gap-1">
+<p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">System_Uptime</p>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black leading-none">1,440H</span>
+<span class="text-xs font-bold text-primary font-mono">STABLE</span>
+</div>
+</div>
+<div class="p-6 flex flex-col gap-1">
+<p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Completion_Rate</p>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black leading-none">88%</span>
+<span class="text-xs font-bold text-green-500 font-mono">+1.2%</span>
+</div>
+</div>
+</div>
+<!-- Segmented Filter -->
+<div class="flex justify-between items-center border-b border-gray-200 dark:border-[#2a2a2a] pb-4">
+<div class="flex bg-gray-200 dark:bg-[#2a2a2a] p-1 rounded-sm">
+<button class="px-6 py-1.5 text-[10px] font-black uppercase tracking-tighter bg-background-light dark:bg-background-dark shadow-sm">All_Tracks</button>
+<button class="px-6 py-1.5 text-[10px] font-black uppercase tracking-tighter text-gray-500 hover:text-primary transition-colors">In_Progress</button>
+<button class="px-6 py-1.5 text-[10px] font-black uppercase tracking-tighter text-gray-500 hover:text-primary transition-colors">Completed</button>
+<button class="px-6 py-1.5 text-[10px] font-black uppercase tracking-tighter text-gray-500 hover:text-primary transition-colors">Locked</button>
+</div>
+<p class="text-[10px] font-mono text-gray-500 uppercase">Sort_By: ID_ASCENDING</p>
+</div>
+<!-- Main ImageGrid / Technical Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="group border-2 border-gray-200 dark:border-[#2a2a2a] hover:border-primary bg-background-light dark:bg-background-dark p-6 flex flex-col gap-6 relative overflow-hidden transition-all">
+<div class="absolute top-0 right-0 p-2 text-[40px] font-black text-primary/5 select-none leading-none group-hover:text-primary/10">01</div>
+<div class="flex justify-between items-start">
+<div class="h-12 w-12 border-2 border-primary/20 rounded-sm overflow-hidden bg-cover bg-center" data-alt="Technical cryptography icon pattern" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA7g5GONiVXPytZOaqwBIyTvauGFDhzVk4TqHzr4lH50yOy1PXZ17HvGr1mdiR5G75nm0Rz4L5SJe1vOpobCS0vOvlOfgq-RJSstoNPc7yZcq5TDt6m-eOKboWSr0qdthp8RlOsWKaDTBn2Qw8WsbYUB8Ol88zm4edoSq8-9JtzxHLX4eXMYfOfxsZC9wsX3jRC_wce-sXeDS4j27XplEx2iaMspgmK0TUIsZCgjzd5v45Iv0LufEOAEYuOK7NG0BnXVGAF9wfPJ98')"></div>
+<span class="text-[10px] font-bold px-2 py-0.5 border border-green-500 text-green-500 uppercase">Active</span>
+</div>
+<div class="space-y-1">
+<h3 class="text-lg font-black leading-tight uppercase tracking-tight">Advanced Cryptography</h3>
+<p class="text-[10px] text-gray-500 font-mono">REF_ID: 99x-CRYPT-01</p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-gray-500">
+<span>Difficulty_Level</span>
+<span class="text-primary">04/05</span>
+</div>
+<div class="flex gap-1 h-3">
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-gray-200 dark:bg-[#2a2a2a]"></div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group border-2 border-gray-200 dark:border-[#2a2a2a] hover:border-primary bg-background-light dark:bg-background-dark p-6 flex flex-col gap-6 relative overflow-hidden transition-all">
+<div class="absolute top-0 right-0 p-2 text-[40px] font-black text-primary/5 select-none leading-none group-hover:text-primary/10">02</div>
+<div class="flex justify-between items-start">
+<div class="h-12 w-12 border-2 border-primary/20 rounded-sm overflow-hidden bg-cover bg-center" data-alt="Network topology visualization" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVaPCnNMoDvo3W3SFc_0tMotJUKrXHkW1z4Yt27JnRnbWMUJIeA4cdVRFygTE-rAxRqnUWTd4otpRLaB3z94dR3ihGiQOSSdv_wD3OR-Mv1rJbKwISXTfIzoVFEjR1ldVJNgqkb2TCgqam63tDuUZXc7nab05OsQjBgVr-XE3KAPfNDznY7jt0rHbR21ciDveSls-w-3HzJHIUZM-SFFFxO89ntPr8GbOXolG4JW97UbXZ02X9nYN2EnCAgEjnNnDje3naXL2RTLg')"></div>
+<span class="text-[10px] font-bold px-2 py-0.5 border border-primary text-primary uppercase">Pending</span>
+</div>
+<div class="space-y-1">
+<h3 class="text-lg font-black leading-tight uppercase tracking-tight">Network Architecture</h3>
+<p class="text-[10px] text-gray-500 font-mono">REF_ID: 82z-NET-04</p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-gray-500">
+<span>Difficulty_Level</span>
+<span class="text-primary">03/05</span>
+</div>
+<div class="flex gap-1 h-3">
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-gray-200 dark:bg-[#2a2a2a]"></div>
+<div class="flex-1 bg-gray-200 dark:bg-[#2a2a2a]"></div>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group border-2 border-gray-200 dark:border-[#2a2a2a] hover:border-primary bg-background-light dark:bg-background-dark p-6 flex flex-col gap-6 relative overflow-hidden transition-all opacity-60 grayscale hover:grayscale-0 hover:opacity-100">
+<div class="absolute top-0 right-0 p-2 text-[40px] font-black text-primary/5 select-none leading-none group-hover:text-primary/10">03</div>
+<div class="flex justify-between items-start">
+<div class="h-12 w-12 border-2 border-primary/20 rounded-sm overflow-hidden bg-cover bg-center" data-alt="Quantum bit logic diagram" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDLoL9nwcRi1U2KOn1o3hiyY00-Ft-6hupwNZ3-hqZnkG6ewzLKc0rIVsrLPXk5fBoQrOe7cWkHPoFFGtGkuf6LePEXQMp9AUs1GfiFo-xMnSj8nHxG_Cl9oQdcTCbZcwWnPdcx78oYK6oBC0R1m3l0hmGijRS2YzqNGvXXHwjr_7rgjiBx3nBJvc7y9s7ORH4GRolthiyAV0mcyYVu1wq0OCymYnIh1kLlyE-3qVgrG2N-dagaEiqfv1lQYPzWlTE3FGnYfsCJJRg')"></div>
+<span class="text-[10px] font-bold px-2 py-0.5 border border-gray-500 text-gray-500 uppercase">Locked</span>
+</div>
+<div class="space-y-1">
+<h3 class="text-lg font-black leading-tight uppercase tracking-tight">Quantum Logic</h3>
+<p class="text-[10px] text-gray-500 font-mono">REF_ID: 12x-QUANT-09</p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-gray-500">
+<span>Difficulty_Level</span>
+<span class="text-primary">05/05</span>
+</div>
+<div class="flex gap-1 h-3">
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group border-2 border-gray-200 dark:border-[#2a2a2a] hover:border-primary bg-background-light dark:bg-background-dark p-6 flex flex-col gap-6 relative overflow-hidden transition-all">
+<div class="absolute top-0 right-0 p-2 text-[40px] font-black text-primary/5 select-none leading-none group-hover:text-primary/10">04</div>
+<div class="flex justify-between items-start">
+<div class="h-12 w-12 border-2 border-primary/20 rounded-sm overflow-hidden bg-cover bg-center" data-alt="Cybersecurity penetration testing graphic" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuApotn9nUV8LcwtrkzeMqryPe2xosjuw4eAiW3LGgVyL2rkyV9FcXeUH3YCHuUgKlgAzA7G9YP56a_MwSVp6pAm2f6XjQ1gbgIDXr5fB3pFnIRMmZq_5aTklSm_WATLmlkwphmh3Tyy5YKUBrdHxa57EcuT41qfsqKJzsMNjoJPXCXS54KmVo6ykmsmL13OFHyQ-CPTDeRfUXZM_AMI-q48_lyqwzK1aSHq_pA2OQS4aTUWHj0_tEF1YQpBXLZDLOjIgbYt9NXSnxM')"></div>
+<span class="text-[10px] font-bold px-2 py-0.5 border border-green-500 text-green-500 uppercase">Active</span>
+</div>
+<div class="space-y-1">
+<h3 class="text-lg font-black leading-tight uppercase tracking-tight">Penetration Testing</h3>
+<p class="text-[10px] text-gray-500 font-mono">REF_ID: 44y-SEC-02</p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-gray-500">
+<span>Difficulty_Level</span>
+<span class="text-primary">04/05</span>
+</div>
+<div class="flex gap-1 h-3">
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-gray-200 dark:bg-[#2a2a2a]"></div>
+</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="group border-2 border-gray-200 dark:border-[#2a2a2a] hover:border-primary bg-background-light dark:bg-background-dark p-6 flex flex-col gap-6 relative overflow-hidden transition-all opacity-40">
+<div class="absolute top-0 right-0 p-2 text-[40px] font-black text-primary/5 select-none leading-none group-hover:text-primary/10">05</div>
+<div class="flex justify-between items-start">
+<div class="h-12 w-12 border-2 border-primary/20 rounded-sm overflow-hidden bg-cover bg-center" data-alt="Abstract data structure diagram" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDBVL0nqNad6PjK3i_Zx8HBU8O6z6RiKs-W9S8TlWy5fP_XJTfT9yLX4AvLybMa4GZkB6qiilCewlMW42DDgoP9fipZiXMRoc88c-w_OXiAjB5JjpiPLGmzprNpEj3TxtGVGuR8tQTApgvBji6tNvXwfMfdADS4m7t6hm0cItE6N63F6xE0L_gzH-LpZQkq_3UZ8p7ybw9Cjz3QZVTSkkC7KY9XG28o9TtlxsehPLkTnrQ4arPWH5I-egVCB4oYydoVwiNw3Lc5_nA')"></div>
+<span class="text-[10px] font-bold px-2 py-0.5 border border-gray-400 text-gray-400 uppercase">Archived</span>
+</div>
+<div class="space-y-1">
+<h3 class="text-lg font-black leading-tight uppercase tracking-tight">Data Structures</h3>
+<p class="text-[10px] text-gray-500 font-mono">REF_ID: 01a-STR-01</p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-gray-500">
+<span>Difficulty_Level</span>
+<span class="text-primary">02/05</span>
+</div>
+<div class="flex gap-1 h-3">
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-gray-200 dark:bg-[#2a2a2a]"></div>
+<div class="flex-1 bg-gray-200 dark:bg-[#2a2a2a]"></div>
+<div class="flex-1 bg-gray-200 dark:bg-[#2a2a2a]"></div>
+</div>
+</div>
+</div>
+<!-- ADD TRACK Button -->
+<button class="group border-2 border-dashed border-gray-200 dark:border-[#2a2a2a] hover:border-primary hover:bg-primary/5 bg-transparent p-6 flex flex-col items-center justify-center gap-4 transition-all min-h-[280px]">
+<div class="h-16 w-16 border-2 border-gray-200 dark:border-[#2a2a2a] group-hover:border-primary group-hover:text-primary transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl font-light">add</span>
+</div>
+<div class="text-center">
+<p class="text-sm font-black uppercase tracking-widest group-hover:text-primary">Add New Track</p>
+<p class="text-[10px] text-gray-500 font-mono mt-1">AVAILABLE_SLOTS: 04</p>
+</div>
+</button>
+</div>
+<footer class="mt-8 pt-8 border-t-2 border-gray-200 dark:border-[#2a2a2a] flex justify-between items-center">
+<p class="text-[10px] font-mono text-gray-500">VARIANT_5_OF_10 // GRID_ENGINE_V2</p>
+<div class="flex gap-6">
+<a class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-primary transition-colors italic underline underline-offset-4" href="#">View_Archive</a>
+<a class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-primary transition-colors italic underline underline-offset-4" href="#">System_Diagnostics</a>
+</div>
+</footer>
+</div>
+</main>
+</div>
+</body></html>

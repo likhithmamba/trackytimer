@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>08 Execution Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7b5cfa",
+                        "electric-blue": "#5B7CFA",
+                        "background-light": "#f6f5f8",
+                        "background-dark": "#0B1020",
+                        "surface-dark": "#11172A",
+                        "border-dark": "#1E293B"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .sidebar-item-active {
+            background: rgba(123, 92, 250, 0.15);
+            box-shadow: 0 0 15px rgba(123, 92, 250, 0.1);
+        }
+        .progress-ring-glow {
+            filter: drop-shadow(0 0 8px rgba(91, 124, 250, 0.3));
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex h-screen overflow-hidden">
+<!-- Side Navigation -->
+<aside class="w-64 flex flex-col bg-background-light dark:bg-surface-dark border-r border-slate-200 dark:border-border-dark">
+<div class="p-6 flex items-center gap-3">
+<div class="h-8 w-8 bg-primary rounded flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-lg">terminal</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-sm font-bold tracking-tight text-slate-900 dark:text-white uppercase">Execution</h1>
+<p class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">PREMIUM SYSTEM</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-4 flex flex-col gap-1">
+<a class="sidebar-item-active flex items-center gap-3 px-3 py-2 rounded-lg text-primary" href="#">
+<span class="material-symbols-outlined text-[20px] fill-1">today</span>
+<span class="text-sm font-semibold">Today</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">timeline</span>
+<span class="text-sm font-medium">Timeline</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span class="text-sm font-medium">History</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+<span class="text-sm font-medium">Insights</span>
+</a>
+<div class="mt-auto flex flex-col gap-1 pt-4 border-t border-slate-200 dark:border-border-dark">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</div>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-border-dark">
+<div class="flex items-center gap-3 px-3 py-2">
+<div class="size-2 rounded-full bg-emerald-500 animate-pulse"></div>
+<span class="text-xs font-medium text-slate-500">System Secure</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark">
+<div class="max-w-[1200px] mx-auto p-8">
+<!-- Header -->
+<div class="flex flex-wrap justify-between items-end gap-6 mb-8">
+<div class="flex flex-col gap-1">
+<h2 class="text-4xl font-black tracking-tight text-slate-900 dark:text-white">Today’s Plan</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Monday, October 24th • <span class="text-primary font-bold">High-Stakes Focus Mode</span></p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-200 dark:bg-surface-dark border border-slate-300 dark:border-border-dark rounded-lg text-sm font-bold hover:bg-slate-300 dark:hover:bg-slate-800 transition-all">
+<span class="material-symbols-outlined text-sm">pause_circle</span>
+                            Hold Session
+                        </button>
+<button class="flex items-center gap-2 px-6 py-2 bg-primary text-white rounded-lg text-sm font-bold shadow-lg shadow-primary/30 hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+                            Start Session
+                        </button>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<!-- Progress Card -->
+<div class="md:col-span-2 flex items-center justify-between p-6 bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-xl">
+<div class="flex flex-col gap-4">
+<div>
+<h3 class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Execution Progress</h3>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-black text-slate-900 dark:text-white">72%</span>
+<span class="text-emerald-500 text-sm font-bold">+5.2% Today</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<p class="text-sm text-slate-500 dark:text-slate-400">Next milestone: <span class="text-white font-medium">Mock Exam Alpha</span></p>
+<div class="w-64 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-electric-blue rounded-full shadow-[0_0_10px_rgba(91,124,250,0.4)]" style="width: 72%;"></div>
+</div>
+</div>
+</div>
+<!-- Progress Ring SVG -->
+<div class="relative flex items-center justify-center w-32 h-32">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-slate-100 dark:text-slate-800" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-electric-blue progress-ring-glow" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-dasharray="364.4" stroke-dashoffset="102" stroke-width="8"></circle>
+</svg>
+<span class="absolute text-electric-blue font-bold text-lg">72%</span>
+</div>
+</div>
+<!-- Violations Card -->
+<div class="flex flex-col justify-between p-6 bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-xl border-l-4 border-l-rose-500">
+<div class="flex justify-between items-start">
+<h3 class="text-slate-400 text-xs font-bold uppercase tracking-widest">Violations</h3>
+<span class="material-symbols-outlined text-rose-500">warning</span>
+</div>
+<div class="mt-4">
+<span class="text-4xl font-black text-slate-900 dark:text-white">02</span>
+<p class="text-rose-500 text-xs font-bold mt-1 uppercase tracking-tight">Integrity Alert</p>
+</div>
+<div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800/50">
+<p class="text-xs text-slate-500 dark:text-slate-400">1. Phone screen detected</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">2. Unauthorized tab switch</p>
+</div>
+</div>
+</div>
+<!-- Execution Queue Table -->
+<div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-xl overflow-hidden shadow-sm">
+<div class="p-6 border-b border-slate-200 dark:border-border-dark flex justify-between items-center">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Execution Queue</h3>
+<div class="flex items-center gap-2">
+<span class="text-xs text-slate-500">Filter: All Tasks</span>
+<span class="material-symbols-outlined text-sm cursor-pointer hover:text-primary">filter_list</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50">
+<th class="px-6 py-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Time Block</th>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Objective</th>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center">Intensity</th>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Status</th>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Done Task -->
+<tr class="group hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-400 line-through">08:00 - 09:30</span>
+<span class="text-[10px] text-slate-400">Completed</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span>
+<span class="text-sm font-medium text-slate-400 line-through">Quant Review: Probability Distribution</span>
+</div>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-400 text-[10px] font-bold uppercase tracking-tight">Medium</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-1 rounded text-xs font-bold bg-emerald-500/10 text-emerald-500">ARCHIVED</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-white"><span class="material-symbols-outlined text-lg">more_horiz</span></button>
+</td>
+</tr>
+<!-- Active Task -->
+<tr class="group bg-primary/5 border-l-4 border-l-primary">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">10:00 - 12:30</span>
+<span class="text-[10px] text-primary font-bold animate-pulse">CURRENT PHASE</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-2 rounded-full bg-primary ring-4 ring-primary/20"></div>
+<span class="text-sm font-bold text-slate-900 dark:text-white">Mock Exam: Session Alpha (Analytical)</span>
+</div>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2 py-0.5 rounded bg-primary text-white text-[10px] font-bold uppercase tracking-tight">High</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-1 rounded text-xs font-bold bg-primary/20 text-primary border border-primary/30">IN PROGRESS</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:scale-110 transition-transform"><span class="material-symbols-outlined text-lg">open_in_new</span></button>
+</td>
+</tr>
+<!-- Locked Task -->
+<tr class="group hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-600 dark:text-slate-300">13:30 - 15:00</span>
+<span class="text-[10px] text-slate-500 uppercase">Post-Analysis</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-500 text-sm">lock</span>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-300">Error Mapping &amp; Strategy Pivot</span>
+</div>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 text-[10px] font-bold uppercase tracking-tight">Medium</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-1 rounded text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-500">QUEUED</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400"><span class="material-symbols-outlined text-lg">more_horiz</span></button>
+</td>
+</tr>
+<!-- Locked Task 2 -->
+<tr class="group hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-600 dark:text-slate-300">15:30 - 17:00</span>
+<span class="text-[10px] text-slate-500 uppercase">Final Sprint</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-500 text-sm">lock</span>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-300">Verbal Logic: Advanced Patterns</span>
+</div>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 text-[10px] font-bold uppercase tracking-tight">High</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-1 rounded text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-500">QUEUED</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400"><span class="material-symbols-outlined text-lg">more_horiz</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 bg-slate-50/50 dark:bg-slate-800/20 border-t border-slate-200 dark:border-border-dark flex items-center justify-between">
+<p class="text-[11px] text-slate-500 italic">"Discipline is the bridge between goals and accomplishment."</p>
+<div class="flex gap-4">
+<span class="text-[11px] font-bold text-slate-400 uppercase">Estimated Done: 17:15</span>
+<span class="text-[11px] font-bold text-slate-400 uppercase">Total Focus: 6h 30m</span>
+</div>
+</div>
+</div>
+<!-- Footer Summary -->
+<div class="mt-8 flex flex-wrap gap-4">
+<div class="flex-1 min-w-[300px] p-6 bg-primary/10 border border-primary/20 rounded-xl relative overflow-hidden group">
+<div class="relative z-10">
+<h4 class="text-primary font-bold text-sm mb-2">Performance Boost Active</h4>
+<p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">System has detected high focus levels. Ambient noise cancellation and notification blocking are engaged at level 10.</p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-8xl text-primary">bolt</span>
+</div>
+</div>
+<div class="w-full md:w-64 p-6 bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-xl flex flex-col justify-between">
+<p class="text-xs font-bold text-slate-400 uppercase">Deep Work Streak</p>
+<div class="flex items-center gap-3 mt-2">
+<span class="text-2xl font-black text-slate-900 dark:text-white">12 Days</span>
+<div class="flex gap-1">
+<div class="size-1.5 rounded-full bg-primary"></div>
+<div class="size-1.5 rounded-full bg-primary"></div>
+<div class="size-1.5 rounded-full bg-primary"></div>
+<div class="size-1.5 rounded-full bg-slate-700"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Elite Accountability - Technical Contract</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1be4c9",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#11211f",
+                        "contract-border": "#20284A",
+                        "charcoal": "#0D1117"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            color: #1be4c9;
+        }
+        /* Custom sharpen borders for Linear aesthetic */
+        .technical-border {
+            border: 1px solid #20284A;
+        }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-white transition-colors duration-0">
+<!-- Top Navigation -->
+<header class="border-b border-contract-border bg-background-light dark:bg-background-dark px-6 py-4">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-6 bg-primary flex items-center justify-center">
+<svg class="size-4 text-background-dark" fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"></path>
+</svg>
+</div>
+<h2 class="text-sm font-bold tracking-[0.2em] uppercase text-black dark:text-white">Elite Accountability</h2>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-xs font-medium tracking-widest uppercase opacity-60 hover:opacity-100 transition-opacity text-black dark:text-white" href="#">Systems</a>
+<a class="text-xs font-medium tracking-widest uppercase opacity-60 hover:opacity-100 transition-opacity text-black dark:text-white" href="#">Enforcement</a>
+<a class="text-xs font-medium tracking-widest uppercase opacity-60 hover:opacity-100 transition-opacity text-black dark:text-white" href="#">Log</a>
+<a class="text-xs font-medium tracking-widest uppercase opacity-60 hover:opacity-100 transition-opacity text-black dark:text-white" href="#">Compliance</a>
+</nav>
+<button class="bg-primary text-background-dark text-[10px] font-black tracking-[0.15em] px-5 py-2 uppercase">
+                Login
+            </button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 py-12 md:py-20">
+<!-- Page Heading -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16 border-b border-contract-border pb-8">
+<div class="max-w-2xl">
+<div class="flex items-center gap-2 mb-4">
+<span class="inline-block w-2 h-2 bg-primary"></span>
+<span class="text-[10px] font-bold tracking-[0.3em] uppercase text-primary">Technical Protocol 03</span>
+</div>
+<h1 class="text-4xl md:text-6xl font-bold tracking-tighter text-black dark:text-white mb-4 uppercase">
+                    03 Paywall: Technical Contract
+                </h1>
+<p class="text-zinc-500 dark:text-[#9db8b5] text-sm md:text-base font-medium tracking-tight uppercase">
+                    Enforcement activates upon payment. No refunds.
+                </p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Variation Sequence</span>
+<div class="bg-zinc-200 dark:bg-[#293836] px-4 py-2 border border-contract-border text-black dark:text-white text-xs font-bold tracking-widest">
+                    VAR 03/10
+                </div>
+</div>
+</div>
+<!-- Pricing Cards Section -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-collapse">
+<!-- Standard Enforcement -->
+<div class="technical-border bg-white dark:bg-[#0D1117] p-8 flex flex-col h-full border-r-0 md:border-r">
+<div class="mb-10">
+<div class="mb-6 h-8 w-8 flex items-center justify-center border border-primary/30">
+<span class="material-symbols-outlined text-xl">shield</span>
+</div>
+<h3 class="text-zinc-400 text-[10px] font-bold tracking-[0.2em] uppercase mb-2">Tier 01</h3>
+<h2 class="text-xl font-bold text-black dark:text-white uppercase tracking-tight">Standard Enforcement</h2>
+</div>
+<div class="mb-10 flex items-baseline gap-2">
+<span class="text-4xl font-bold text-black dark:text-white">$49</span>
+<span class="text-zinc-500 text-sm font-medium uppercase tracking-widest">/ Month</span>
+</div>
+<div class="space-y-4 mb-12 flex-grow">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-sm mt-0.5">check_circle</span>
+<p class="text-xs uppercase tracking-wide text-zinc-600 dark:text-zinc-400">Core accountability metrics</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-sm mt-0.5">check_circle</span>
+<p class="text-xs uppercase tracking-wide text-zinc-600 dark:text-zinc-400">Standard check-ins</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-sm mt-0.5">check_circle</span>
+<p class="text-xs uppercase tracking-wide text-zinc-600 dark:text-zinc-400">Email alerts</p>
+</div>
+</div>
+<button class="w-full bg-black dark:bg-white text-white dark:text-black py-4 text-xs font-black tracking-[0.2em] uppercase border-none">
+                    Commit &amp; Pay
+                </button>
+</div>
+<!-- Enhanced Surveillance -->
+<div class="technical-border bg-white dark:bg-[#121820] p-8 flex flex-col h-full border-r-0 md:border-r relative">
+<div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+<div class="mb-10">
+<div class="flex justify-between items-start mb-6">
+<div class="h-8 w-8 flex items-center justify-center border border-primary">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</div>
+<span class="bg-primary text-background-dark text-[9px] font-black px-2 py-1 tracking-widest">RECOMMENDED</span>
+</div>
+<h3 class="text-zinc-400 text-[10px] font-bold tracking-[0.2em] uppercase mb-2">Tier 02</h3>
+<h2 class="text-xl font-bold text-black dark:text-white uppercase tracking-tight">Enhanced Surveillance</h2>
+</div>
+<div class="mb-10 flex items-baseline gap-2">
+<span class="text-4xl font-bold text-black dark:text-white">$99</span>
+<span class="text-zinc-500 text-sm font-medium uppercase tracking-widest">/ Month</span>
+</div>
+<div class="space-y-4 mb-12 flex-grow">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-sm mt-0.5">check_circle</span>
+<p class="text-xs uppercase tracking-wide text-zinc-600 dark:text-zinc-400">Priority check-ins</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-sm mt-0.5">check_circle</span>
+<p class="text-xs uppercase tracking-wide text-zinc-600 dark:text-zinc-400">Automated penalties</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-sm mt-0.5">check_circle</span>
+<p class="text-xs uppercase tracking-wide text-zinc-600 dark:text-zinc-400">Biometric verification</p>
+</div>
+</div>
+<button class="w-full bg-black dark:bg-white text-white dark:text-black py-4 text-xs font-black tracking-[0.2em] uppercase border-none">
+                    Commit &amp; Pay
+                </button>
+</div>
+<!-- Absolute Compliance -->
+<div class="technical-border bg-white dark:bg-[#0D1117] p-8 flex flex-col h-full">
+<div class="mb-10">
+<div class="mb-6 h-8 w-8 flex items-center justify-center border border-primary/30">
+<span class="material-symbols-outlined text-xl">gavel</span>
+</div>
+<h3 class="text-zinc-400 text-[10px] font-bold tracking-[0.2em] uppercase mb-2">Tier 03</h3>
+<h2 class="text-xl font-bold text-black dark:text-white uppercase tracking-tight">Absolute Compliance</h2>
+</div>
+<div class="mb-10 flex items-baseline gap-2">
+<span class="text-4xl font-bold text-black dark:text-white">$249</span>
+<span class="text-zinc-500 text-sm font-medium uppercase tracking-widest">/ Month</span>
+</div>
+<div class="space-y-4 mb-12 flex-grow">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-sm mt-0.5">check_circle</span>
+<p class="text-xs uppercase tracking-wide text-zinc-600 dark:text-zinc-400">Direct human intervention</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-sm mt-0.5">check_circle</span>
+<p class="text-xs uppercase tracking-wide text-zinc-600 dark:text-zinc-400">Hardware integration</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-sm mt-0.5">check_circle</span>
+<p class="text-xs uppercase tracking-wide text-zinc-600 dark:text-zinc-400">Real-time surveillance</p>
+</div>
+</div>
+<button class="w-full bg-black dark:bg-white text-white dark:text-black py-4 text-xs font-black tracking-[0.2em] uppercase border-none">
+                    Commit &amp; Pay
+                </button>
+</div>
+</div>
+<!-- Technical Specifications Section -->
+<div class="mt-20">
+<div class="border-b border-contract-border pb-4 mb-8">
+<h3 class="text-zinc-400 text-[10px] font-bold tracking-[0.4em] uppercase">Technical Specifications / SLA</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0">
+<div class="flex flex-col border-t border-contract-border py-6">
+<p class="text-primary text-[10px] font-bold tracking-widest uppercase mb-1">Activation</p>
+<p class="text-black dark:text-white text-sm font-medium uppercase tracking-tight">Immediate upon transaction confirmation</p>
+</div>
+<div class="flex flex-col border-t border-contract-border py-6">
+<p class="text-primary text-[10px] font-bold tracking-widest uppercase mb-1">Refund Policy</p>
+<p class="text-black dark:text-white text-sm font-medium uppercase tracking-tight">Strictly Zero / No exceptions possible</p>
+</div>
+<div class="flex flex-col border-t border-contract-border py-6">
+<p class="text-primary text-[10px] font-bold tracking-widest uppercase mb-1">Data Protocol</p>
+<p class="text-black dark:text-white text-sm font-medium uppercase tracking-tight">256-bit Hardened AES Encryption</p>
+</div>
+<div class="flex flex-col border-t border-contract-border py-6">
+<p class="text-primary text-[10px] font-bold tracking-widest uppercase mb-1">SLA</p>
+<p class="text-black dark:text-white text-sm font-medium uppercase tracking-tight">99.9% Enforcement Uptime Guarantee</p>
+</div>
+</div>
+</div>
+<!-- Bottom Warning -->
+<footer class="mt-20 pt-10 border-t border-contract-border flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-4 grayscale opacity-50">
+<img alt="Security Logo 1" class="h-6" data-alt="Cybersecurity certification logo badge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQwGKfze_7HhgKbS6mEDVP3RLSWV9YYzTX3qJXUadK0vNE-R70JgCz3qx65xWWoH-DSiSDVw3423ftB5TG9d0FxYOmrGLhFHgG81-ZHweeNRnClbrDwdT4KZg73Y38yULElMA5X23kfJYPW4fvKWSNg4h9kRCtTyxUWJaLlSrFWXjT-ehYVM4ccVb2-YDU8F_YBUCwdkMM_3N6Lk_JGPqFBpJswRRrXWMsRgli-uLkOjGfMW4nGlOlSFWtUXuPUJeKoVqkYMSPNrw"/>
+<img alt="Security Logo 2" class="h-6" data-alt="Encrypted data transmission logo badge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0QA1m8HSWASyqpM-t_uiG7bDcbgE7yHfZrzu8KOZe5fqgp6JbCc6Lmuzm2hdAd1INkE_kKy2bvwFQpgbNDjEnXjX1xedtncEFaf6-_3aTNEE3MjPU-_hoSe-yT9_vSbZFwP3iompWJ4qXVbPPHvf4WcztjYrfvRNqGZ_imEs79MIgvXXllBc-0A6Lq3uTlBSyL8OqbJg8FKW0gh4YhY1ZpPxqwRbT8QouLVx1wzOfVQ59xTqlT0Zy56xpY5GwQA4L0jXwdQTZfwM"/>
+</div>
+<p class="text-[9px] text-zinc-500 uppercase tracking-[0.3em] text-center md:text-right">
+                All interactions are logged. Accountability is absolute. Proceed with caution.
+            </p>
+</footer>
+</main>
+</body></html>
