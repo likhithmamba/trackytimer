@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Noir Variant - Session 10</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d46f2",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#101422",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(40, 44, 57, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .authority-blur {
+            backdrop-filter: blur(20px);
+            background: rgba(16, 20, 34, 0.8);
+        }
+        .blue-pulse-glow {
+            box-shadow: 0 0 60px 10px rgba(13, 70, 242, 0.15);
+        }
+        .timer-glow {
+            text-shadow: 0 0 20px rgba(13, 70, 242, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white selection:bg-primary/30 min-h-screen">
+<!-- Authority Bar / Top Nav -->
+<header class="fixed top-0 left-0 right-0 z-50 authority-blur border-b border-white/10 px-6 py-4">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-primary flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-white text-xl">security</span>
+</div>
+<div>
+<h1 class="text-sm font-bold tracking-widest uppercase text-white/90">Noir System</h1>
+<p class="text-[10px] text-primary font-bold tracking-tighter uppercase">Authority Protocol Active</p>
+</div>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-white/60 hover:text-white transition-colors" href="#">DASHBOARD</a>
+<a class="text-sm font-medium text-white border-b-2 border-primary pb-1" href="#">SESSIONS</a>
+<a class="text-sm font-medium text-white/60 hover:text-white transition-colors" href="#">HISTORY</a>
+<a class="text-sm font-medium text-white/60 hover:text-white transition-colors" href="#">DIRECTIVES</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-end mr-2">
+<span class="text-[10px] text-white/40 font-bold uppercase tracking-widest">Protocol Status</span>
+<span class="text-xs text-white font-medium">ENFORCED</span>
+</div>
+<div class="h-10 w-10 rounded-full border border-white/20 bg-center bg-cover" data-alt="User profile avatar in dark aesthetic" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDrVFiERpi3KdXn9vgwzje21mmzL4tk-ykchqh_9GpGeH6Ywk8IArYrC4xIzyFEL0rj61RpI3d9iuIXXSQbACcxn-A5YcTepU-6-bhFjF1RTPzDWv5awVhy2KrTjRPJ3VQr-uJYMYpMItpYfHFFm7KO48b9BmQWBoBpd5OUejNGL42n8TYpafBUEXvjvasZF4BhFKWQ3N61lVSd-do2Mn2GR7usfHd2Hwg7bVuCI0JoXfEh4OeVS2shwMrEvDkYSX8eMee073KUW1g');">
+</div>
+</div>
+</div>
+</header>
+<!-- Main Container -->
+<main class="pt-24 pb-12 px-6 flex flex-col items-center justify-center min-h-screen relative overflow-hidden">
+<!-- Background Radial Pulse (Decorative) -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10">
+<!-- Left: Session Details -->
+<div class="lg:col-span-3 flex flex-col gap-6">
+<div class="glass-panel p-6 rounded-xl">
+<h3 class="text-xs font-bold text-white/40 uppercase tracking-widest mb-4">Session Context</h3>
+<h2 class="text-xl font-bold text-white mb-2">Session 10</h2>
+<p class="text-sm text-white/70 leading-relaxed italic">"Active Discipline Variant. Maintain integrity at all costs."</p>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex flex-col gap-3 p-4 glass-panel rounded-xl">
+<div class="flex gap-6 justify-between">
+<p class="text-white text-xs font-medium uppercase tracking-wider">Integrity</p>
+<p class="text-primary text-xs font-bold">65%</p>
+</div>
+<div class="rounded-full bg-white/10 h-1.5 overflow-hidden">
+<div class="h-full rounded-full bg-primary shadow-[0_0_10px_rgba(13,70,242,0.5)]" style="width: 65%;"></div>
+</div>
+<p class="text-white/40 text-[10px] font-bold uppercase tracking-widest">High-Stakes Mode</p>
+</div>
+<div class="flex flex-col gap-2 p-4 glass-panel rounded-xl">
+<p class="text-white/40 text-xs font-medium uppercase tracking-widest">Focus Score</p>
+<p class="text-white text-2xl font-bold tracking-tight">98.4</p>
+</div>
+<div class="flex flex-col gap-2 p-4 glass-panel rounded-xl border-l-4 border-l-primary">
+<p class="text-white/40 text-xs font-medium uppercase tracking-widest">Compliance</p>
+<p class="text-white text-2xl font-bold tracking-tight">100%</p>
+</div>
+</div>
+</div>
+<!-- Center: The Glassmorphic Timer Core -->
+<div class="lg:col-span-6 flex flex-col items-center justify-center gap-8">
+<div class="glass-panel w-full aspect-square md:aspect-video rounded-3xl flex flex-col items-center justify-center relative blue-pulse-glow border-white/20">
+<div class="absolute top-6 left-1/2 -translate-x-1/2 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[10px] font-bold text-white/40 uppercase tracking-[0.3em]">Temporal Lock Active</span>
+</div>
+<!-- Timer Display -->
+<div class="flex gap-4 py-6 px-4 items-center">
+<div class="flex flex-col items-center gap-2">
+<div class="w-24 h-28 flex items-center justify-center rounded-xl glass-panel bg-white/5 border-white/10">
+<p class="text-white text-5xl font-bold tracking-tighter timer-glow">00</p>
+</div>
+<p class="text-white/40 text-[10px] font-bold uppercase tracking-widest">Hours</p>
+</div>
+<span class="text-4xl font-bold text-white/20 mb-6">:</span>
+<div class="flex flex-col items-center gap-2">
+<div class="w-24 h-28 flex items-center justify-center rounded-xl glass-panel bg-white/5 border-white/10">
+<p class="text-white text-5xl font-bold tracking-tighter timer-glow">42</p>
+</div>
+<p class="text-white/40 text-[10px] font-bold uppercase tracking-widest">Minutes</p>
+</div>
+<span class="text-4xl font-bold text-white/20 mb-6">:</span>
+<div class="flex flex-col items-center gap-2">
+<div class="w-24 h-28 flex items-center justify-center rounded-xl glass-panel bg-white/5 border-white/10">
+<p class="text-white text-5xl font-bold tracking-tighter timer-glow">18</p>
+</div>
+<p class="text-white/40 text-[10px] font-bold uppercase tracking-widest">Seconds</p>
+</div>
+</div>
+<div class="mt-4 flex gap-4">
+<button class="flex items-center gap-2 px-8 py-3 bg-primary hover:bg-primary/80 text-white text-xs font-bold uppercase tracking-widest rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm">pause</span>
+                            Hold Session
+                        </button>
+<button class="flex items-center gap-2 px-8 py-3 bg-transparent border border-white/10 hover:bg-white/5 text-white text-xs font-bold uppercase tracking-widest rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm">cancel</span>
+                            Abort Protocol
+                        </button>
+</div>
+</div>
+<!-- Subtle Status Headline -->
+<div class="text-center">
+<h1 class="text-white tracking-widest text-lg font-light uppercase opacity-80">Phase II: <span class="font-bold">Controlled Extraction</span></h1>
+<div class="w-12 h-0.5 bg-primary mx-auto mt-2"></div>
+</div>
+</div>
+<!-- Right: Task List / Objectives -->
+<div class="lg:col-span-3 flex flex-col gap-6">
+<div class="glass-panel rounded-xl overflow-hidden">
+<div class="p-4 border-b border-white/10 bg-white/5">
+<h3 class="text-xs font-bold text-white/80 uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">list_alt</span>
+                            Objectives
+                        </h3>
+</div>
+<div class="p-2 flex flex-col gap-2">
+<div class="p-3 bg-primary/20 border border-primary/30 rounded-lg flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-lg">radio_button_checked</span>
+<div>
+<p class="text-xs font-bold text-white uppercase tracking-tight">Prime Objective</p>
+<p class="text-[11px] text-white/60">Maintain cognitive focus without diversion.</p>
+</div>
+</div>
+<div class="p-3 bg-white/5 border border-white/5 rounded-lg flex items-start gap-3 opacity-60">
+<span class="material-symbols-outlined text-white/40 text-lg">radio_button_unchecked</span>
+<div>
+<p class="text-xs font-bold text-white/80 uppercase tracking-tight">System Sync</p>
+<p class="text-[11px] text-white/40">Calibrate biometric feedback loops.</p>
+</div>
+</div>
+<div class="p-3 bg-white/5 border border-white/5 rounded-lg flex items-start gap-3 opacity-60">
+<span class="material-symbols-outlined text-white/40 text-lg">radio_button_unchecked</span>
+<div>
+<p class="text-xs font-bold text-white/80 uppercase tracking-tight">Data Scrub</p>
+<p class="text-[11px] text-white/40">Purge session artifacts from buffer.</p>
+</div>
+</div>
+</div>
+<div class="p-4 bg-black/20 text-center">
+<button class="text-[10px] font-bold text-primary uppercase tracking-widest hover:underline">+ Add Directive</button>
+</div>
+</div>
+<!-- Environment Data -->
+<div class="glass-panel p-6 rounded-xl flex flex-col gap-4">
+<h3 class="text-xs font-bold text-white/40 uppercase tracking-widest">Environment</h3>
+<div class="flex justify-between items-center">
+<span class="text-[10px] text-white/60 uppercase">Ambiance</span>
+<span class="text-xs font-bold text-white">NOIR_VAR_02</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[10px] text-white/60 uppercase">Noise Floor</span>
+<span class="text-xs font-bold text-white">-42dB</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[10px] text-white/60 uppercase">Light Source</span>
+<span class="text-xs font-bold text-primary">BLUE_PULSE</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Authority Footer / Status -->
+<footer class="fixed bottom-0 left-0 right-0 z-50 authority-blur border-t border-white/10 px-6 py-2">
+<div class="max-w-7xl mx-auto flex items-center justify-between text-[10px] font-bold tracking-[0.2em] text-white/30 uppercase">
+<div class="flex items-center gap-4">
+<span>Node: 0x42-Alpha</span>
+<span class="w-1 h-1 rounded-full bg-white/20"></span>
+<span>Version: 2.0.1_GLS</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-primary/60">System Synchronized</span>
+<span class="material-symbols-outlined text-[12px]">verified_user</span>
+</div>
+</div>
+</footer>
+</body></html>

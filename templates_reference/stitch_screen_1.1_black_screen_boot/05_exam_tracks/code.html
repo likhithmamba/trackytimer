@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>05 Exam Tracks - Multi-Exam Selector</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#19e6ca",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#11211f",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .segmented-bar div {
+            height: 6px;
+            width: 14px;
+            border-radius: 1px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark flex flex-col">
+<div class="p-6">
+<div class="flex items-center gap-3 text-primary mb-8">
+<span class="material-symbols-outlined text-3xl">terminal</span>
+<h1 class="text-xl font-black tracking-tighter uppercase">05 Track</h1>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-medium" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">layers</span>
+<span>Exam Tracks</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+<span>Study Planner</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">monitoring</span>
+<span>Performance</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">JD</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold">John Doe</span>
+<span class="text-xs text-slate-500">Premium Plan</span>
+</div>
+<span class="material-symbols-outlined ml-auto text-slate-400 cursor-pointer">settings</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Top Navbar -->
+<header class="h-16 border-b border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-background-dark/50 backdrop-blur-md flex items-center justify-between px-8">
+<div class="flex items-center gap-4 flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-primary/50 transition-all" placeholder="Search tracks, modules, or schedules..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-primary rounded-full border-2 border-white dark:border-background-dark"></span>
+</button>
+<button class="bg-primary text-background-dark px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">bolt</span>
+                        Execute Session
+                    </button>
+</div>
+</header>
+<!-- Content -->
+<div class="flex-1 overflow-y-auto p-8">
+<div class="max-w-5xl mx-auto">
+<!-- Page Heading -->
+<div class="flex items-end justify-between mb-8">
+<div>
+<h2 class="text-4xl font-black tracking-tight mb-2">Multi-Exam Selector</h2>
+<p class="text-slate-500 dark:text-slate-400 text-lg">Manage and execute your high-commitment exam tracks.</p>
+</div>
+<button class="border-2 border-slate-300 dark:border-slate-700 hover:border-primary/50 text-slate-700 dark:text-slate-300 px-6 py-2.5 rounded-lg font-bold text-sm flex items-center gap-2 transition-all group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">add_circle</span>
+                            Add Exam
+                        </button>
+</div>
+<!-- Exam Track List -->
+<div class="space-y-4">
+<!-- Card 1 -->
+<div class="h-24 bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 rounded-xl flex items-center px-6 hover:border-primary/30 transition-all group cursor-pointer">
+<div class="size-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mr-6">
+<span class="material-symbols-outlined text-2xl">balance</span>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<h3 class="text-lg font-bold group-hover:text-primary transition-colors">Bar Exam 2024</h3>
+<p class="text-sm text-slate-500">Legal Studies • Q3 Intake</p>
+</div>
+<div class="flex flex-col items-end gap-2 mr-12">
+<span class="text-[10px] uppercase tracking-widest font-bold text-slate-400">Intensity Level</span>
+<div class="flex gap-1 segmented-bar">
+<div class="bg-primary"></div>
+<div class="bg-primary"></div>
+<div class="bg-primary"></div>
+<div class="bg-primary"></div>
+<div class="bg-primary"></div>
+<div class="bg-slate-200 dark:bg-slate-700"></div>
+<div class="bg-slate-200 dark:bg-slate-700"></div>
+<div class="bg-slate-200 dark:bg-slate-700"></div>
+</div>
+</div>
+<div class="flex items-center gap-8 border-l border-slate-200 dark:border-slate-700 pl-8">
+<div class="text-right">
+<p class="text-xs text-slate-500 font-medium uppercase tracking-tighter">Progress</p>
+<p class="text-lg font-black text-primary">82%</p>
+</div>
+<button class="text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="h-24 bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 rounded-xl flex items-center px-6 hover:border-primary/30 transition-all group cursor-pointer">
+<div class="size-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mr-6">
+<span class="material-symbols-outlined text-2xl">clinical_notes</span>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<h3 class="text-lg font-bold group-hover:text-primary transition-colors">USMLE Step 1</h3>
+<p class="text-sm text-slate-500">Medical Boards • 2024 Edition</p>
+</div>
+<div class="flex flex-col items-end gap-2 mr-12">
+<span class="text-[10px] uppercase tracking-widest font-bold text-slate-400">Intensity Level</span>
+<div class="flex gap-1 segmented-bar">
+<div class="bg-primary"></div>
+<div class="bg-primary"></div>
+<div class="bg-primary"></div>
+<div class="bg-primary"></div>
+<div class="bg-primary"></div>
+<div class="bg-primary"></div>
+<div class="bg-primary"></div>
+<div class="bg-primary"></div>
+</div>
+</div>
+<div class="flex items-center gap-8 border-l border-slate-200 dark:border-slate-700 pl-8">
+<div class="text-right">
+<p class="text-xs text-slate-500 font-medium uppercase tracking-tighter">Progress</p>
+<p class="text-lg font-black text-primary">45%</p>
+</div>
+<button class="text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="h-24 bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 rounded-xl flex items-center px-6 hover:border-primary/30 transition-all group cursor-pointer">
+<div class="size-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mr-6">
+<span class="material-symbols-outlined text-2xl">finance</span>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<h3 class="text-lg font-bold group-hover:text-primary transition-colors">CFA Level II</h3>
+<p class="text-sm text-slate-500">Financial Analysis • 2024</p>
+</div>
+<div class="flex flex-col items-end gap-2 mr-12">
+<span class="text-[10px] uppercase tracking-widest font-bold text-slate-400">Intensity Level</span>
+<div class="flex gap-1 segmented-bar">
+<div class="bg-primary"></div>
+<div class="bg-primary"></div>
+<div class="bg-primary"></div>
+<div class="bg-primary"></div>
+<div class="bg-primary"></div>
+<div class="bg-primary"></div>
+<div class="bg-slate-200 dark:bg-slate-700"></div>
+<div class="bg-slate-200 dark:bg-slate-700"></div>
+</div>
+</div>
+<div class="flex items-center gap-8 border-l border-slate-200 dark:border-slate-700 pl-8">
+<div class="text-right">
+<p class="text-xs text-slate-500 font-medium uppercase tracking-tighter">Progress</p>
+<p class="text-lg font-black text-primary">12%</p>
+</div>
+<button class="text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Card 4 (Empty State / Add Exam) -->
+<div class="h-24 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-xl flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-all cursor-pointer group">
+<div class="flex items-center gap-3 text-slate-400 group-hover:text-primary">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-bold">Initialize New Track</span>
+</div>
+</div>
+</div>
+<!-- Statistics Bar -->
+<div class="mt-12 grid grid-cols-3 gap-6">
+<div class="bg-slate-100 dark:bg-slate-800/60 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
+<p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-1">Total Active Modules</p>
+<p class="text-3xl font-black">42</p>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800/60 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
+<p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-1">Daily Commitment</p>
+<p class="text-3xl font-black">6.5<span class="text-sm font-normal text-slate-500 ml-1 uppercase">Hrs</span></p>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800/60 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
+<p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-1">System Load</p>
+<div class="flex items-end gap-2">
+<p class="text-3xl font-black text-primary">High</p>
+<div class="flex gap-0.5 mb-1.5">
+<div class="size-1.5 rounded-full bg-primary"></div>
+<div class="size-1.5 rounded-full bg-primary"></div>
+<div class="size-1.5 rounded-full bg-primary"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

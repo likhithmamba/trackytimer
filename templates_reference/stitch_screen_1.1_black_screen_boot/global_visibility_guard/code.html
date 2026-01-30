@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Global Visibility Guard - Protocol Enforcement</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e6474c",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211112",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .backdrop-blur-custom {
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display overflow-hidden">
+<!-- Underlying Dashboard Content (Obscured) -->
+<div class="fixed inset-0 z-0 flex flex-col opacity-20 pointer-events-none select-none">
+<nav class="h-16 border-b border-white/10 flex items-center px-8 justify-between">
+<div class="w-32 h-6 bg-white/20 rounded"></div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-white/10"></div>
+<div class="w-10 h-10 rounded-full bg-white/10"></div>
+</div>
+</nav>
+<div class="flex-1 p-10 flex gap-8">
+<div class="w-64 h-full bg-white/5 rounded-lg"></div>
+<div class="flex-1 flex flex-col gap-6">
+<div class="h-40 bg-white/5 rounded-lg w-full"></div>
+<div class="grid grid-cols-3 gap-6 flex-1">
+<div class="bg-white/5 rounded-lg"></div>
+<div class="bg-white/5 rounded-lg"></div>
+<div class="bg-white/5 rounded-lg"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Global Visibility Guard Overlay -->
+<div class="fixed inset-0 z-50 bg-[#000000]/95 flex flex-col items-center justify-center backdrop-blur-custom">
+<!-- Top Enforcement Bar -->
+<div class="absolute top-0 left-0 w-full h-1.5 bg-primary"></div>
+<!-- Center Alert Block -->
+<div class="layout-content-container flex flex-col max-w-[960px] w-full px-6">
+<!-- Protocol Breach Indicator -->
+<div class="flex flex-wrap justify-center gap-4 p-4 mb-4">
+<div class="flex min-w-[200px] flex-col items-center gap-2 rounded-lg p-6 bg-primary/10 border border-primary/30">
+<span class="material-symbols-outlined text-primary text-5xl mb-2">warning</span>
+<p class="text-white text-sm font-bold tracking-[0.2em] leading-normal uppercase">Violation Status</p>
+<p class="text-primary tracking-tighter text-3xl font-black leading-tight">PROTOCOL BREACH</p>
+<p class="text-primary text-base font-medium leading-normal animate-pulse">SYSTEM MONITORING ACTIVE</p>
+</div>
+</div>
+<!-- Main Warning Text -->
+<h1 class="text-white tracking-tighter text-[48px] md:text-[64px] font-black leading-none px-4 text-center pb-4 pt-6">
+                RETURN TO SESSION IMMEDIATELY
+            </h1>
+<!-- Consequence Statement -->
+<div class="flex flex-col items-center">
+<div class="h-[1px] w-32 bg-white/20 mb-6"></div>
+<p class="text-white text-xl md:text-2xl font-semibold leading-normal pb-3 pt-1 px-4 text-center">
+                    Second violation will <span class="text-primary underline decoration-2 underline-offset-4">lock access</span>.
+                </p>
+</div>
+<!-- Meta Information -->
+<div class="mt-8 flex flex-col items-center">
+<p class="text-[#b79e9f] text-sm font-mono leading-normal pb-3 pt-1 px-4 text-center max-w-md uppercase tracking-wider">
+                    Focus detected outside of active window. User presence required to resume data integrity protocol.
+                </p>
+</div>
+</div>
+<!-- Monitoring Footer -->
+<div class="absolute bottom-10 left-0 w-full flex flex-col items-center gap-4">
+<div class="flex items-center gap-3 bg-white/5 px-6 py-3 rounded-full border border-white/10">
+<span class="material-symbols-outlined text-white text-sm">visibility</span>
+<span class="text-white/70 text-xs font-bold tracking-widest uppercase">Biometric &amp; Focus Tracking Engaged</span>
+</div>
+<!-- Map Simulation (Abstract Security Trace) -->
+<div class="hidden md:block w-48 h-1 opacity-20 overflow-hidden">
+<div class="bg-cover bg-center h-full w-full" data-alt="Abstract global connectivity map with red focus points" data-location="Global Monitoring Center" style='background-image: url("https://placeholder.pics/svg/300");'></div>
+</div>
+</div>
+<!-- Peripheral Decorative Elements (Authority Reinforcement) -->
+<div class="absolute top-10 left-10 opacity-20">
+<div class="text-white font-mono text-[10px] leading-tight">
+                SEC_ID: 0x99281-FG<br/>
+                AUTH_LEVEL: OVERRIDE<br/>
+                STAMP: <span id="current-timestamp">2023.10.27_14:02:01_UTC</span>
+</div>
+</div>
+<div class="absolute top-10 right-10 opacity-20 text-right">
+<div class="text-white font-mono text-[10px] leading-tight">
+                IP_LOGGED: 192.168.1.104<br/>
+                GEO_LOC: LAT_40.7128_LONG_74.0060<br/>
+                BROWSER_ST: BLUR_DETECTED
+            </div>
+</div>
+</div>
+</body></html>

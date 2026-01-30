@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Student Focus Enforcer - Exam Protocol</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f20d0d",
+                        "background-light": "#f8f5f5",
+                        "background-dark": "#0a0a0a",
+                        "charcoal": "#181111",
+                    },
+                    fontFamily: {
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .scanline-overlay {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+        .grid-bg {
+            background-image: radial-gradient(circle, #333 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .digital-timer {
+            font-variant-numeric: tabular-nums;
+            text-shadow: 0 0 20px rgba(242, 13, 13, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-white min-h-screen relative overflow-hidden font-mono">
+<div class="absolute inset-0 grid-bg opacity-20 pointer-events-none"></div>
+<div class="absolute inset-0 scanline-overlay opacity-30 pointer-events-none"></div>
+<div class="relative flex h-screen w-full flex-col overflow-x-hidden">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-10 py-4 bg-background-dark/80 backdrop-blur-md">
+<div class="flex items-center gap-4 text-white">
+<div class="size-5 text-primary">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-wider uppercase">Academic Integrity Enforcer</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8 items-center">
+<div class="flex items-center gap-9 text-[10px] tracking-widest uppercase text-white/50">
+<span class="flex items-center gap-2"><span class="size-2 rounded-full bg-primary animate-pulse"></span> FOCUS_LOCK ACTIVE</span>
+<span>SESSION: FINAL_EXAM_PREP</span>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-sm size-10 border border-white/10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAUMHE3dT3LvMPVfoSy_3qXnX4ALMYCEt7iW0B2P87kl_h73Vj-TEjU91q4F5IOesx6HJ0gt7UZAAdFPQC67mYynCKzWyj-pdl_tH0OG247BanEvGGUzmW2Qr94pFhBd857XnLMyAhDBMvsv6cJqLVyGrZ8-fccHXfq6RpEWqHKyGlHwC_lTbSUa34kS2P5FND2RMiQxnIIvpMez-wUernhSpKLQaILn72rLR2eRDiuX1tRL7gBmCmJsb5c4fmM6fLwOAHXxEvPKTg");'></div>
+</div>
+</header>
+<main class="flex-1 flex items-center justify-center p-6">
+<div class="max-w-3xl w-full bg-charcoal border border-primary shadow-[0_0_40px_rgba(242,13,13,0.15)] relative">
+<div class="flex items-center justify-between border-b border-primary/30 px-6 py-3 bg-primary/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">history_edu</span>
+<span class="text-[10px] font-bold tracking-[0.3em] uppercase text-primary">PROTOCOL 07 // DEEP STUDY</span>
+</div>
+<div class="text-[10px] text-primary/60">
+                        TARGET_DEADLINE: 2024-05-15_0900
+                    </div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
+<div class="lg:col-span-7 p-8 border-r border-white/5 flex flex-col justify-center items-center">
+<div class="text-[10px] text-primary/40 tracking-[0.4em] uppercase mb-4">Remaining Study Window</div>
+<div class="digital-timer text-7xl md:text-8xl font-bold text-primary tracking-tighter mb-4">
+                            02:44:59
+                        </div>
+<div class="w-full h-1 bg-white/5 relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-primary w-2/3"></div>
+</div>
+<div class="flex justify-between w-full mt-2 text-[9px] text-white/30 uppercase tracking-widest">
+<span>Start: 08:00</span>
+<span>Progress: 65%</span>
+<span>Target: 12:00</span>
+</div>
+</div>
+<div class="lg:col-span-5 p-8 bg-black/20 space-y-6">
+<div>
+<h4 class="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">assignment_late</span>
+                                Exam Commitments
+                            </h4>
+<ul class="space-y-3">
+<li class="flex items-start gap-3 text-[11px] text-white/70 leading-relaxed">
+<span class="text-primary font-bold">01</span>
+                                    ZERO-TOLERANCE DISTRACTION POLICY ACTIVE.
+                                </li>
+<li class="flex items-start gap-3 text-[11px] text-white/70 leading-relaxed">
+<span class="text-primary font-bold">02</span>
+                                    ALL EXTERNAL SYNC NODES ARE CURRENTLY SEVERED.
+                                </li>
+<li class="flex items-start gap-3 text-[11px] text-white/70 leading-relaxed">
+<span class="text-primary font-bold">03</span>
+                                    REMAINING SYLLABUS QUOTA: 4 UNITS.
+                                </li>
+</ul>
+</div>
+<div class="pt-4 border-t border-white/5">
+<h4 class="text-xs font-bold text-white/50 uppercase tracking-[0.2em] mb-4">Security Parameters</h4>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-[10px]">
+<span class="text-white/40">SOCIAL_MEDIA</span>
+<span class="text-primary font-bold">[ LOCKED ]</span>
+</div>
+<div class="flex justify-between items-center text-[10px]">
+<span class="text-white/40">NOTIFICATION_DAEMON</span>
+<span class="text-primary font-bold">[ SHUTDOWN ]</span>
+</div>
+<div class="flex justify-between items-center text-[10px]">
+<span class="text-white/40">BROWSER_SANDBOX</span>
+<span class="text-primary font-bold">[ RESTRICTED ]</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="px-8 pb-10 pt-8 border-t border-white/5">
+<div class="mb-6 text-center">
+<h3 class="text-white text-lg font-bold tracking-widest uppercase mb-2">Commit to Final Focus</h3>
+<p class="text-[10px] text-white/50 leading-relaxed max-w-md mx-auto">
+                            Initiating the Hard-Lock protocol will disable all communication and entertainment software for the duration of the timer. There is <span class="text-primary">no administrative override</span> until the countdown reaches zero.
+                        </p>
+</div>
+<div class="flex flex-col gap-4">
+<button class="group relative w-full h-16 bg-transparent border-2 border-primary overflow-hidden flex items-center justify-center transition-all active:scale-[0.99]">
+<div class="absolute inset-0 bg-primary translate-y-full group-active:translate-y-0 transition-transform duration-[3000ms] ease-linear"></div>
+<div class="relative z-10 flex items-center gap-4">
+<span class="text-primary group-active:text-white font-bold tracking-[0.5em] uppercase text-lg">Initialize Hard-Lock</span>
+<span class="material-symbols-outlined text-primary group-active:text-white group-active:animate-spin">lock</span>
+</div>
+</button>
+<button class="w-full py-2 text-white/20 hover:text-white/50 text-[9px] tracking-[0.4em] uppercase transition-colors">
+                            [ Defer Session - Log Academic Failure ]
+                        </button>
+</div>
+</div>
+<div class="px-8 py-2 border-t border-white/5 flex justify-between items-center bg-black/40">
+<div class="text-[8px] text-white/20 uppercase tracking-tighter">
+                        ENFORCER_CORE_v9.1 // ACADEMIC_MODE_STRICT
+                    </div>
+<div class="text-[8px] text-white/20 uppercase tracking-tighter">
+                        USER_ID: STUDENT_29910 // STATUS: COMPLIANT
+                    </div>
+</div>
+</div>
+</main>
+<div class="fixed left-6 top-1/2 -translate-y-1/2 flex flex-col gap-8 opacity-20 pointer-events-none">
+<div class="h-32 w-px bg-white"></div>
+<div class="rotate-90 origin-left text-[10px] tracking-[0.5em] whitespace-nowrap uppercase">Faculty Surveillance Oversight</div>
+<div class="h-32 w-px bg-white"></div>
+</div>
+<div class="fixed right-8 bottom-10 opacity-20 pointer-events-none text-right">
+<div class="text-4xl font-bold text-primary">07</div>
+<div class="text-[10px] tracking-widest uppercase">Protocol Lock</div>
+</div>
+</div>
+
+</body></html>

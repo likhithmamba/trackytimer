@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>01 Boot: Technical Control</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7b5cfa",
+                        "background-light": "#f6f5f8",
+                        "background-dark": "#0B0B0B",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Space Grotesk", sans-serif;
+            background-color: #0B0B0B;
+            -webkit-font-smoothing: antialiased;
+        }
+        .mono-text {
+            font-family: "JetBrains Mono", monospace;
+            letter-spacing: 0.1em;
+        }
+        .razor-border {
+            border: 1px solid #2b273a;
+        }
+        .rigid-progress {
+            height: 2px;
+            background-color: #1a1726;
+        }
+        .rigid-fill {
+            height: 100%;
+            background-color: #7b5cfa;
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-white overflow-hidden selection:bg-primary selection:text-white">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Top Navigation (Minimal Technical Variant) -->
+<header class="flex items-center justify-between border-b border-[#2b273a] px-8 py-4">
+<div class="flex items-center gap-4">
+<div class="size-5 flex items-center justify-center border border-primary/50 text-primary">
+<span class="material-symbols-outlined !text-[14px]">terminal</span>
+</div>
+<h2 class="text-xs font-bold tracking-[0.2em] mono-text uppercase">System.Boot_v1.0</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4 mono-text text-[10px] text-gray-500">
+<span>NODE: 0x7F2</span>
+<span>KERNEL: ELITE_CORE</span>
+</div>
+<div class="flex gap-2">
+<div class="w-10 h-6 border border-[#2b273a] flex items-center justify-center">
+<span class="material-symbols-outlined !text-[16px] text-gray-400">settings</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Boot Content -->
+<main class="flex flex-1 flex-col items-center justify-center px-4">
+<!-- Minimalist Geometric Logo -->
+<div class="relative mb-24">
+<div class="w-24 h-24 flex items-center justify-center">
+<!-- SVG Logo with 1px stroke -->
+<svg fill="none" height="80" viewbox="0 0 100 100" width="80" xmlns="http://www.w3.org/2000/svg">
+<rect height="80" stroke="white" stroke-width="1" width="80" x="10" y="10"></rect>
+<path d="M50 20V80" stroke="#7b5cfa" stroke-width="1"></path>
+<path d="M20 50H80" stroke="#7b5cfa" stroke-width="1"></path>
+<circle cx="50" cy="50" r="15" stroke="white" stroke-width="1"></circle>
+</svg>
+</div>
+<!-- Scanning line effect -->
+<div class="absolute -inset-8 pointer-events-none border border-primary/10 opacity-50"></div>
+</div>
+<!-- Rigid Progress Container -->
+<div class="w-full max-w-[400px] flex flex-col gap-4">
+<div class="flex justify-between items-end mono-text">
+<p class="text-[10px] text-gray-400 uppercase tracking-widest">Initialization sequence</p>
+<p class="text-[11px] text-primary font-bold">40%</p>
+</div>
+<!-- The Rigid Progress Bar (No rounding) -->
+<div class="w-full h-[2px] bg-[#1a1726]">
+<div class="h-full bg-primary" style="width: 40%;"></div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="mono-text text-[9px] text-gray-500 uppercase">Loading: core_assets.lib</p>
+<p class="mono-text text-[9px] text-primary/60 uppercase animate-pulse">Running integrity check...</p>
+</div>
+</div>
+</main>
+<!-- Stats / Metadata Grid -->
+<div class="grid grid-cols-4 border-t border-[#2b273a]">
+<div class="border-r border-[#2b273a] p-6">
+<p class="mono-text text-[9px] text-gray-500 mb-1 uppercase tracking-tighter">System Uptime</p>
+<p class="mono-text text-lg font-light text-white">00:00:04:12</p>
+</div>
+<div class="border-r border-[#2b273a] p-6">
+<p class="mono-text text-[9px] text-gray-500 mb-1 uppercase tracking-tighter">Connection Latency</p>
+<p class="mono-text text-lg font-light text-white">12<span class="text-xs text-primary">ms</span></p>
+</div>
+<div class="border-r border-[#2b273a] p-6">
+<p class="mono-text text-[9px] text-gray-500 mb-1 uppercase tracking-tighter">Memory Allocation</p>
+<p class="mono-text text-lg font-light text-white">4.2 <span class="text-xs text-primary">GB/s</span></p>
+</div>
+<div class="p-6">
+<p class="mono-text text-[9px] text-gray-500 mb-1 uppercase tracking-tighter">Security Protocol</p>
+<p class="mono-text text-lg font-light text-white">AES-256</p>
+</div>
+</div>
+<!-- Rigid Footer Status -->
+<footer class="bg-black/40 py-3 border-t border-[#2b273a]">
+<div class="flex justify-center items-center gap-2">
+<div class="size-1 bg-primary rounded-full"></div>
+<p class="mono-text text-[10px] text-gray-400 tracking-[0.2em] uppercase">
+                    ESTABLISHING SYSTEM CONTROL // INTEGRITY CHECK
+                </p>
+<div class="size-1 bg-primary rounded-full"></div>
+</div>
+</footer>
+<!-- Background Detail: Static/Grid -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] z-[-1]" style="background-image: radial-gradient(#fff 1px, transparent 0); background-size: 40px 40px;">
+</div>
+<!-- Abstract Decoration Div -->
+<div class="absolute top-1/2 left-10 -translate-y-1/2 flex flex-col gap-10 opacity-20 hidden lg:flex">
+<div class="w-px h-32 bg-gray-500"></div>
+<p class="mono-text text-[8px] -rotate-90 origin-left text-gray-500">CONTROL_AUTH_01</p>
+</div>
+<div class="absolute top-1/2 right-10 -translate-y-1/2 flex flex-col gap-10 opacity-20 hidden lg:flex">
+<p class="mono-text text-[8px] rotate-90 origin-right text-gray-500">SYSTEM_LOG_BOOT</p>
+<div class="w-px h-32 bg-gray-500"></div>
+</div>
+</div>
+</body></html>

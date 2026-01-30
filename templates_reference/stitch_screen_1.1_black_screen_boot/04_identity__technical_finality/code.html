@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>04 Identity: Technical Finality</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#121217",
+                        "accent-blue": "#00E5FF",
+                        "background-light": "#f7f7f7",
+                        "background-dark": "#0a0a0b",
+                        "border-technical": "#2f2f31",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom sharpen for the specific aesthetic request */
+        input, button, div {
+            border-radius: 0 !important;
+        }
+        .scanline-overlay {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white selection:bg-accent-blue/30 overflow-x-hidden">
+<!-- Scanline Texture Effect -->
+<div class="fixed inset-0 scanline-overlay z-50 pointer-events-none opacity-20"></div>
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between border-b border-border-technical px-6 md:px-12 py-4 bg-background-dark/80 backdrop-blur-md sticky top-0 z-40">
+<div class="flex items-center gap-3">
+<div class="size-5 text-accent-blue">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-sm font-bold tracking-[0.2em] uppercase">Identity Systems</h2>
+</div>
+<div class="flex flex-1 justify-end gap-10">
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-[#a9a9ad] hover:text-white text-[11px] font-bold tracking-widest transition-colors uppercase" href="#">Registry</a>
+<a class="text-[#a9a9ad] hover:text-white text-[11px] font-bold tracking-widest transition-colors uppercase" href="#">Logs</a>
+<a class="text-[#a9a9ad] hover:text-white text-[11px] font-bold tracking-widest transition-colors uppercase" href="#">Protocols</a>
+</nav>
+<div class="flex gap-4">
+<button class="flex min-w-[120px] cursor-pointer items-center justify-center border border-border-technical px-4 h-9 bg-primary text-[10px] font-bold tracking-[0.15em] hover:bg-white hover:text-primary transition-all uppercase">
+                        System Secure
+                    </button>
+<button class="flex items-center justify-center border border-border-technical w-9 h-9 bg-border-technical/30 text-white hover:border-accent-blue transition-colors">
+<span class="material-symbols-outlined text-sm">shield_with_heart</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center justify-center px-4 py-12">
+<div class="w-full max-w-[640px] flex flex-col">
+<!-- Metadata/Variant Info -->
+<div class="mb-2">
+<p class="text-accent-blue/80 text-[10px] font-bold tracking-[0.3em] text-center uppercase">Protocol Variant 4 of 10</p>
+</div>
+<!-- Headline -->
+<h1 class="text-white tracking-[0.05em] text-3xl md:text-4xl font-bold leading-tight text-center pt-2 pb-8 uppercase border-b border-border-technical/50 mb-12">
+                    04 Identity: <span class="text-accent-blue">Technical Finality</span>
+</h1>
+<!-- Centered Identity Section -->
+<div class="space-y-12">
+<!-- Section Header -->
+<div class="flex flex-col items-center gap-2">
+<h4 class="text-[#a9a9ad] text-[11px] font-bold tracking-[0.4em] uppercase">Identity Binding Sequence</h4>
+<div class="h-px w-12 bg-accent-blue/50"></div>
+</div>
+<!-- Input Fields: Active State -->
+<div class="space-y-6">
+<div class="flex flex-col gap-3">
+<label class="flex flex-col w-full">
+<p class="text-[#a9a9ad] text-[10px] font-bold tracking-widest uppercase pb-2">Subject Identifier</p>
+<div class="flex w-full items-stretch">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden text-white focus:outline-0 focus:ring-0 border border-border-technical bg-transparent focus:border-accent-blue h-14 placeholder:text-[#464649] px-5 text-base font-normal leading-normal transition-all" placeholder="SEC-ALPHA-9920-X" type="text"/>
+<div class="text-[#a9a9ad] flex border border-border-technical border-l-0 bg-transparent items-center justify-center px-4">
+<span class="material-symbols-outlined text-xl">fingerprint</span>
+</div>
+</div>
+</label>
+</div>
+<!-- Read-only / Finalized State Simulation -->
+<div class="flex flex-col gap-3 group">
+<label class="flex flex-col w-full">
+<div class="flex justify-between items-end pb-2">
+<p class="text-accent-blue text-[10px] font-bold tracking-widest uppercase">Identity Binding Finalized</p>
+<span class="text-[9px] text-[#464649] font-mono">HASH: 0x82...F21</span>
+</div>
+<div class="flex w-full items-stretch">
+<input class="form-input cursor-default flex w-full min-w-0 flex-1 resize-none overflow-hidden text-[#a9a9ad] border border-border-technical bg-primary h-14 px-5 text-base font-normal leading-normal select-none" readonly="" value="AETH-SYST-ARCHIVE-CORE-04"/>
+<div class="text-accent-blue flex border border-border-technical border-l-0 bg-primary items-center justify-center px-4">
+<span class="material-symbols-outlined text-xl">lock</span>
+</div>
+</div>
+</label>
+</div>
+</div>
+<!-- Technical Action -->
+<div class="flex flex-col items-center gap-6 pt-4">
+<button class="w-full h-14 bg-white text-primary font-bold tracking-[0.2em] uppercase hover:bg-accent-blue hover:text-primary transition-all flex items-center justify-center gap-3">
+<span>Commit Identity Anchor</span>
+<span class="material-symbols-outlined">bolt</span>
+</button>
+<p class="text-[#464649] text-[9px] font-medium tracking-widest uppercase text-center max-w-xs leading-relaxed">
+                            Warning: Finality is immediate. This operation cannot be reversed once the cryptographic anchor is broadcast.
+                        </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Technical Footer -->
+<footer class="border-t border-border-technical p-6 bg-background-dark">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-6">
+<div class="flex flex-col">
+<span class="text-[9px] text-[#464649] uppercase font-bold tracking-tighter">System Uptime</span>
+<span class="text-[10px] text-white font-mono">99.99998%</span>
+</div>
+<div class="w-px h-6 bg-border-technical"></div>
+<div class="flex flex-col">
+<span class="text-[9px] text-[#464649] uppercase font-bold tracking-tighter">Latencies</span>
+<span class="text-[10px] text-accent-blue font-mono">1.2ms</span>
+</div>
+</div>
+<div class="text-[9px] text-[#464649] font-bold tracking-[0.2em] uppercase">
+                    © 2024 Identity Systems Alpha-4 Finality Unit
+                </div>
+</div>
+</footer>
+</div>
+</body></html>

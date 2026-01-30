@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>06 Syllabus: Technical Console</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2a60d",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#0d0d0d",
+                        "console-bg": "#141414",
+                        "border-dim": "#333333",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+        .console-text {
+            font-family: 'Space Grotesk', monospace;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d0d0d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333333;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f2a60d;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-200">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-border-dim bg-[#111111] flex flex-col justify-between shrink-0">
+<div class="flex flex-col">
+<div class="p-6 border-b border-border-dim">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-background-dark font-bold">terminal</span>
+</div>
+<div>
+<h1 class="text-xs font-black tracking-widest uppercase">Tech_Console</h1>
+<p class="text-[10px] text-zinc-500 font-medium tracking-tighter">V6.10 ELITE // SYLLABUS</p>
+</div>
+</div>
+</div>
+<nav class="p-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-sm text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-sm bg-primary/10 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-sm font-medium">Modules</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-sm text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all" href="#">
+<span class="material-symbols-outlined">track_changes</span>
+<span class="text-sm font-medium">Objectives</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-sm text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all" href="#">
+<span class="material-symbols-outlined">data_object</span>
+<span class="text-sm font-medium">Logs</span>
+</a>
+<div class="my-4 border-t border-border-dim"></div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-sm text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<div class="p-4">
+<button class="w-full bg-primary hover:bg-amber-500 text-background-dark font-bold text-xs py-3 rounded-sm tracking-widest uppercase transition-colors">
+                    Sync System
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="h-14 border-b border-border-dim flex items-center justify-between px-6 bg-background-dark">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] text-zinc-500">
+<span class="hover:text-primary cursor-pointer transition-colors uppercase">Syllabus</span>
+<span>/</span>
+<span class="hover:text-primary cursor-pointer transition-colors uppercase">Module_06</span>
+<span>/</span>
+<span class="text-white uppercase">Tech_Console</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 bg-zinc-900 border border-border-dim px-3 py-1 rounded-sm">
+<span class="material-symbols-outlined text-primary text-xs">schedule</span>
+<span class="text-[11px] font-bold text-white uppercase tracking-wider">21:45:02 UTC</span>
+</div>
+<button class="p-1.5 border border-border-dim hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-zinc-400 hover:text-primary">notifications</span>
+</button>
+</div>
+</header>
+<!-- Workspace -->
+<section class="flex-1 p-6 flex flex-col gap-6 overflow-y-auto bg-background-dark">
+<!-- Page Heading -->
+<div class="flex justify-between items-end border-b border-border-dim pb-6">
+<div class="flex flex-col gap-1">
+<h2 class="text-3xl font-black tracking-tight text-white uppercase">Module_06: Technical_Console</h2>
+<p class="text-zinc-500 text-sm">Accountability system active. Variant 06 of 10. Direct execution enabled.</p>
+</div>
+<div class="flex gap-2">
+<div class="flex items-center gap-2 px-3 py-1 bg-primary text-background-dark font-black text-[10px] tracking-widest uppercase">
+                            Risk: Medium
+                        </div>
+<button class="bg-zinc-800 hover:bg-zinc-700 text-white border border-border-dim px-4 py-1 text-xs font-bold tracking-widest uppercase transition-all">
+                            Execute_System
+                        </button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-6 h-full min-h-0">
+<!-- Console/Table Area -->
+<div class="col-span-8 flex flex-col gap-6 min-h-0">
+<div class="border border-border-dim bg-console-bg flex flex-col h-full min-h-[400px]">
+<div class="bg-zinc-900 border-b border-border-dim px-4 py-2 flex items-center justify-between">
+<span class="text-[10px] font-bold text-zinc-400 uppercase tracking-[0.2em]">Active_Objectives_Matrix</span>
+<div class="flex gap-1">
+<div class="w-2 h-2 rounded-full bg-zinc-700"></div>
+<div class="w-2 h-2 rounded-full bg-zinc-700"></div>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</div>
+</div>
+<div class="overflow-auto flex-1">
+<table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-zinc-900/90 backdrop-blur-sm z-10">
+<tr class="text-[10px] text-zinc-500 font-black tracking-widest uppercase border-b border-border-dim">
+<th class="px-4 py-3 font-black">Objective_ID</th>
+<th class="px-4 py-3 font-black">Status</th>
+<th class="px-4 py-3 font-black">Priority</th>
+<th class="px-4 py-3 font-black">Progress</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-dim console-text">
+<tr class="hover:bg-zinc-800/50 transition-colors">
+<td class="px-4 py-4 text-sm text-zinc-300">OBJ_601_CORE</td>
+<td class="px-4 py-4">
+<span class="text-[10px] font-bold px-2 py-0.5 border border-emerald-500/50 text-emerald-500 bg-emerald-500/5 uppercase">Active</span>
+</td>
+<td class="px-4 py-4">
+<span class="text-[10px] font-bold px-2 py-0.5 border border-primary/50 text-primary bg-primary/5 uppercase">High</span>
+</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-3">
+<div class="flex-1 bg-zinc-800 h-1 max-w-[100px]">
+<div class="bg-white h-full" style="width: 85%"></div>
+</div>
+<span class="text-[10px] font-mono text-zinc-400">85%</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-zinc-800/50 transition-colors">
+<td class="px-4 py-4 text-sm text-zinc-300">OBJ_602_REDUX</td>
+<td class="px-4 py-4">
+<span class="text-[10px] font-bold px-2 py-0.5 border border-zinc-600 text-zinc-500 uppercase">Pending</span>
+</td>
+<td class="px-4 py-4">
+<span class="text-[10px] font-bold px-2 py-0.5 border border-zinc-600 text-zinc-500 uppercase">Medium</span>
+</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-3">
+<div class="flex-1 bg-zinc-800 h-1 max-w-[100px]">
+<div class="bg-zinc-600 h-full" style="width: 40%"></div>
+</div>
+<span class="text-[10px] font-mono text-zinc-400">40%</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-zinc-800/50 transition-colors">
+<td class="px-4 py-4 text-sm text-zinc-300">OBJ_603_INIT</td>
+<td class="px-4 py-4">
+<span class="text-[10px] font-bold px-2 py-0.5 border border-blue-500/50 text-blue-500 bg-blue-500/5 uppercase">Complete</span>
+</td>
+<td class="px-4 py-4">
+<span class="text-[10px] font-bold px-2 py-0.5 border border-zinc-600 text-zinc-500 uppercase">Low</span>
+</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-3">
+<div class="flex-1 bg-zinc-800 h-1 max-w-[100px]">
+<div class="bg-blue-500 h-full" style="width: 100%"></div>
+</div>
+<span class="text-[10px] font-mono text-zinc-400">100%</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-zinc-800/50 transition-colors">
+<td class="px-4 py-4 text-sm text-zinc-300">OBJ_604_UPLINK</td>
+<td class="px-4 py-4">
+<span class="text-[10px] font-bold px-2 py-0.5 border border-red-500/50 text-red-500 bg-red-500/5 uppercase">Critical</span>
+</td>
+<td class="px-4 py-4">
+<span class="text-[10px] font-bold px-2 py-0.5 border border-red-500/50 text-red-500 bg-red-500/5 uppercase">Urgent</span>
+</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-3">
+<div class="flex-1 bg-zinc-800 h-1 max-w-[100px]">
+<div class="bg-red-500 h-full" style="width: 15%"></div>
+</div>
+<span class="text-[10px] font-mono text-zinc-400">15%</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Panel: System Stats & Logs -->
+<div class="col-span-4 flex flex-col gap-6">
+<div class="border border-border-dim bg-console-bg p-4 flex flex-col gap-4">
+<h3 class="text-[10px] font-bold text-zinc-400 uppercase tracking-[0.2em]">System_Readout</h3>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-xs">
+<span class="text-zinc-500">Processing Load:</span>
+<span class="text-white font-mono">42.8%</span>
+</div>
+<div class="bg-zinc-800 h-1 w-full">
+<div class="bg-primary h-full" style="width: 42%"></div>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-zinc-500">Sync Latency:</span>
+<span class="text-white font-mono">14ms</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-zinc-500">Neural Buffer:</span>
+<span class="text-white font-mono">OK</span>
+</div>
+</div>
+</div>
+<div class="border border-border-dim bg-background-dark flex-1 flex flex-col min-h-0">
+<div class="bg-zinc-900 border-b border-border-dim px-4 py-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-xs text-zinc-500">terminal</span>
+<span class="text-[10px] font-bold text-zinc-400 uppercase tracking-[0.2em]">Live_Input_Log</span>
+</div>
+<div class="p-4 flex-1 overflow-auto console-text space-y-2">
+<p class="text-[11px] text-emerald-500/80"><span class="text-zinc-600">[21:44:50]</span> // AUTH_VALIDATED // SESSION_START</p>
+<p class="text-[11px] text-zinc-400"><span class="text-zinc-600">[21:44:52]</span> SYNCING_MODULES_06...</p>
+<p class="text-[11px] text-zinc-400"><span class="text-zinc-600">[21:44:55]</span> CACHE_CLEARED_SUCCESSFULLY</p>
+<p class="text-[11px] text-primary"><span class="text-zinc-600">[21:45:00]</span> ATTENTION: RISK_THRESHOLD_EXCEEDED</p>
+<p class="text-[11px] text-zinc-400"><span class="text-zinc-600">[21:45:01]</span> ADJUSTING_ACCOUNTABILITY_SCALARS</p>
+<p class="text-[11px] text-zinc-500 animate-pulse">_</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Status Bar -->
+<footer class="h-16 border-t border-border-dim bg-[#111111] px-6 flex items-center justify-between">
+<div class="flex items-center gap-8 w-1/3">
+<div class="flex flex-col gap-1 w-full max-w-[200px]">
+<div class="flex justify-between items-center">
+<span class="text-[9px] font-black text-zinc-500 uppercase tracking-widest">Specificity Meter</span>
+<span class="text-[9px] font-black text-white uppercase tracking-widest">Lv. 04</span>
+</div>
+<div class="h-1.5 w-full bg-zinc-800 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-zinc-700 via-zinc-600 to-primary" style="width: 72%"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-primary"></div>
+<span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Neural Link: Stable</span>
+</div>
+<div class="h-4 w-[1px] bg-border-dim"></div>
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+<span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Encryption: Active</span>
+</div>
+</div>
+<div class="w-1/3 flex justify-end">
+<div class="flex gap-4">
+<div class="flex flex-col items-end">
+<span class="text-[9px] font-black text-zinc-500 uppercase tracking-widest">Current_Selection</span>
+<span class="text-[10px] font-bold text-white uppercase tracking-wider">SYL_MOD_06_UPLINK</span>
+</div>
+<div class="w-10 h-10 border border-border-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-zinc-500">qr_code_2</span>
+</div>
+</div>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

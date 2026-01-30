@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reality Check: Technical</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0B0B0B",
+                        "charcoal": "#111318",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for technical look */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0B0B;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #282e39;
+        }
+        /* Button press simulation visual */
+        .accept-button:active .fill-bar {
+            width: 100%;
+            transition: width 0.7s linear;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-white font-display overflow-x-hidden min-h-screen">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between border-b border-solid border-[#282e39] px-6 md:px-10 py-4 bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<div class="flex flex-col">
+<h2 class="text-white text-sm font-black leading-tight tracking-widest uppercase italic">Elite Accountability</h2>
+<span class="text-[#5b6478] text-[10px] font-mono tracking-tighter uppercase">02 Reality Check: Technical Variant</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex flex-col items-end gap-0">
+<span class="text-[10px] text-[#5b6478] uppercase font-mono">Status</span>
+<span class="text-xs text-primary font-bold">READY FOR SIGNATURE</span>
+</div>
+<div class="h-10 w-10 rounded-sm border border-[#282e39] bg-center bg-no-repeat bg-cover p-0.5" data-alt="User avatar placeholder profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuClJQMjhsxLzt-Ai0WD-PJbzJKQPMbJdPQ929kwBDcaxBnu1ja8WdiKZQAgv-1K_SBViRGS6Nnj6uMx153r-GaWhOdKBJySHPnnOUepdiO22v4K_b6K9i8YJBlx5jiveVjwUqUlWcpKLVmY3SYAaPD0nrM_STwL5ZfucsIie8bCB7MzjYjE-vDZ_ZhxTukOvhV2nj5oTZYuQA6J2cwLgE9I7vTmqMMcKt0VPC_OWnoI89fcG2VTuE-f9fOFFRm_pBExQCL_MW9THmA");'></div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col items-center justify-center py-12 px-6">
+<div class="w-full max-w-[640px] flex flex-col gap-8">
+<!-- Variant Indicator -->
+<div class="flex justify-center">
+<span class="px-3 py-1 border border-primary/30 bg-primary/5 text-primary text-[10px] font-mono uppercase tracking-[0.2em]">
+                        Variant 02 / 10
+                    </span>
+</div>
+<!-- Headline -->
+<div class="text-center">
+<h1 class="text-white tracking-tighter text-5xl md:text-6xl font-black leading-none uppercase mb-4">
+                        Commitment<br/><span class="text-primary italic">Contract</span>
+</h1>
+<p class="text-[#9da6b9] text-lg font-normal leading-relaxed max-w-md mx-auto">
+                        Miss sessions. Lose access. <span class="text-white font-bold">Pay to return.</span>
+</p>
+</div>
+<!-- Accountability Protocol Panel -->
+<div class="bg-charcoal border border-[#282e39] rounded-sm p-6 md:p-8 shadow-2xl relative overflow-hidden">
+<!-- Technical Accent Decor -->
+<div class="absolute top-0 right-0 p-2 opacity-20">
+<span class="material-symbols-outlined text-4xl">verified_user</span>
+</div>
+<div class="flex flex-col gap-6">
+<div class="border-l-2 border-primary pl-4">
+<h3 class="text-white text-xs font-bold uppercase tracking-widest mb-1">Technical Accountability Protocol</h3>
+<p class="text-[#9da6b9] text-sm leading-relaxed">
+                                Failure results in immediate account suspension and a non-negotiable re-entry fee. This is a binding digital agreement recorded on the centralized ledger.
+                            </p>
+</div>
+<!-- Checklists -->
+<div class="flex flex-col gap-1 py-4 border-t border-b border-[#282e39]">
+<label class="flex items-start gap-4 py-3 group cursor-pointer">
+<input class="mt-1 h-4 w-4 rounded-none border-[#3b4354] border-2 bg-transparent text-primary focus:ring-0 focus:ring-offset-0 focus:border-primary checked:bg-primary transition-colors" type="checkbox"/>
+<span class="text-sm text-[#e2e8f0] group-hover:text-white transition-colors">I understand that missing scheduled sessions triggers immediate system lockout.</span>
+</label>
+<label class="flex items-start gap-4 py-3 group cursor-pointer">
+<input class="mt-1 h-4 w-4 rounded-none border-[#3b4354] border-2 bg-transparent text-primary focus:ring-0 focus:ring-offset-0 focus:border-primary checked:bg-primary transition-colors" type="checkbox"/>
+<span class="text-sm text-[#e2e8f0] group-hover:text-white transition-colors">I agree to the progressive re-entry fee structure for all missed commitments.</span>
+</label>
+<label class="flex items-start gap-4 py-3 group cursor-pointer">
+<input class="mt-1 h-4 w-4 rounded-none border-[#3b4354] border-2 bg-transparent text-primary focus:ring-0 focus:ring-offset-0 focus:border-primary checked:bg-primary transition-colors" type="checkbox"/>
+<span class="text-sm text-[#e2e8f0] group-hover:text-white transition-colors">I acknowledge the strict no-refund policy for performance-based penalties.</span>
+</label>
+</div>
+<!-- Action Panel Toggle -->
+<div class="flex items-center justify-between gap-4 p-4 bg-background-dark/50 border border-[#282e39] rounded-sm">
+<div class="flex flex-col gap-1">
+<p class="text-white text-[10px] font-bold uppercase tracking-widest">Enforcement Mode</p>
+<p class="text-[#5b6478] text-xs">Full digital restriction active upon breach</p>
+</div>
+<label class="relative flex h-6 w-11 cursor-pointer items-center rounded-full bg-[#282e39] p-1 has-[:checked]:bg-primary transition-colors">
+<div class="h-4 w-4 rounded-full bg-white transition-all transform translate-x-0 peer-checked:translate-x-5"></div>
+<input checked="" class="invisible absolute peer" type="checkbox"/>
+</label>
+</div>
+</div>
+</div>
+<!-- CTA Button Section -->
+<div class="flex flex-col items-center gap-4">
+<button class="accept-button relative w-full h-16 bg-[#1a1d24] border border-[#282e39] text-white font-black tracking-widest uppercase overflow-hidden transition-all hover:border-primary group">
+<!-- Progress Bar Overlay (Simulated) -->
+<div class="fill-bar absolute top-0 left-0 h-full w-0 bg-primary/20 pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 h-1 w-0 fill-bar bg-primary transition-all"></div>
+<span class="relative z-10 flex items-center justify-center gap-3">
+                            I Accept
+                            <span class="material-symbols-outlined text-sm font-bold opacity-50 group-hover:opacity-100">keyboard_double_arrow_right</span>
+</span>
+</button>
+<p class="text-[#5b6478] text-[10px] uppercase font-mono tracking-widest">Hold for 700ms to confirm signature</p>
+</div>
+</div>
+</main>
+<!-- Footer Visual Info -->
+<footer class="px-10 py-6 border-t border-[#282e39] flex flex-col md:flex-row justify-between items-center gap-4 opacity-50">
+<div class="flex gap-8 text-[10px] font-mono text-[#9da6b9]">
+<span>LATENCY: 12MS</span>
+<span>ENC: AES-256-GCM</span>
+<span>SEC-LEVEL: ELITE</span>
+</div>
+<div class="text-[10px] font-mono text-[#9da6b9]">
+                SYSTEM-REF: EA-V2-2024
+            </div>
+</footer>
+</div>
+</body></html>
