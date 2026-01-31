@@ -1,63 +1,88 @@
+/* Dashboard.module.css */
 .layout {
     display: flex;
     height: 100vh;
-    background-color: var(--background-dark);
-    color: var(--text-primary);
+    background-color: #0B1020;
+    /* background-dark */
+    color: #f1f5f9;
+    /* slate-100 */
+    font-family: 'Inter', sans-serif;
     overflow: hidden;
 }
 
 .sidebar {
-    width: 250px;
-    background-color: var(--surface-dark);
-    border-right: 1px solid var(--border-dim);
+    width: 260px;
+    background-color: #11172A;
+    /* surface-dark */
+    border-right: 1px solid #1E293B;
+    /* border-dark */
     display: flex;
     flex-direction: column;
 }
 
 .sidebarHeader {
     padding: 1.5rem;
-    border-bottom: 1px solid var(--border-dim);
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    border-bottom: 1px solid #1E293B;
 }
 
-.sidebarLogo {
+.logoBox {
     width: 32px;
     height: 32px;
-    background-color: var(--primary);
+    background-color: #7b5cfa;
+    /* primary */
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(123, 92, 250, 0.2);
 }
 
 .nav {
     flex: 1;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
 }
 
 .navItem {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.75rem;
-    margin-bottom: 0.25rem;
+    padding: 0.75rem 1rem;
     border-radius: 0.5rem;
-    color: var(--text-secondary);
+    color: #94a3b8;
+    /* slate-400 */
     font-size: 0.875rem;
     font-weight: 500;
+    cursor: pointer;
     transition: all 0.2s;
 }
 
-.navItem.active {
-    background: rgba(123, 92, 250, 0.15);
-    color: var(--primary);
+.navItem:hover {
+    background-color: #1E293B;
+    color: white;
+}
+
+.active {
+    background-color: rgba(123, 92, 250, 0.15);
+    color: #7b5cfa;
+    /* primary */
 }
 
 .main {
     flex: 1;
     overflow-y: auto;
+    background-color: #0B1020;
+    padding: 0;
+}
+
+.contentWrapper {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 2rem;
 }
 
@@ -66,70 +91,178 @@
     justify-content: space-between;
     align-items: flex-end;
     margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .title {
-    font-size: 2rem;
+    font-size: 2.25rem;
     font-weight: 900;
     letter-spacing: -0.025em;
+    color: white;
     margin-bottom: 0.25rem;
 }
 
 .subtitle {
-    color: var(--text-secondary);
+    color: #94a3b8;
+    /* slate-400 */
     font-size: 0.875rem;
     font-weight: 500;
 }
 
+.actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btnSecondary {
+    padding: 0.5rem 1rem;
+    background-color: #11172A;
+    border: 1px solid #1E293B;
+    color: white;
+    font-weight: 700;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.btnPrimary {
+    padding: 0.5rem 1.5rem;
+    background-color: #7b5cfa;
+    color: white;
+    font-weight: 700;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(123, 92, 250, 0.3);
+    transition: filter 0.2s;
+}
+
+.btnPrimary:hover {
+    filter: brightness(1.1);
+}
+
 .statsGrid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-bottom: 2rem;
 }
 
 .card {
-    background-color: var(--surface-dark);
-    border: 1px solid var(--border-dim);
+    background-color: #11172A;
+    border: 1px solid #1E293B;
     border-radius: 0.75rem;
     padding: 1.5rem;
 }
 
-.queueTable {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.queueTable th {
-    text-align: left;
-    padding: 1rem;
-    font-size: 0.625rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-secondary);
-    border-bottom: 1px solid var(--border-dim);
-}
-
-.queueTable td {
-    padding: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    font-size: 0.875rem;
+.colSpan2 {
+    grid-column: span 2;
 }
 
 .violationCard {
     border-left: 4px solid #f43f5e;
-    /* Rose 500 */
 }
 
-.violationCount {
+.progressLabel {
+    color: #94a3b8;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+
+.bigStat {
     font-size: 2.5rem;
     font-weight: 900;
     color: white;
+    line-height: 1;
 }
 
-.violationLabel {
-    color: #f43f5e;
-    font-size: 0.75rem;
-    font-weight: bold;
+.progressBar {
+    height: 8px;
+    background-color: #1E293B;
+    border-radius: 99px;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.progressFill {
+    height: 100%;
+    background-color: #5B7CFA;
+    /* electric-blue */
+    border-radius: 99px;
+    box-shadow: 0 0 10px rgba(91, 124, 250, 0.4);
+}
+
+.queueCard {
+    background-color: #11172A;
+    border: 1px solid #1E293B;
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.queueHeader {
+    padding: 1.5rem;
+    border-bottom: 1px solid #1E293B;
+}
+
+.tableContainer {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.table th {
+    padding: 1rem 1.5rem;
+    font-size: 0.625rem;
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #94a3b8;
+    background-color: rgba(30, 41, 59, 0.5);
+}
+
+.table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #1E293B;
+    font-size: 0.875rem;
+    color: white;
+}
+
+.statusPill {
+    display: inline-flex;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.statusCompleted {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.statusActive {
+    background-color: rgba(123, 92, 250, 0.1);
+    color: #7b5cfa;
+    border: 1px solid rgba(123, 92, 250, 0.2);
+}
+
+.statusPending {
+    background-color: #1E293B;
+    color: #94a3b8;
 }

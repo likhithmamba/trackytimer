@@ -4,6 +4,7 @@ import { DbSchema } from '@/lib/types';
 import BootScreen from '@/components/BootScreen';
 import RealityCheckScreen from '@/components/RealityCheckScreen';
 import IdentityScreen from '@/components/IdentityScreen';
+import Dashboard from '@/components/Dashboard'; // Phase 4
 import TracksScreen from '@/components/TracksScreen';
 import SyllabusScreen from '@/components/SyllabusScreen';
 import PaywallScreen from '@/components/PaywallScreen'; // Phase 3
@@ -11,10 +12,11 @@ import HardLockScreen from '@/components/HardLockScreen'; // Phase 3
 import NoirSessionScreen from '@/components/NoirSessionScreen'; // Phase 3
 import FailureScreen from '@/components/FailureScreen';
 import ContractScreen from '@/components/ContractScreen';
+import GlobalVisibilityGuard from '@/components/GlobalVisibilityGuard'; // Phase 4
 
 import { useRouter } from 'next/navigation';
 
-type FlowState = 'BOOT' | 'REALITY_CHECK' | 'IDENTITY' | 'TRACKS' | 'SYLLABUS' | 'PAYWALL' | 'HARD_LOCK' | 'SESSION' | 'LOCKED';
+type FlowState = 'BOOT' | 'REALITY_CHECK' | 'IDENTITY' | 'DASHBOARD' | 'TRACKS' | 'SYLLABUS' | 'PAYWALL' | 'HARD_LOCK' | 'SESSION' | 'LOCKED';
 
 interface BootState {
     realityConfirmed: boolean;
@@ -86,6 +88,10 @@ export default function ClientShell({ db }: { db: DbSchema }) {
             console.log("DEMO MODE ACTIVE");
         }
         setBootState(prev => ({ ...prev, identitySet: true }));
+        setFlowState('DASHBOARD'); // Transition to Dashboard instead of Tracks
+    };
+
+    const handleDashboardStart = () => {
         setFlowState('TRACKS');
     };
 
@@ -128,12 +134,36 @@ export default function ClientShell({ db }: { db: DbSchema }) {
     if (flowState === 'BOOT') return <BootScreen progress={bootProgress} />;
     if (flowState === 'REALITY_CHECK') return <RealityCheckScreen onConfirm={handleReality} />;
     if (flowState === 'IDENTITY') return <IdentityScreen onCommit={handleIdentity} />;
+
+    // Fallback/Mock session for Dashboard if db.currentSession is null (pre-session state)
+    // In a real app we'd fetch "User State" or similar. For now we mock it or check if it exists.
+    if (flowState === 'DASHBOARD') {
+        const mockSession = db.currentSession || {
+            date: new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }),
+            mainTitle: 'Daily Execution',
+            progressPercent: 0,
+            violations: [],
+            warningTriggered: false,
+            queue: [],
+            status: 'HOLD'
+        };
+        // We cast to ActiveSession for the UI prop, assuming the mock matches the shape roughly enough for display
+        return <Dashboard session={mockSession as any} onStart={handleDashboardStart} />;
+    }
+
     if (flowState === 'TRACKS') return <TracksScreen onSelect={handleTrack} />;
     if (flowState === 'SYLLABUS') return <SyllabusScreen onComplete={handleSyllabus} />;
     if (flowState === 'PAYWALL') return <PaywallScreen onPay={handlePay} />;
     if (flowState === 'HARD_LOCK') return <HardLockScreen onLock={handleHardLock} />;
 
-    if (flowState === 'SESSION' && db.currentSession) return <NoirSessionScreen session={db.currentSession} />;
+    if (flowState === 'SESSION' && db.currentSession) {
+        return (
+            <>
+                <GlobalVisibilityGuard active={true} />
+                <NoirSessionScreen session={db.currentSession} />
+            </>
+        );
+    }
 
     if (flowState === 'LOCKED') return <FailureScreen violations={db.currentSession?.violations || []} />;
 
