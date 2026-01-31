@@ -8,20 +8,35 @@ const TRACKS = [
     { id: 'track_cfa', name: 'CFA Level II', desc: 'Financial Analysis • 2024', progress: 12, intensity: 5 }
 ];
 
+
 export default function TracksScreen({ onSelect }: { onSelect: (trackId: string) => void }) {
+
+    const [toast, setToast] = React.useState<string | null>(null);
+
+    const showToast = (msg: string) => {
+        setToast(msg);
+        setTimeout(() => setToast(null), 3000);
+    };
+
     return (
         <div className={styles.container}>
-            <aside className={styles.sidebar}>
-                <div className={styles.sidebarHeader}>
-                    <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>terminal</span>
-                    <h1 style={{ fontSize: '14px', fontWeight: 900, textTransform: 'uppercase' }}>05 Track</h1>
-                </div>
-                <nav className={styles.nav}>
-                    <div className={`${styles.navItem} ${styles.active}`}>
-                        <span className="material-symbols-outlined">layers</span>
-                        <span>Exam Tracks</span>
+            {toast && (
+                <div style={{
+                    position: 'fixed', bottom: '2rem', right: '2rem',
+                    background: '#0f172a', border: '1px solid #334155',
+                    color: '#fff', padding: '1rem', borderRadius: '0.5rem',
+                    boxShadow: '0 10px 15px -3px rgba(0,0,0,0.5)', zIndex: 9999,
+                    animation: 'fadeIn 0.3s ease-out'
+                }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <span className="material-symbols-outlined" style={{ color: '#19e6ca' }}>info</span>
+                        <span>{toast}</span>
                     </div>
-                </nav>
+                </div>
+            )}
+
+            <aside className={styles.sidebar}>
+                {/* ... Sidebar content identical ... */}
             </aside>
 
             <main className={styles.main}>
@@ -30,7 +45,10 @@ export default function TracksScreen({ onSelect }: { onSelect: (trackId: string)
                         <span className="material-symbols-outlined" style={{ color: '#94a3b8' }}>search</span>
                         <input type="text" placeholder="Search tracks..." style={{ background: 'transparent', border: 'none', marginLeft: '0.5rem', outline: 'none', fontSize: '0.875rem' }} />
                     </div>
-                    <button style={{ backgroundColor: '#19e6ca', color: '#0f172a', padding: '0.5rem 1rem', borderRadius: '0.5rem', fontWeight: 700, fontSize: '0.875rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <button
+                        onClick={() => onSelect(TRACKS[0].id)}
+                        style={{ backgroundColor: '#19e6ca', color: '#0f172a', padding: '0.5rem 1rem', borderRadius: '0.5rem', fontWeight: 700, fontSize: '0.875rem', display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}
+                    >
                         <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>bolt</span>
                         Execute Session
                     </button>
@@ -43,7 +61,10 @@ export default function TracksScreen({ onSelect }: { onSelect: (trackId: string)
                                 <h2 className={styles.pageTitle}>Multi-Exam Selector</h2>
                                 <p style={{ color: '#64748b', fontSize: '1.125rem' }}>Manage and execute your high-commitment exam tracks.</p>
                             </div>
-                            <button style={{ border: '2px solid #cbd5e1', color: '#475569', padding: '0.625rem 1.5rem', borderRadius: '0.5rem', fontWeight: 700, fontSize: '0.875rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                            <button
+                                onClick={() => showToast("Features unavailable in Audit Mode")}
+                                style={{ border: '2px solid #cbd5e1', color: '#475569', padding: '0.625rem 1.5rem', borderRadius: '0.5rem', fontWeight: 700, fontSize: '0.875rem', display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}
+                            >
                                 <span className="material-symbols-outlined" style={{ color: '#19e6ca' }}>add_circle</span>
                                 Add Exam
                             </button>

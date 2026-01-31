@@ -1,0 +1,1741 @@
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/BootScreen.module.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
+.BootScreen_container__aqX09 {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--background-dark);
+    color: var(--text-white);
+    overflow: hidden;
+    position: relative;
+}
+
+.BootScreen_header__mqDlZ {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-dim);
+    padding: 1rem 2rem;
+}
+
+.BootScreen_logoArea__g64UF {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.BootScreen_main__ShViQ {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.BootScreen_logoSvg__5kl2Q {
+    margin-bottom: 6rem;
+    position: relative;
+}
+
+.BootScreen_progressContainer__x58pL {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.BootScreen_progressLabel__J86Pc {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.BootScreen_progressBar__Bivw_ {
+    width: 100%;
+    height: 2px;
+    background-color: var(--border-dim);
+}
+
+.BootScreen_progressFill__zk1hE {
+    height: 100%;
+    background-color: var(--primary);
+    transition: width 0.2s linear;
+}
+
+.BootScreen_statusText__HPaOe {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/RealityCheckScreen.module.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************/
+.RealityCheckScreen_container__U1afB {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--background-dark);
+    font-family: var(--font-display);
+    overflow-x: hidden;
+}
+
+.RealityCheckScreen_header__S7ldU {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border-dim);
+    background-color: rgba(11, 11, 11, 0.8);
+    -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.RealityCheckScreen_headerTitle__32Hcl {
+    font-size: 0.875rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-style: italic;
+    line-height: 1.2;
+}
+
+.RealityCheckScreen_headerSubtitle__TsIWE {
+    color: #5b6478;
+    font-size: 0.625rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+}
+
+.RealityCheckScreen_main__j_Nvr {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+}
+
+.RealityCheckScreen_contentWrapper__lx_Rw {
+    width: 100%;
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.RealityCheckScreen_variantTag__cZLNO {
+    align-self: center;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid rgba(123, 92, 250, 0.3);
+    background-color: rgba(123, 92, 250, 0.05);
+    color: var(--primary);
+    font-size: 0.625rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.RealityCheckScreen_headline__biBmi {
+    text-align: center;
+    color: white;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+    margin-bottom: 1rem;
+}
+
+.RealityCheckScreen_headline__biBmi span {
+    color: var(--primary);
+    font-style: italic;
+}
+
+.RealityCheckScreen_subheadline__p5rPO {
+    text-align: center;
+    color: #9da6b9;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.RealityCheckScreen_protocolPanel__BwTk2 {
+    background-color: #111318;
+    border: 1px solid var(--border-dim);
+    border-radius: 2px;
+    padding: 2rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.RealityCheckScreen_protocolHeader__0H6P1 {
+    border-left: 2px solid var(--primary);
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.RealityCheckScreen_protocolTitle__8KsK4 {
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+
+.RealityCheckScreen_protocolText__rU3xr {
+    color: #9da6b9;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.RealityCheckScreen_checklist__hOP_D {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--border-dim);
+    border-bottom: 1px solid var(--border-dim);
+}
+
+.RealityCheckScreen_checkLabel__GHBCt {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    cursor: pointer;
+    group: true;
+}
+
+.RealityCheckScreen_checkbox__sbTjm {
+    margin-top: 0.25rem;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 0;
+    border: 2px solid #3b4354;
+    background-color: transparent;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.RealityCheckScreen_checkbox__sbTjm:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.RealityCheckScreen_checkText__shHKt {
+    font-size: 0.875rem;
+    color: #e2e8f0;
+    transition: color 0.2s;
+}
+
+.RealityCheckScreen_acceptButton__O8gur {
+    position: relative;
+    width: 100%;
+    height: 4rem;
+    background-color: #1a1d24;
+    border: 1px solid var(--border-dim);
+    color: white;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.RealityCheckScreen_acceptButton__O8gur:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.RealityCheckScreen_progressFill__Y9CbG {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background-color: var(--primary);
+    transition: width 0.1s linear;
+}
+
+.RealityCheckScreen_footer__SJPGZ {
+    padding: 1.5rem 2.5rem;
+    border-top: 1px solid var(--border-dim);
+    display: flex;
+    justify-content: space-between;
+    opacity: 0.5;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    color: #9da6b9;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/IdentityScreen.module.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************/
+.IdentityScreen_container__0afot {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #0a0a0b;
+    font-family: var(--font-display);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.IdentityScreen_scanlineOverlay__j6ziJ {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+    background-size: 100% 2px, 3px 100%;
+    opacity: 0.2;
+    z-index: 50;
+}
+
+.IdentityScreen_header__6GQqD {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #2f2f31;
+    background-color: rgba(10, 10, 11, 0.8);
+    -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+}
+
+.IdentityScreen_headerTitle__Xwlz7 {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.IdentityScreen_main__U_3fY {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+}
+
+.IdentityScreen_content__CrInq {
+    width: 100%;
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+}
+
+.IdentityScreen_variantInfo__1bpLo {
+    color: rgba(0, 229, 255, 0.8);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.IdentityScreen_heroTitle__5eVKQ {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(47, 47, 49, 0.5);
+    padding-bottom: 2rem;
+}
+
+.IdentityScreen_inputGroup__OYc3Q {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.IdentityScreen_label__2s3CG {
+    color: #a9a9ad;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.IdentityScreen_inputWrapper__3AO64 {
+    display: flex;
+    align-items: stretch;
+    height: 3.5rem;
+}
+
+.IdentityScreen_input__usMfV {
+    flex: 1 1;
+    background-color: transparent;
+    border: 1px solid #2f2f31;
+    color: white;
+    padding: 0 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+}
+
+.IdentityScreen_input__usMfV:focus {
+    outline: none;
+    border-color: #00E5FF;
+}
+
+.IdentityScreen_iconBox__d6RKf {
+    width: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #2f2f31;
+    border-left: none;
+    color: #a9a9ad;
+}
+
+.IdentityScreen_commitButton__c3PNx {
+    margin-top: 2rem;
+    width: 100%;
+    height: 3.5rem;
+    background-color: white;
+    color: #121217;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: all 0.2s;
+}
+
+.IdentityScreen_commitButton__c3PNx:hover {
+    background-color: #00E5FF;
+}
+
+.IdentityScreen_warning__ha4_k {
+    margin-top: 1rem;
+    color: #464649;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.6;
+}
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/Dashboard.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+/* Dashboard.module.css */
+.Dashboard_layout__pXa7A {
+    display: flex;
+    height: 100vh;
+    background-color: #0B1020;
+    /* background-dark */
+    color: #f1f5f9;
+    /* slate-100 */
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+}
+
+.Dashboard_sidebar__fuWLH {
+    width: 260px;
+    background-color: #11172A;
+    /* surface-dark */
+    border-right: 1px solid #1E293B;
+    /* border-dark */
+    display: flex;
+    flex-direction: column;
+}
+
+.Dashboard_sidebarHeader___nZ4t {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid #1E293B;
+}
+
+.Dashboard_logoBox__BoFl0 {
+    width: 32px;
+    height: 32px;
+    background-color: #7b5cfa;
+    /* primary */
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(123, 92, 250, 0.2);
+}
+
+.Dashboard_nav__zChxg {
+    flex: 1 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.Dashboard_navItem__Z3Si1 {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    color: #94a3b8;
+    /* slate-400 */
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.Dashboard_navItem__Z3Si1:hover {
+    background-color: #1E293B;
+    color: white;
+}
+
+.Dashboard_active__nAhah {
+    background-color: rgba(123, 92, 250, 0.15);
+    color: #7b5cfa;
+    /* primary */
+}
+
+.Dashboard_main__HAKNt {
+    flex: 1 1;
+    overflow-y: auto;
+    background-color: #0B1020;
+    padding: 0;
+}
+
+.Dashboard_contentWrapper__Ed_or {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.Dashboard_header__tbwsX {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.Dashboard_title__w4f90 {
+    font-size: 2.25rem;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+    color: white;
+    margin-bottom: 0.25rem;
+}
+
+.Dashboard_subtitle__xToDl {
+    color: #94a3b8;
+    /* slate-400 */
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.Dashboard_actions__cvcOb {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.Dashboard_btnSecondary__JVjT5 {
+    padding: 0.5rem 1rem;
+    background-color: #11172A;
+    border: 1px solid #1E293B;
+    color: white;
+    font-weight: 700;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.Dashboard_btnPrimary__oX_d5 {
+    padding: 0.5rem 1.5rem;
+    background-color: #7b5cfa;
+    color: white;
+    font-weight: 700;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(123, 92, 250, 0.3);
+    transition: filter 0.2s;
+}
+
+.Dashboard_btnPrimary__oX_d5:hover {
+    filter: brightness(1.1);
+}
+
+.Dashboard_statsGrid__IqXhA {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.5rem;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.Dashboard_card__WmAXo {
+    background-color: #11172A;
+    border: 1px solid #1E293B;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+
+.Dashboard_colSpan2__3_fHS {
+    grid-column: span 2;
+}
+
+.Dashboard_violationCard__yeavr {
+    border-left: 4px solid #f43f5e;
+}
+
+.Dashboard_progressLabel___zCM7 {
+    color: #94a3b8;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+
+.Dashboard_bigStat__mON1Y {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+}
+
+.Dashboard_progressBar__oKoBx {
+    height: 8px;
+    background-color: #1E293B;
+    border-radius: 99px;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.Dashboard_progressFill__kJxQs {
+    height: 100%;
+    background-color: #5B7CFA;
+    /* electric-blue */
+    border-radius: 99px;
+    box-shadow: 0 0 10px rgba(91, 124, 250, 0.4);
+}
+
+.Dashboard_queueCard__KmQ5Q {
+    background-color: #11172A;
+    border: 1px solid #1E293B;
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.Dashboard_queueHeader__n6I04 {
+    padding: 1.5rem;
+    border-bottom: 1px solid #1E293B;
+}
+
+.Dashboard_tableContainer__edprx {
+    overflow-x: auto;
+}
+
+.Dashboard_table__OBrYH {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.Dashboard_table__OBrYH th {
+    padding: 1rem 1.5rem;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #94a3b8;
+    background-color: rgba(30, 41, 59, 0.5);
+}
+
+.Dashboard_table__OBrYH td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #1E293B;
+    font-size: 0.875rem;
+    color: white;
+}
+
+.Dashboard_statusPill__TYNIv {
+    display: inline-flex;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.Dashboard_statusCompleted__VKIPF {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.Dashboard_statusActive__80rxp {
+    background-color: rgba(123, 92, 250, 0.1);
+    color: #7b5cfa;
+    border: 1px solid rgba(123, 92, 250, 0.2);
+}
+
+.Dashboard_statusPending__cDfk_ {
+    background-color: #1E293B;
+    color: #94a3b8;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/TracksScreen.module.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************/
+.TracksScreen_container___PyAr {
+    display: flex;
+    height: 100vh;
+    background-color: #f6f8f8;
+    /* Light theme as per Ref */
+    color: #1e293b;
+    font-family: var(--font-display);
+}
+
+.TracksScreen_sidebar__s_7s_ {
+    width: 250px;
+    background-color: white;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+}
+
+.TracksScreen_sidebarHeader__Z6uxl {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #19e6ca;
+}
+
+.TracksScreen_nav__UsOJ_ {
+    padding: 0 1rem;
+}
+
+.TracksScreen_navItem__4nmAQ {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    color: #64748b;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.TracksScreen_navItem__4nmAQ.TracksScreen_active__UAhtN {
+    background-color: #f1f5f9;
+    color: #0f172a;
+}
+
+.TracksScreen_main__soN6w {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.TracksScreen_header__MVNg7 {
+    height: 4rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.TracksScreen_content__mf0GH {
+    flex: 1 1;
+    overflow-y: auto;
+    padding: 2rem;
+}
+
+.TracksScreen_pageTitle__lc0Oj {
+    font-size: 2.25rem;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.5rem;
+}
+
+.TracksScreen_tracksList__ebTz0 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.TracksScreen_trackCard__VzMRI {
+    height: 6rem;
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.TracksScreen_trackCard__VzMRI:hover {
+    border-color: rgba(25, 230, 202, 0.5);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.TracksScreen_iconBox__A8q2f {
+    width: 3rem;
+    height: 3rem;
+    background-color: rgba(25, 230, 202, 0.1);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #19e6ca;
+    margin-right: 1.5rem;
+}
+
+.TracksScreen_trackInfo__ALxQB {
+    flex: 1 1;
+}
+
+.TracksScreen_trackName__3Ervw {
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.TracksScreen_trackMeta__S2sFZ {
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+.TracksScreen_intensity__m2cAz {
+    margin-right: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+.TracksScreen_segmentedBar__93qwD {
+    display: flex;
+    gap: 2px;
+}
+
+.TracksScreen_segment__eF0Xn {
+    width: 14px;
+    height: 6px;
+    background-color: #e2e8f0;
+    border-radius: 1px;
+}
+
+.TracksScreen_segment__eF0Xn.TracksScreen_filled__p_rO0 {
+    background-color: #19e6ca;
+}
+
+.TracksScreen_progress__hCFda {
+    text-align: right;
+    padding-left: 2rem;
+    border-left: 1px solid #e2e8f0;
+}
+
+.TracksScreen_progressVal__Q3EH_ {
+    font-size: 1.125rem;
+    font-weight: 900;
+    color: #19e6ca;
+}
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/PaywallScreen.module.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+.PaywallScreen_container__GqAMZ {
+    min-height: 100vh;
+    background-color: #f6f8f8;
+    color: #11211f;
+    font-family: var(--font-display);
+    display: flex;
+    flex-direction: column;
+}
+
+.PaywallScreen_dark__M_c99 .PaywallScreen_container__GqAMZ {
+    background-color: #11211f;
+    color: white;
+}
+
+.PaywallScreen_header__zGyQg {
+    border-bottom: 1px solid #20284A;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+
+.PaywallScreen_headerTitle__pq8K8 {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.PaywallScreen_main__rDN8l {
+    flex: 1 1;
+    padding: 3rem 1.5rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.PaywallScreen_pageHeading__jHJgZ {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    border-bottom: 1px solid #20284A;
+    padding-bottom: 2rem;
+}
+
+.PaywallScreen_title__cO7Z_ {
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.PaywallScreen_pricingGrid__e9zMe {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid #20284A;
+}
+
+.PaywallScreen_tierCard__yynLc {
+    padding: 2rem;
+    border-right: 1px solid #20284A;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.PaywallScreen_tierCard__yynLc:last-child {
+    border-right: none;
+}
+
+.PaywallScreen_tierTitle__no4ez {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+
+.PaywallScreen_price__HL7_7 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.PaywallScreen_features__Qlqqy {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.PaywallScreen_featureItem__wGvVV {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #4b5563;
+}
+
+.PaywallScreen_commitButton__O2yJE {
+    width: 100%;
+    background-color: #11211f;
+    color: white;
+    padding: 1rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+}
+
+.PaywallScreen_commitButton__O2yJE:hover {
+    background-color: #1be4c9;
+    color: #11211f;
+}
+
+.PaywallScreen_recommended__74LzS {
+    position: relative;
+}
+
+.PaywallScreen_recommended__74LzS::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: #1be4c9;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/HardLockScreen.module.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************/
+.HardLockScreen_container__NJ_o_ {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #0a0a0a;
+    color: white;
+    font-family: var(--font-mono);
+    overflow: hidden;
+    position: relative;
+}
+
+.HardLockScreen_scanline__Ur6GY {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+.HardLockScreen_header__zFJ2L {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(10, 10, 10, 0.8);
+    -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+}
+
+.HardLockScreen_headerTitle__65yL_ {
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.HardLockScreen_main__lI_3D {
+    flex: 1 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.HardLockScreen_card__m3mVQ {
+    width: 100%;
+    max-width: 800px;
+    background-color: #181111;
+    border: 1px solid #f20d0d;
+    box-shadow: 0 0 40px rgba(242, 13, 13, 0.15);
+    display: flex;
+    flex-direction: column;
+}
+
+.HardLockScreen_cardHeader__x_Zxc {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 1.5rem;
+    background-color: rgba(242, 13, 13, 0.05);
+    border-bottom: 1px solid rgba(242, 13, 13, 0.3);
+}
+
+.HardLockScreen_grid__TyFtq {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    flex: 1 1;
+}
+
+.HardLockScreen_leftPanel__b4uMS {
+    padding: 2rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.HardLockScreen_rightPanel__AYOdA {
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.HardLockScreen_timer__Tm_jf {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #f20d0d;
+    letter-spacing: -0.05em;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(242, 13, 13, 0.4);
+}
+
+.HardLockScreen_progressBar__KBfyV {
+    width: 100%;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.HardLockScreen_progressFill__J8h7u {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 65%;
+    background-color: #f20d0d;
+}
+
+.HardLockScreen_sectionTitle__wT2L9 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #f20d0d;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+}
+
+.HardLockScreen_list__EOrjF {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.HardLockScreen_listItem__9Px9u {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.6875rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.HardLockScreen_lockButton__v76tW {
+    width: 100%;
+    height: 4rem;
+    background: transparent;
+    border: 2px solid #f20d0d;
+    color: #f20d0d;
+    font-weight: 700;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    transition: all 0.2s;
+}
+
+.HardLockScreen_lockButton__v76tW:hover {
+    background-color: #f20d0d;
+    color: white;
+}
+
+.HardLockScreen_footer__LQBFD {
+    padding: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.HardLockScreen_warningBox__crH_h {
+    text-align: center;
+}
+
+.HardLockScreen_warningText__euZ9_ {
+    font-size: 0.625rem;
+    color: rgba(255, 255, 255, 0.5);
+    max-width: 400px;
+    margin: 0.5rem auto 1.5rem auto;
+    line-height: 1.6;
+}
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/NoirSessionScreen.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+.NoirSessionScreen_container__3Wv9M {
+    min-height: 100vh;
+    background-color: #101422;
+    color: white;
+    font-family: var(--font-display);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.NoirSessionScreen_bgPulse__sdj__ {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background-color: rgba(13, 70, 242, 0.1);
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+}
+
+.NoirSessionScreen_header___DnS6 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: rgba(16, 20, 34, 0.8);
+    -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.NoirSessionScreen_main__mM_jK {
+    flex: 1 1;
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+}
+
+.NoirSessionScreen_grid__SPzir {
+    display: grid;
+    grid-template-columns: 3fr 6fr 3fr;
+    grid-gap: 2rem;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1280px;
+}
+
+.NoirSessionScreen_glassPanel__bsx0U {
+    background: rgba(40, 44, 57, 0.4);
+    -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.NoirSessionScreen_sessionTitle__DB9nP {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.NoirSessionScreen_timerCore__plydF {
+    width: 100%;
+    aspect-ratio: 1;
+    /* square for simple responsiveness, or adapt */
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 0 60px 10px rgba(13, 70, 242, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.NoirSessionScreen_timerDisplay__XMhr6 {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.NoirSessionScreen_digitBox__wOQH9 {
+    width: 6rem;
+    height: 7rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 0 0 20px rgba(13, 70, 242, 0.4);
+}
+
+.NoirSessionScreen_digitLabel__4n_L7 {
+    text-align: center;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 0.5rem;
+}
+
+.NoirSessionScreen_controlButtons__rfz77 {
+    display: flex;
+    gap: 1rem;
+}
+
+.NoirSessionScreen_actionBtn__beafZ {
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.NoirSessionScreen_pauseBtn__oS6Qu {
+    background-color: #0d46f2;
+    color: white;
+}
+
+.NoirSessionScreen_abortBtn__aoJjy {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/FailureScreen.module.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+.FailureScreen_container__7ce4Q {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #0a0a0a;
+    color: white;
+    font-family: var(--font-display);
+    overflow: hidden;
+    position: relative;
+    cursor: wait;
+}
+
+.FailureScreen_crtOverlay__vDZ7m {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 100%);
+    pointer-events: none;
+    z-index: 50;
+}
+
+.FailureScreen_scanline__q7JIB {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(242, 13, 13, 0.05) 50%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 40;
+    animation: FailureScreen_scan__tJ5B2 4s linear infinite;
+}
+
+@keyframes FailureScreen_scan__tJ5B2 {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+.FailureScreen_header__5qrnM {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid rgba(242, 13, 13, 0.2);
+    background-color: rgba(10, 10, 10, 0.8);
+    z-index: 30;
+}
+
+.FailureScreen_main__JhqZf {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 30;
+    padding: 2rem;
+}
+
+.FailureScreen_headline__cwc2B {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-shadow: 0 0 10px rgba(242, 13, 13, 0.5);
+}
+
+.FailureScreen_primaryText___YT3b {
+    color: #f20d0d;
+}
+
+.FailureScreen_statsGrid__QF9x9 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    max-width: 800px;
+    border: 1px solid rgba(242, 13, 13, 0.2);
+    background-color: rgba(0, 0, 0, 0.4);
+    margin-bottom: 2rem;
+}
+
+.FailureScreen_statBox__9TQsd {
+    padding: 1.5rem;
+    border-right: 1px solid rgba(242, 13, 13, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.FailureScreen_statLabel__5ZJj4 {
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: rgba(242, 13, 13, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.FailureScreen_statValue__AtShk {
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+}
+
+.FailureScreen_auditLog__R5_Oe {
+    width: 100%;
+    max-width: 800px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(242, 13, 13, 0.2);
+    margin-bottom: 3rem;
+}
+
+.FailureScreen_logHeader__a42ZN {
+    background-color: rgba(242, 13, 13, 0.1);
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(242, 13, 13, 0.2);
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: rgba(242, 13, 13, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.FailureScreen_logTable__yzzh2 {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+}
+
+.FailureScreen_logTable__yzzh2 th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(242, 13, 13, 0.1);
+    color: rgba(242, 13, 13, 0.6);
+    text-transform: uppercase;
+}
+
+.FailureScreen_logTable__yzzh2 td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(242, 13, 13, 0.05);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.FailureScreen_countdownWrapper__EgDlU {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.FailureScreen_timerContainer__9vIna {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.FailureScreen_timerBox__Fjgqi {
+    background-color: rgba(242, 13, 13, 0.1);
+    border: 1px solid rgba(242, 13, 13, 0.3);
+    padding: 1rem 2rem;
+    font-family: var(--font-mono);
+    font-size: 3rem;
+    font-weight: 900;
+    color: #f20d0d;
+}
+
+.FailureScreen_restoreButton__Jd2wn {
+    margin-top: 2rem;
+    background-color: #f20d0d;
+    color: black;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    transition: all 0.2s;
+}
+
+.FailureScreen_restoreButton__Jd2wn:hover {
+    background-color: white;
+    box-shadow: 0 0 20px rgba(242, 13, 13, 0.5);
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/ContractScreen.module.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************/
+.ContractScreen_container__CFZUu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 2rem;
+    text-align: center;
+}
+
+.ContractScreen_title__ZkYiC {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+.ContractScreen_contractBox__cDLoy {
+    border: 1px solid var(--border-dim);
+    padding: 2rem;
+    max-width: 500px;
+    background-color: var(--surface-dark);
+    margin-bottom: 2rem;
+}
+
+.ContractScreen_contractText__O4Meo {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.ContractScreen_button__Gauvf {
+    background-color: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: 1px solid var(--primary);
+    transition: all 0.2s;
+}
+
+.ContractScreen_button__Gauvf:hover {
+    background-color: transparent;
+    color: var(--primary);
+}
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GlobalVisibilityGuard.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************/
+.GlobalVisibilityGuard_overlay__33rlK {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    background-color: rgba(5, 5, 5, 0.98);
+    -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    color: white;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+    pointer-events: all;
+    animation: GlobalVisibilityGuard_fadeIn__GHN1Q 0.3s ease-out;
+}
+
+@keyframes GlobalVisibilityGuard_fadeIn__GHN1Q {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.GlobalVisibilityGuard_topBar__gINv5 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background-color: #e6474c;
+    box-shadow: 0 0 20px rgba(230, 71, 76, 0.6);
+}
+
+.GlobalVisibilityGuard_warningBox__rx2DU {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    border: 1px solid rgba(230, 71, 76, 0.3);
+    background-color: rgba(230, 71, 76, 0.05);
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.GlobalVisibilityGuard_violationTitle__aWoYM {
+    color: #e6474c;
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    margin: 0;
+}
+
+.GlobalVisibilityGuard_violationSub__avexI {
+    color: #e6474c;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: GlobalVisibilityGuard_pulse__PrY6t 1.5s infinite;
+}
+
+@keyframes GlobalVisibilityGuard_pulse__PrY6t {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.GlobalVisibilityGuard_h1__R3MK4 {
+    font-size: 4rem;
+    font-weight: 900;
+    text-align: center;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    max-width: 800px;
+    margin-bottom: 2rem;
+    background: linear-gradient(to bottom, #ffffff, #999999);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.GlobalVisibilityGuard_consequence__AXY2K {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+
+.GlobalVisibilityGuard_footer__4bezr {
+    position: absolute;
+    bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.GlobalVisibilityGuard_badge__y_HhM {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.GlobalVisibilityGuard_scanline___EEw0 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.5) 51%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    opacity: 0.2;
+    z-index: 10;
+}

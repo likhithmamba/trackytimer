@@ -44,8 +44,24 @@ export default function NoirSessionScreen({ session }: { session: ActiveSession 
         router.refresh();
     };
 
+    // HEARTBEAT LOOP
+    useEffect(() => {
+        if (!session || session.status !== 'RUNNING') return;
+
+        const heartbeat = setInterval(() => {
+            // We fire-and-forget the heartbeat
+            fetch('/api/session/heartbeat', {
+                method: 'POST',
+                body: JSON.stringify({ sessionId: 'CURRENT' }) // Backend will resolve 'CURRENT' to active session
+            }).catch(err => console.error("Heartbeat failed", err));
+        }, 30000); // 30 seconds
+
+        return () => clearInterval(heartbeat);
+    }, [session]);
+
     return (
         <div className={styles.container}>
+            {/* ... Rest of component ... */}
             {/* Resume Overlay */}
             <div
                 style={{

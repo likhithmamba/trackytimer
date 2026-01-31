@@ -16,147 +16,134 @@ import GlobalVisibilityGuard from '@/components/GlobalVisibilityGuard'; // Phase
 
 import { useRouter } from 'next/navigation';
 
-type FlowState = 'BOOT' | 'REALITY_CHECK' | 'IDENTITY' | 'DASHBOARD' | 'TRACKS' | 'SYLLABUS' | 'PAYWALL' | 'HARD_LOCK' | 'SESSION' | 'LOCKED';
+/**
+ * ARCHITECTURE NOTE: SERVER TRUTH & DERIVED STATE
+ * 
+ * ClientShell is a pure projection of server truth (`db` prop).
+ * We do not duplicate server-authoritative states (RUNNING, LOCKED) into local state.
+ * 
+ * - computedFlowState: Derived on every render. If Server says RUNNING/LOCKED, that wins.
+ * - localSetupStep: Only controls the ephemeral "Setup" sequence (Boot -> Dashboard -> Contract).
+ */
 
-interface BootState {
-    realityConfirmed: boolean;
-    identitySet: boolean;
-    trackChosen: boolean;
-    syllabusDefined: boolean;
-}
+type SetupStep = 'BOOT' | 'REALITY_CHECK' | 'IDENTITY' | 'DASHBOARD' | 'TRACKS' | 'SYLLABUS' | 'PAYWALL' | 'CONTRACT' | 'HARD_LOCK';
 
-function resolveInitialFlow(db: DbSchema): FlowState {
-    if (!db.currentSession) return 'BOOT';
-
-    switch (db.currentSession.status) {
-        case 'LOCKED':
-            return 'LOCKED';
-        case 'RUNNING':
-            return 'SESSION';
-        case 'HOLD':
-        default:
-            return 'BOOT';
-    }
-}
+// Combined FlowState includes Server States
+type EffectiveFlowState = SetupStep | 'SESSION' | 'LOCKED';
 
 export default function ClientShell({ db }: { db: DbSchema }) {
     const router = useRouter();
-    // Initialize Flow State based on Server Truth
-    const [flowState, setFlowState] = useState<FlowState>(() => resolveInitialFlow(db));
 
+    // 1. Local State: Only tracks where we are in the "Setup" wizard
+    // We default to BOOT, unless we decide to restore a specific wizard step (omitted for MVP)
+    const [localSetupStep, setLocalSetupStep] = useState<SetupStep>('BOOT');
+
+    // 2. Boot Animation State
     const [bootProgress, setBootProgress] = useState(0);
     const [isDemo, setIsDemo] = useState(false);
 
-    // Boot Checkpoints - Guard against skipping steps
-    const [bootState, setBootState] = useState<BootState>({
+    // 3. Boot Verification Guards (prevent skipping steps via manipulation)
+    const [bootState, setBootState] = useState({
         realityConfirmed: false,
         identitySet: false,
         trackChosen: false,
         syllabusDefined: false
     });
 
-    // Hydrate initial state
-    // Boot Animation only runs if we are in BOOT state
+    // 4. DERIVED STATE: The Core Architectural Fix
+    // We calculate the effective screen to show on every render.
+    // Server Truth (db.currentSession) always overrides Local Setup.
+    let effectiveFlowState: EffectiveFlowState = localSetupStep;
+
+    if (db.currentSession) {
+        if (db.currentSession.status === 'RUNNING') {
+            effectiveFlowState = 'SESSION';
+        } else if (db.currentSession.status === 'LOCKED') {
+            effectiveFlowState = 'LOCKED';
+        }
+        // If 'HOLD', we fall back to localSetupStep (the setup wizard)
+    }
+
+    // Effect: Boot Animation (Only runs if we are visibly in BOOT state)
     useEffect(() => {
-        if (flowState !== 'BOOT') return;
+        if (effectiveFlowState !== 'BOOT') return;
 
         const boot = setInterval(() => {
             setBootProgress(prev => {
                 if (prev >= 100) {
                     clearInterval(boot);
-                    setFlowState('REALITY_CHECK');
+                    setLocalSetupStep('REALITY_CHECK');
                     return 100;
                 }
                 return prev + 5;
             });
         }, 50);
         return () => clearInterval(boot);
-    }, [flowState]);
+    }, [effectiveFlowState]);
 
-    // Handlers
-    // Handlers with Guards
+    // --- Actions ---
+
     const handleReality = () => {
         setBootState(prev => ({ ...prev, realityConfirmed: true }));
-        setFlowState('IDENTITY');
+        setLocalSetupStep('IDENTITY');
     };
 
     const handleIdentity = (id: string, key?: string) => {
         if (!bootState.realityConfirmed) return; // Guard
-
         if (id === 'demo' && key === 'demo') {
             setIsDemo(true);
             console.log("DEMO MODE ACTIVE");
         }
         setBootState(prev => ({ ...prev, identitySet: true }));
-        setFlowState('DASHBOARD'); // Transition to Dashboard instead of Tracks
+        setLocalSetupStep('DASHBOARD');
     };
 
     const handleDashboardStart = () => {
-        setFlowState('TRACKS');
+        // "Start Session" -> Move to Tracks selection
+        setLocalSetupStep('TRACKS');
     };
 
     const handleTrack = (tid: string) => {
-        if (!bootState.identitySet) return; // Guard
-        console.log("Track:", tid);
         setBootState(prev => ({ ...prev, trackChosen: true }));
-        setFlowState('SYLLABUS');
+        setLocalSetupStep('SYLLABUS');
     };
 
     const handleSyllabus = (objs: string[]) => {
-        if (!bootState.trackChosen) return; // Guard
+        if (!bootState.trackChosen) return;
         setBootState(prev => ({ ...prev, syllabusDefined: true }));
-
-        if (isDemo) {
-            setFlowState('HARD_LOCK');
-        } else {
-            setFlowState('PAYWALL');
-        }
+        setLocalSetupStep(isDemo ? 'HARD_LOCK' : 'PAYWALL');
     };
 
     const handlePay = (tier: string) => {
-        if (!bootState.syllabusDefined) return; // Guard
-        console.log("Paid:", tier);
-        setFlowState('HARD_LOCK');
+        if (!bootState.syllabusDefined) return;
+        setLocalSetupStep('CONTRACT');
     };
+
+    const handleContract = () => {
+        setLocalSetupStep('HARD_LOCK');
+    };
+
+    const [isLocking, setIsLocking] = useState(false);
 
     const handleHardLock = async () => {
-        // Start Session via API
-        await fetch('/api/session/current', {
-            method: 'POST',
-            body: JSON.stringify({ action: 'RESUME' })
-        });
-        // Use router.refresh() instead of reload to maintain SPA feel where possible, 
-        // though strictly we want to re-hit the server for the new state.
-        router.refresh();
+        if (isLocking) return;
+        setIsLocking(true);
+        // Optimistic UI: We visualy lock immediately while waiting for server
+        try {
+            await fetch('/api/session/current', {
+                method: 'POST',
+                body: JSON.stringify({ action: 'RESUME' })
+            });
+            router.refresh();
+        } catch (e) {
+            setIsLocking(false);
+        }
     };
 
-    // Render Map
-    if (flowState === 'BOOT') return <BootScreen progress={bootProgress} />;
-    if (flowState === 'REALITY_CHECK') return <RealityCheckScreen onConfirm={handleReality} />;
-    if (flowState === 'IDENTITY') return <IdentityScreen onCommit={handleIdentity} />;
+    // --- Render Map ---
 
-    // Fallback/Mock session for Dashboard if db.currentSession is null (pre-session state)
-    // In a real app we'd fetch "User State" or similar. For now we mock it or check if it exists.
-    if (flowState === 'DASHBOARD') {
-        const mockSession = db.currentSession || {
-            date: new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }),
-            mainTitle: 'Daily Execution',
-            progressPercent: 0,
-            violations: [],
-            warningTriggered: false,
-            queue: [],
-            status: 'HOLD'
-        };
-        // We cast to ActiveSession for the UI prop, assuming the mock matches the shape roughly enough for display
-        return <Dashboard session={mockSession as any} onStart={handleDashboardStart} />;
-    }
-
-    if (flowState === 'TRACKS') return <TracksScreen onSelect={handleTrack} />;
-    if (flowState === 'SYLLABUS') return <SyllabusScreen onComplete={handleSyllabus} />;
-    if (flowState === 'PAYWALL') return <PaywallScreen onPay={handlePay} />;
-    if (flowState === 'HARD_LOCK') return <HardLockScreen onLock={handleHardLock} />;
-
-    if (flowState === 'SESSION' && db.currentSession) {
+    // 1. Server-Authoritative Modes
+    if (effectiveFlowState === 'SESSION' && db.currentSession) {
         return (
             <>
                 <GlobalVisibilityGuard active={true} />
@@ -164,8 +151,39 @@ export default function ClientShell({ db }: { db: DbSchema }) {
             </>
         );
     }
+    if (effectiveFlowState === 'LOCKED') {
+        return <FailureScreen violations={db.currentSession?.violations || []} />;
+    }
 
-    if (flowState === 'LOCKED') return <FailureScreen violations={db.currentSession?.violations || []} />;
-
-    return <ContractScreen onAccept={() => window.location.reload()} />;
+    // 2.Local Setup Modes
+    switch (effectiveFlowState) {
+        case 'BOOT':
+            return <BootScreen progress={bootProgress} />;
+        case 'REALITY_CHECK':
+            return <RealityCheckScreen onConfirm={handleReality} />;
+        case 'IDENTITY':
+            return <IdentityScreen onCommit={handleIdentity} />;
+        case 'DASHBOARD':
+            // Mock session for pre-start dashboard
+            const mockSession = db.currentSession || {
+                date: new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }),
+                mainTitle: 'Daily Execution',
+                progressPercent: 0,
+                violations: [],
+                warningTriggered: false,
+                queue: [],
+                status: 'HOLD'
+            };
+            return <Dashboard session={mockSession as any} onStart={handleDashboardStart} />;
+        case 'TRACKS':
+            return <TracksScreen onSelect={handleTrack} />;
+        case 'PAYWALL':
+            return <PaywallScreen onPay={handlePay} />;
+        case 'CONTRACT':
+            return <ContractScreen onAccept={handleContract} />;
+        case 'HARD_LOCK':
+            return <HardLockScreen onLock={handleHardLock} loading={isLocking} />;
+        default:
+            return <div style={{ color: 'red' }}>ERROR: Unknown Flow State</div>;
+    }
 }

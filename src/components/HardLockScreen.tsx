@@ -2,7 +2,7 @@
 import React from 'react';
 import styles from './HardLockScreen.module.css';
 
-export default function HardLockScreen({ onLock }: { onLock: () => void }) {
+export default function HardLockScreen({ onLock, loading }: { onLock: () => void, loading?: boolean }) {
     return (
         <div className={styles.container}>
             <div className={styles.scanline}></div>
@@ -65,8 +65,13 @@ export default function HardLockScreen({ onLock }: { onLock: () => void }) {
                             <h3 style={{ color: 'white', fontSize: '1.125rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Commit to Final Focus</h3>
                             <p className={styles.warningText}>Initiating the Hard-Lock protocol will disable all communication. There is <span style={{ color: '#f20d0d' }}>no override</span> until countdown zero.</p>
                         </div>
-                        <button className={styles.lockButton} onClick={onLock}>
-                            <span>Initialize Hard-Lock</span>
+                        <button
+                            className={styles.lockButton}
+                            onClick={onLock}
+                            disabled={loading}
+                            style={{ opacity: loading ? 0.7 : 1, cursor: loading ? 'wait' : 'pointer' }}
+                        >
+                            <span>{loading ? 'INITIALIZING...' : 'Initialize Hard-Lock'}</span>
                             <span className="material-symbols-outlined">lock</span>
                         </button>
                     </div>
