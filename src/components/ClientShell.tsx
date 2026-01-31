@@ -12,26 +12,52 @@ import NoirSessionScreen from '@/components/NoirSessionScreen'; // Phase 3
 import FailureScreen from '@/components/FailureScreen';
 import ContractScreen from '@/components/ContractScreen';
 
+import { useRouter } from 'next/navigation';
+
 type FlowState = 'BOOT' | 'REALITY_CHECK' | 'IDENTITY' | 'TRACKS' | 'SYLLABUS' | 'PAYWALL' | 'HARD_LOCK' | 'SESSION' | 'LOCKED';
 
+interface BootState {
+    realityConfirmed: boolean;
+    identitySet: boolean;
+    trackChosen: boolean;
+    syllabusDefined: boolean;
+}
+
+function resolveInitialFlow(db: DbSchema): FlowState {
+    if (!db.currentSession) return 'BOOT';
+
+    switch (db.currentSession.status) {
+        case 'LOCKED':
+            return 'LOCKED';
+        case 'RUNNING':
+            return 'SESSION';
+        case 'HOLD':
+        default:
+            return 'BOOT';
+    }
+}
+
 export default function ClientShell({ db }: { db: DbSchema }) {
-    const [flowState, setFlowState] = useState<FlowState>('BOOT');
+    const router = useRouter();
+    // Initialize Flow State based on Server Truth
+    const [flowState, setFlowState] = useState<FlowState>(() => resolveInitialFlow(db));
+
     const [bootProgress, setBootProgress] = useState(0);
     const [isDemo, setIsDemo] = useState(false);
 
+    // Boot Checkpoints - Guard against skipping steps
+    const [bootState, setBootState] = useState<BootState>({
+        realityConfirmed: false,
+        identitySet: false,
+        trackChosen: false,
+        syllabusDefined: false
+    });
+
     // Hydrate initial state
+    // Boot Animation only runs if we are in BOOT state
     useEffect(() => {
-        // 1. Check Locked
-        if (db.currentSession?.status === 'LOCKED' && !isDemo) {
-            setFlowState('LOCKED');
-            return;
-        }
-        // 2. Check Active
-        if (db.currentSession && (db.currentSession.status === 'RUNNING')) {
-            setFlowState('SESSION');
-            return;
-        }
-        // 3. Boot Animation
+        if (flowState !== 'BOOT') return;
+
         const boot = setInterval(() => {
             setBootProgress(prev => {
                 if (prev >= 100) {
@@ -39,31 +65,50 @@ export default function ClientShell({ db }: { db: DbSchema }) {
                     setFlowState('REALITY_CHECK');
                     return 100;
                 }
-                return prev + 5; // Faster boot for verification
+                return prev + 5;
             });
         }, 50);
         return () => clearInterval(boot);
-    }, [db.currentSession, isDemo]);
+    }, [flowState]);
 
     // Handlers
-    const handleReality = () => setFlowState('IDENTITY');
+    // Handlers with Guards
+    const handleReality = () => {
+        setBootState(prev => ({ ...prev, realityConfirmed: true }));
+        setFlowState('IDENTITY');
+    };
+
     const handleIdentity = (id: string, key?: string) => {
+        if (!bootState.realityConfirmed) return; // Guard
+
         if (id === 'demo' && key === 'demo') {
             setIsDemo(true);
             console.log("DEMO MODE ACTIVE");
         }
+        setBootState(prev => ({ ...prev, identitySet: true }));
         setFlowState('TRACKS');
     };
-    const handleTrack = (tid: string) => { console.log("Track:", tid); setFlowState('SYLLABUS'); };
+
+    const handleTrack = (tid: string) => {
+        if (!bootState.identitySet) return; // Guard
+        console.log("Track:", tid);
+        setBootState(prev => ({ ...prev, trackChosen: true }));
+        setFlowState('SYLLABUS');
+    };
+
     const handleSyllabus = (objs: string[]) => {
+        if (!bootState.trackChosen) return; // Guard
+        setBootState(prev => ({ ...prev, syllabusDefined: true }));
+
         if (isDemo) {
-            setFlowState('HARD_LOCK'); // Bypass Paywall
+            setFlowState('HARD_LOCK');
         } else {
             setFlowState('PAYWALL');
         }
     };
 
     const handlePay = (tier: string) => {
+        if (!bootState.syllabusDefined) return; // Guard
         console.log("Paid:", tier);
         setFlowState('HARD_LOCK');
     };
@@ -74,7 +119,9 @@ export default function ClientShell({ db }: { db: DbSchema }) {
             method: 'POST',
             body: JSON.stringify({ action: 'RESUME' })
         });
-        window.location.reload();
+        // Use router.refresh() instead of reload to maintain SPA feel where possible, 
+        // though strictly we want to re-hit the server for the new state.
+        router.refresh();
     };
 
     // Render Map

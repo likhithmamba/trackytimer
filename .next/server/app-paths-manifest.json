@@ -1,7 +1,7 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/api/system/boot/route": "app/api/system/boot/route.js",
-  "/api/violation/record/route": "app/api/violation/record/route.js",
   "/api/session/current/route": "app/api/session/current/route.js",
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/api/violation/record/route": "app/api/violation/record/route.js"
 }

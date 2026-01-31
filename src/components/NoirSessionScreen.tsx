@@ -3,7 +3,10 @@ import React, { useEffect, useState } from 'react';
 import styles from './NoirSessionScreen.module.css';
 import { ActiveSession } from '@/lib/types';
 
+import { useRouter } from 'next/navigation';
+
 export default function NoirSessionScreen({ session }: { session: ActiveSession }) {
+    const router = useRouter();
     const [timeLeft, setTimeLeft] = useState<number>(0);
 
     // Sync Timer
@@ -29,7 +32,7 @@ export default function NoirSessionScreen({ session }: { session: ActiveSession 
 
     const handleHold = async () => {
         await fetch('/api/session/current', { method: 'POST', body: JSON.stringify({ action: 'PAUSE' }) });
-        window.location.reload();
+        router.refresh();
     };
 
     return (

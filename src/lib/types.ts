@@ -8,6 +8,8 @@ export interface UserSystemState {
   specificityLevel: number;
 }
 
+export type SessionStatus = 'HOLD' | 'RUNNING' | 'LOCKED' | 'COMPLETED';
+
 export interface TrackModule {
   id: string; // e.g., "SYL_MOD_06_UPLINK"
   name: string; // e.g., "Module_06: Technical_Console"
@@ -38,7 +40,7 @@ export interface ActiveSession {
   violations: Violation[];
   warningTriggered: boolean; // 1st Strike
   queue: Objective[];
-  status: 'HOLD' | 'RUNNING' | 'LOCKED' | 'COMPLETED';
+  status: SessionStatus;
   startTime?: string; // ISO timestamp
   durationMinutes?: number; // e.g., 60
 }

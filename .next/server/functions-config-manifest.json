@@ -1,1 +1,1 @@
-{"version":1,"functions":{"/api/system/boot":{},"/":{},"/api/session/current":{},"/api/violation/record":{}}}
+{"version":1,"functions":{"/api/session/current":{},"/api/system/boot":{},"/":{},"/api/violation/record":{}}}
