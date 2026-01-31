@@ -7,7 +7,14 @@ import { useRouter } from 'next/navigation';
 
 export default function NoirSessionScreen({ session }: { session: ActiveSession }) {
     const router = useRouter();
-    const [timeLeft, setTimeLeft] = useState<number>(0);
+    const [timeLeft, setTimeLeft] = useState<number | null>(null); // Start null to hide 00:00:00
+    const [isMounting, setIsMounting] = useState(true);
+
+    useEffect(() => {
+        // Fake "System Resume" delay
+        const timer = setTimeout(() => setIsMounting(false), 2000);
+        return () => clearTimeout(timer);
+    }, []);
 
     // Sync Timer
     useEffect(() => {
@@ -24,9 +31,11 @@ export default function NoirSessionScreen({ session }: { session: ActiveSession 
         return () => clearInterval(i);
     }, [session]);
 
-    const h = Math.floor(timeLeft / 3600);
-    const m = Math.floor((timeLeft % 3600) / 60);
-    const s = timeLeft % 60;
+    const displayTime = timeLeft !== null ? timeLeft : (session.durationMinutes || 0) * 60; // Fallback to full duration or 0
+
+    const h = Math.floor(displayTime / 3600);
+    const m = Math.floor((displayTime % 3600) / 60);
+    const s = displayTime % 60;
 
     const fmt = (n: number) => n.toString().padStart(2, '0');
 
@@ -37,6 +46,40 @@ export default function NoirSessionScreen({ session }: { session: ActiveSession 
 
     return (
         <div className={styles.container}>
+            {/* Resume Overlay */}
+            <div
+                style={{
+                    position: 'fixed',
+                    top: 0, left: 0, right: 0, bottom: 0,
+                    backgroundColor: '#050505',
+                    zIndex: 9999,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'opacity 0.8s ease-out',
+                    opacity: isMounting ? 1 : 0,
+                    pointerEvents: isMounting ? 'all' : 'none'
+                }}
+            >
+                <div style={{ color: '#0d46f2', fontSize: '12px', fontWeight: 700, letterSpacing: '0.2em', marginBottom: '1rem', textTransform: 'uppercase' }}>
+                    Re-establishing Uplink
+                </div>
+                <div style={{ width: '200px', height: '2px', backgroundColor: 'rgba(13, 70, 242, 0.2)', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{
+                        position: 'absolute', top: 0, left: 0, bottom: 0, width: '50%',
+                        backgroundColor: '#0d46f2',
+                        animation: 'scan 1.5s infinite linear'
+                    }}></div>
+                </div>
+                <style jsx>{`
+                    @keyframes scan {
+                        0% { transform: translateX(-100%); }
+                        100% { transform: translateX(200%); }
+                    }
+                `}</style>
+            </div>
+
             <div className={styles.bgPulse}></div>
             <header className={styles.header}>
                 <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
