@@ -1,0 +1,52 @@
+{
+  "userState": {
+    "uptime": 0,
+    "deepWorkStreak": 12,
+    "securityProtocol": "AES-256",
+    "performanceBoost": false,
+    "specificityLevel": 4
+  },
+  "tracks": [
+    {
+      "id": "SYL_MOD_06_UPLINK",
+      "name": "Module_06: Technical_Console",
+      "riskLevel": "MEDIUM",
+      "status": "ACTIVE",
+      "objectives": [
+        {
+          "id": "OBJ_601_CORE",
+          "title": "Core Logic Implementation",
+          "timeBlock": "08:00 - 09:30",
+          "intensity": "HIGH",
+          "status": "ACTIVE",
+          "progress": 85
+        },
+        {
+          "id": "OBJ_602_REDUX",
+          "title": "State Management Refactor",
+          "timeBlock": "10:00 - 12:30",
+          "intensity": "MEDIUM",
+          "status": "PENDING",
+          "progress": 0
+        },
+        {
+          "id": "OBJ_603_INIT",
+          "title": "System Initialization",
+          "timeBlock": "13:30 - 15:00",
+          "intensity": "LOW",
+          "status": "COMPLETED",
+          "progress": 100
+        }
+      ]
+    }
+  ],
+  "currentSession": {
+    "date": "2026-01-30",
+    "mainTitle": "High-Stakes Focus Mode",
+    "progressPercent": 72,
+    "status": "RUNNING",
+    "violations": [],
+    "queue": [],
+    "warningTriggered": false
+  }
+}

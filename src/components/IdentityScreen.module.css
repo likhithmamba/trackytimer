@@ -1,0 +1,149 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #0a0a0b;
+    font-family: var(--font-display);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.scanlineOverlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+    background-size: 100% 2px, 3px 100%;
+    opacity: 0.2;
+    z-index: 50;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #2f2f31;
+    background-color: rgba(10, 10, 11, 0.8);
+    backdrop-filter: blur(8px);
+}
+
+.headerTitle {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+}
+
+.content {
+    width: 100%;
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+}
+
+.variantInfo {
+    color: rgba(0, 229, 255, 0.8);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.heroTitle {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(47, 47, 49, 0.5);
+    padding-bottom: 2rem;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.label {
+    color: #a9a9ad;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.inputWrapper {
+    display: flex;
+    align-items: stretch;
+    height: 3.5rem;
+}
+
+.input {
+    flex: 1;
+    background-color: transparent;
+    border: 1px solid #2f2f31;
+    color: white;
+    padding: 0 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #00E5FF;
+}
+
+.iconBox {
+    width: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #2f2f31;
+    border-left: none;
+    color: #a9a9ad;
+}
+
+.commitButton {
+    margin-top: 2rem;
+    width: 100%;
+    height: 3.5rem;
+    background-color: white;
+    color: #121217;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: all 0.2s;
+}
+
+.commitButton:hover {
+    background-color: #00E5FF;
+}
+
+.warning {
+    margin-top: 1rem;
+    color: #464649;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.6;
+}

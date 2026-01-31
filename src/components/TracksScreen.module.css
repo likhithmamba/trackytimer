@@ -1,0 +1,161 @@
+.container {
+    display: flex;
+    height: 100vh;
+    background-color: #f6f8f8;
+    /* Light theme as per Ref */
+    color: #1e293b;
+    font-family: var(--font-display);
+}
+
+.sidebar {
+    width: 250px;
+    background-color: white;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebarHeader {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #19e6ca;
+}
+
+.nav {
+    padding: 0 1rem;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    color: #64748b;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.navItem.active {
+    background-color: #f1f5f9;
+    color: #0f172a;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.header {
+    height: 4rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+}
+
+.pageTitle {
+    font-size: 2.25rem;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.5rem;
+}
+
+.tracksList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.trackCard {
+    height: 6rem;
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.trackCard:hover {
+    border-color: rgba(25, 230, 202, 0.5);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.iconBox {
+    width: 3rem;
+    height: 3rem;
+    background-color: rgba(25, 230, 202, 0.1);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #19e6ca;
+    margin-right: 1.5rem;
+}
+
+.trackInfo {
+    flex: 1;
+}
+
+.trackName {
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.trackMeta {
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+.intensity {
+    margin-right: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+.segmentedBar {
+    display: flex;
+    gap: 2px;
+}
+
+.segment {
+    width: 14px;
+    height: 6px;
+    background-color: #e2e8f0;
+    border-radius: 1px;
+}
+
+.segment.filled {
+    background-color: #19e6ca;
+}
+
+.progress {
+    text-align: right;
+    padding-left: 2rem;
+    border-left: 1px solid #e2e8f0;
+}
+
+.progressVal {
+    font-size: 1.125rem;
+    font-weight: 900;
+    color: #19e6ca;
+}

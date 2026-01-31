@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 2rem;
+    text-align: center;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+.contractBox {
+    border: 1px solid var(--border-dim);
+    padding: 2rem;
+    max-width: 500px;
+    background-color: var(--surface-dark);
+    margin-bottom: 2rem;
+}
+
+.contractText {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.button {
+    background-color: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: 1px solid var(--primary);
+    transition: all 0.2s;
+}
+
+.button:hover {
+    background-color: transparent;
+    color: var(--primary);
+}

@@ -1,0 +1,190 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #0a0a0a;
+    color: white;
+    font-family: var(--font-display);
+    overflow: hidden;
+    position: relative;
+    cursor: wait;
+}
+
+.crtOverlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 100%);
+    pointer-events: none;
+    z-index: 50;
+}
+
+.scanline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(242, 13, 13, 0.05) 50%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 40;
+    animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid rgba(242, 13, 13, 0.2);
+    background-color: rgba(10, 10, 10, 0.8);
+    z-index: 30;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 30;
+    padding: 2rem;
+}
+
+.headline {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-shadow: 0 0 10px rgba(242, 13, 13, 0.5);
+}
+
+.primaryText {
+    color: #f20d0d;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    max-width: 800px;
+    border: 1px solid rgba(242, 13, 13, 0.2);
+    background-color: rgba(0, 0, 0, 0.4);
+    margin-bottom: 2rem;
+}
+
+.statBox {
+    padding: 1.5rem;
+    border-right: 1px solid rgba(242, 13, 13, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.statLabel {
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: rgba(242, 13, 13, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.statValue {
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+}
+
+.auditLog {
+    width: 100%;
+    max-width: 800px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(242, 13, 13, 0.2);
+    margin-bottom: 3rem;
+}
+
+.logHeader {
+    background-color: rgba(242, 13, 13, 0.1);
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(242, 13, 13, 0.2);
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: rgba(242, 13, 13, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.logTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+}
+
+.logTable th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(242, 13, 13, 0.1);
+    color: rgba(242, 13, 13, 0.6);
+    text-transform: uppercase;
+}
+
+.logTable td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(242, 13, 13, 0.05);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.countdownWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.timerContainer {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.timerBox {
+    background-color: rgba(242, 13, 13, 0.1);
+    border: 1px solid rgba(242, 13, 13, 0.3);
+    padding: 1rem 2rem;
+    font-family: var(--font-mono);
+    font-size: 3rem;
+    font-weight: 900;
+    color: #f20d0d;
+}
+
+.restoreButton {
+    margin-top: 2rem;
+    background-color: #f20d0d;
+    color: black;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    transition: all 0.2s;
+}
+
+.restoreButton:hover {
+    background-color: white;
+    box-shadow: 0 0 20px rgba(242, 13, 13, 0.5);
+}

@@ -1,0 +1,21 @@
+
+> trackytimer@0.1.0 build
+> next build
+
+  Γû▓ Next.js 14.2.0
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully
+   Linting and checking validity of types ...
+Failed to compile.
+
+./src/scripts/verify_strictness.ts:11:33
+Type error: Object literal may only specify known properties, and 'deepWorkStreak' does not exist in type 'UserSystemState'.
+
+   9 | async function resetDb() {
+  10 |     const initial: DbSchema = {
+> 11 |         userState: { uptime: 0, deepWorkStreak: 0, securityProtocol: "AES-256", performanceBoost: false, specificityLevel: 4 },
+     |                                 ^
+  12 |         tracks: [],
+  13 |         currentSession: {
+  14 |             date: "2024-01-01",

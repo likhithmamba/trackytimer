@@ -1,0 +1,158 @@
+.container {
+    display: flex;
+    height: 100vh;
+    background-color: #0c0c0e;
+    color: #dbdbdc;
+    font-family: var(--font-mono);
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 60px;
+    background-color: #151518;
+    border-right: 1px solid #27272a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+.sidebarIcon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #71717a;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.sidebarIcon.active {
+    background-color: rgba(63, 63, 70, 0.4);
+    color: #e4e4e7;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.topBar {
+    height: 3rem;
+    border-bottom: 1px solid #27272a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    background-color: #0c0c0e;
+}
+
+.contentGrid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    overflow: hidden;
+}
+
+.matrixPanel {
+    padding: 1rem;
+    overflow-y: auto;
+    border-right: 1px solid #27272a;
+}
+
+.matrixHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #27272a;
+    padding-bottom: 0.5rem;
+}
+
+.panelTitle {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #a1a1aa;
+}
+
+.objectiveRow {
+    display: grid;
+    grid-template-columns: 40px 1fr 100px 80px;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #1f1f22;
+    font-size: 12px;
+}
+
+.objectiveRow:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.statusIndicator {
+    width: 8px;
+    height: 8px;
+    background-color: #71717a;
+    border-radius: 50%;
+}
+
+.statusIndicator.active {
+    background-color: #c026d3;
+    /* Fuchsia */
+    box-shadow: 0 0 8px rgba(192, 38, 211, 0.4);
+}
+
+.controlPanel {
+    background-color: #101012;
+    display: flex;
+    flex-direction: column;
+}
+
+.logPanel {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    font-size: 10px;
+    color: #52525b;
+    border-bottom: 1px solid #27272a;
+}
+
+.inputArea {
+    padding: 1rem;
+    border-top: 1px solid #27272a;
+}
+
+.consoleInput {
+    background-color: #18181b;
+    border: 1px solid #27272a;
+    color: #e4e4e7;
+    padding: 0.5rem;
+    width: 100%;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    resize: none;
+    min-height: 80px;
+}
+
+.consoleInput:focus {
+    outline: none;
+    border-color: #c026d3;
+}
+
+.commitBtn {
+    margin-top: 0.5rem;
+    width: 100%;
+    background-color: #c026d3;
+    color: #fff;
+    padding: 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 10px;
+}
