@@ -1,0 +1,120 @@
+.container {
+    height: 100vh;
+    background-color: #0f172a;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-display);
+}
+
+.header {
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: white;
+    text-transform: uppercase;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.bodyText {
+    text-align: center;
+    color: #94a3b8;
+    margin-bottom: 3rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.infoBox {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    background: rgba(30, 41, 59, 0.5);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.col h3 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.col li {
+    font-size: 0.875rem;
+    color: white;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.col li::before {
+    content: '•';
+    color: #475569;
+}
+
+.paymentArea {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-mono);
+}
+
+.payBtn {
+    width: 100%;
+    padding: 1rem;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.2s;
+}
+
+.payBtn:hover {
+    background: #059669;
+}
+
+.cancelBtn {
+    background: none;
+    border: none;
+    color: #64748b;
+    font-size: 0.75rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    text-decoration: underline;
+}
