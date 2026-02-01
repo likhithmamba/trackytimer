@@ -96,6 +96,33 @@ export default function NoirSessionScreen({ session }: { session: ActiveSession 
                 `}</style>
             </div>
 
+            {/* Resume Overlay */}
+            {/* ... (Keep existing resume overlay logic) ... */}
+
+            {/* Warning Overlay (1st Failure) */}
+            {session.warningTriggered && (
+                <div style={{
+                    position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+                    backgroundColor: 'rgba(242, 13, 13, 0.9)',
+                    zIndex: 10000,
+                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                    backdropFilter: 'blur(10px)'
+                }}>
+                    <span className="material-symbols-outlined" style={{ fontSize: '64px', color: 'white', marginBottom: '1rem' }}>warning</span>
+                    <h1 style={{ color: 'white', fontWeight: 900, fontSize: '2rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Warning</h1>
+                    <p style={{ color: 'white', fontSize: '1.25rem', marginBottom: '2rem', textAlign: 'center', maxWidth: '400px' }}>
+                        You have used 1 of 2 allowed failures.<br />
+                        The next failure will revoke access.
+                    </p>
+                    <button
+                        onClick={() => router.refresh()} // Acknowledge by refreshing/clearing warning (requires backend loop update)
+                        style={{ padding: '1rem 3rem', background: 'white', color: '#f20d0d', border: 'none', fontWeight: 900, fontSize: '1.25rem', cursor: 'pointer', textTransform: 'uppercase' }}
+                    >
+                        Continue Execution
+                    </button>
+                </div>
+            )}
+
             <div className={styles.bgPulse}></div>
             <header className={styles.header}>
                 <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>

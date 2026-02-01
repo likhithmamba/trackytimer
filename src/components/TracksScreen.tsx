@@ -56,18 +56,32 @@ export default function TracksScreen({ onSelect }: { onSelect: (trackId: string)
 
                 <div className={styles.content}>
                     <div style={{ maxWidth: '1024px', margin: '0 auto' }}>
+                        <div className={styles.createTrackSection} style={{ marginBottom: '3rem', padding: '1.5rem', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', background: 'rgba(15, 23, 42, 0.5)' }}>
+                            <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#e2e8f0', marginBottom: '1rem', textTransform: 'uppercase' }}>Create Execution Track</h3>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr auto', gap: '1rem', alignItems: 'end' }}>
+                                <div>
+                                    <label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.5rem' }}>TRACK NAME</label>
+                                    <input type="text" placeholder="e.g. Midterm Prep" style={{ width: '100%', padding: '0.75rem', background: '#1e293b', border: '1px solid #334155', color: 'white', borderRadius: '4px' }} />
+                                </div>
+                                <div>
+                                    <label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.5rem' }}>PURPOSE</label>
+                                    <select style={{ width: '100%', padding: '0.75rem', background: '#1e293b', border: '1px solid #334155', color: 'white', borderRadius: '4px' }}>
+                                        <option>Academic Exam</option>
+                                        <option>Professional Cert</option>
+                                        <option>Skill Acquisition</option>
+                                    </select>
+                                </div>
+                                <button className={styles.createBtn} onClick={() => onSelect('new_track')} style={{ padding: '0.75rem 1.5rem', background: '#7b5cfa', color: 'white', border: 'none', borderRadius: '4px', fontWeight: 700, cursor: 'pointer' }}>
+                                    CREATE
+                                </button>
+                            </div>
+                        </div>
+
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '2rem' }}>
                             <div>
-                                <h2 className={styles.pageTitle}>Multi-Exam Selector</h2>
-                                <p style={{ color: '#64748b', fontSize: '1.125rem' }}>Manage and execute your high-commitment exam tracks.</p>
+                                <h2 className={styles.pageTitle}>Existing Tracks</h2>
+                                <p style={{ color: '#64748b', fontSize: '0.875rem' }}>Select a context to resume execution.</p>
                             </div>
-                            <button
-                                onClick={() => showToast("Features unavailable in Audit Mode")}
-                                style={{ border: '2px solid #cbd5e1', color: '#475569', padding: '0.625rem 1.5rem', borderRadius: '0.5rem', fontWeight: 700, fontSize: '0.875rem', display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}
-                            >
-                                <span className="material-symbols-outlined" style={{ color: '#19e6ca' }}>add_circle</span>
-                                Add Exam
-                            </button>
                         </div>
 
                         <div className={styles.tracksList}>

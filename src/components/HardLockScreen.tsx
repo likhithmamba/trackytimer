@@ -62,8 +62,12 @@ export default function HardLockScreen({ onLock, loading }: { onLock: () => void
 
                     <div className={styles.footer}>
                         <div className={styles.warningBox}>
-                            <h3 style={{ color: 'white', fontSize: '1.125rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Commit to Final Focus</h3>
-                            <p className={styles.warningText}>Initiating the Hard-Lock protocol will disable all communication. There is <span style={{ color: '#f20d0d' }}>no override</span> until countdown zero.</p>
+                            <h3 style={{ color: 'white', fontSize: '1.125rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Execution Lock Active</h3>
+                            <p className={styles.warningText}>
+                                Rules are now enforced.<br />
+                                First failure triggers warning.<br />
+                                Second failure revokes access.
+                            </p>
                         </div>
                         <button
                             className={styles.lockButton}
@@ -71,8 +75,8 @@ export default function HardLockScreen({ onLock, loading }: { onLock: () => void
                             disabled={loading}
                             style={{ opacity: loading ? 0.7 : 1, cursor: loading ? 'wait' : 'pointer' }}
                         >
-                            <span>{loading ? 'INITIALIZING...' : 'Initialize Hard-Lock'}</span>
-                            <span className="material-symbols-outlined">lock</span>
+                            <span>{loading ? 'INITIALIZING...' : 'Start Tomorrow\'s Session'}</span>
+                            <span className="material-symbols-outlined">play_circle</span>
                         </button>
                     </div>
                 </div>

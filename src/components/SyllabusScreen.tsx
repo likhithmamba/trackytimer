@@ -41,17 +41,17 @@ export default function SyllabusScreen({ onComplete }: { onComplete: (objectives
             <main className={styles.main}>
                 <div className={styles.topBar}>
                     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                        <span style={{ fontWeight: 700, color: '#c026d3' }}>SYLLABUS_CONSOLE_V1</span>
-                        <span style={{ color: '#52525b' }}>// MODULE.CONFIG</span>
+                        <span style={{ fontWeight: 700, color: '#c026d3' }}>MANUAL SYLLABUS ENTRY</span>
+                        <span style={{ color: '#52525b' }}>// COGNITIVE.OWNERSHIP</span>
                     </div>
-                    <div>MEM_ALLOC: 42%</div>
+                    <div>STATUS: AWAITING INPUT</div>
                 </div>
 
                 <div className={styles.contentGrid}>
                     <div className={styles.matrixPanel}>
                         <div className={styles.matrixHeader}>
                             <h2 className={styles.panelTitle}>Active Objectives Matrix [{activeCount}]</h2>
-                            <span className="material-symbols-outlined" style={{ fontSize: '14px', color: '#52525b', cursor: 'pointer' }}>refresh</span>
+                            <span style={{ fontSize: '10px', color: '#ef4444', fontWeight: 700 }}>WARNING: EDITS ARE FINAL</span>
                         </div>
 
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -67,7 +67,8 @@ export default function SyllabusScreen({ onComplete }: { onComplete: (objectives
                             ))}
                             {objectives.length === 0 && (
                                 <div style={{ padding: '2rem', textAlign: 'center', color: '#3f3f46', fontSize: '12px' }}>
-                                    NO OBJECTIVES DEFINED. AWAITING INPUT.
+                                    YOU MUST MANUALLY TYPE WHAT YOU NEED TO STUDY.<br />
+                                    THIS CANNOT BE AUTO-GENERATED.
                                 </div>
                             )}
                         </div>
@@ -86,7 +87,7 @@ export default function SyllabusScreen({ onComplete }: { onComplete: (objectives
                         <div className={styles.inputArea}>
                             <textarea
                                 className={styles.consoleInput}
-                                placeholder="ENTER OBJECTIVE DATA..."
+                                placeholder="TYPE TOPIC HERE..."
                                 value={input}
                                 onChange={e => setInput(e.target.value)}
                                 onKeyDown={e => {

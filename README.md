@@ -1,72 +1,102 @@
 # TrackyTimer (Noir Edition)
 
-> **"Eliminate Choice. Execute Protocol."**
+**“Eliminate Choice. Execute Protocol.”**
 
-TrackyTimer is a high-stakes productivity system designed to force deep work sessions (`Focus Mode`) through a rigorous "Identity & Contract" protocol. It replaces standard productivity apps with a "console-like" immersive experience that penalizes distraction.
+TrackyTimer is a high-stakes productivity system designed to enforce deep work through a rigid **Identity & Contract** protocol.  
+It deliberately removes flexibility, replaces motivation with commitment, and treats focus as a system constraint — not a preference.
 
-## 🚀 Features
+This is **not** a typical productivity app.  
+It is an enforcement engine.
 
-### Core Protocol
-- **Identity Verification:** Users must "sign in" with a handle to initiate a session. (Anonymous Cookie-based Auth)
-- **The Contract:** A multi-step commitment flow (Tracks -> Syllabus -> Paywall -> Lock) to psychologically bind the user to their task.
-- **Hard Lock:** Once a session starts, the environment is "locked". Refreshing or leaving allows the user to return, but "Commitment" is the key theme.
-- **Visuals:** A "Noir / Cyberpunk" aesthetic with scanlines, CRT effects, and monospaced typography.
+---
 
-### Technical Architecture
-- **Framework:** Next.js 14 (App Router)
-- **Database:** Supabase (PostgreSQL)
-- **State Management:** Server-Authoritative State (The DB is the single source of truth).
-- **Security:** 
-  - **Cookie-Based Identity:** Auto-generated `uid` via secure middleware.
-  - **RPC Transactions:** All state changes use atomic PostgreSQL functions (`update_session_with_violations`).
-  - **Kill Switches:** External APIs (Time, Metrics) can be disabled via ENV.
+## 🚀 Core Concept
 
-### 11-Screen Flow
-1.  **BootScreen:** System initialization.
-2.  **RealityCheckScreen:** User readiness check.
-3.  **IdentityScreen:** User handle creation/login.
-4.  **DashboardScreen:** The central command hub.
-5.  **TracksScreen:** Selecting the "Track" (Context) for work.
-6.  **SyllabusScreen:** Defining specific objectives.
-7.  **PaywallScreen:** A "Payment" commitment step (Stripe Integration Ready).
-8.  **ContractScreen:** Final agreement to protocol rules.
-9.  **HardLockScreen:** The final gate before execution.
-10. **NoirSessionScreen:** The active, running session interface.
-11. **FailureScreen:** Penalty state for integrity violations.
+TrackyTimer operates on a simple principle:
+
+> **Discipline is strongest when choice is removed.**
+
+Instead of reminders, gamification, or encouragement, the system forces the user into a **contractual focus session** that is psychologically and technically difficult to abandon.
+
+---
+
+## 🧠 Core Protocol
+
+### Identity Initialization
+- Users initialize a local handle tied to a **secure, anonymous, device-scoped identity**
+- Implemented via **HTTP-only cookies**
+- No email, no password, no personal data
+
+### The Contract
+- A deliberate, multi-step commitment flow  
+  **Tracks → Syllabus → Paywall → Contract → Lock**
+- Designed to slow the user down and reinforce intent
+- Each step increases the psychological cost of backing out
+
+### Hard Lock
+- Once a session begins, the environment enters **Focus Mode**
+- Refreshing or leaving the page does not reset progress
+- The user can return — but the **contract remains active**
+- Enforcement is at the **application level** (not OS-level control)
+
+### Failure & Penalty
+- Integrity violations (visibility loss, protocol breaks) are recorded
+- Severe or repeated violations move the user into a **Failure State**
+- Failure is terminal for the session and cannot be bypassed
+
+---
+
+## 🎨 Visual Identity
+
+- Noir / Cyberpunk aesthetic
+- CRT scanlines, terminal-style UI, monospaced typography
+- Console-like experience designed to feel *serious* and *unforgiving*
+- Visuals reinforce system authority, not comfort
+
+---
+
+## 🏗️ Technical Architecture
+
+### Framework
+- Next.js 14 (App Router)
+
+### Database
+- Supabase (PostgreSQL)
+- Server-authoritative state
+- SQL-enforced constraints for integrity
+
+### State Model
+- The database is the **single source of truth**
+- UI is a pure projection of server state
+- Refreshing the frontend never alters session legality
+
+### Security Model
+- Anonymous, cookie-based identity (HTTP-only)
+- No client-side trust for session enforcement
+- All state mutations occur via **atomic PostgreSQL RPC functions**
+- External dependencies (time, metrics) are guarded by **kill switches**
+
+---
+
+## 🔁 Application Flow (11 Screens)
+
+1. **BootScreen** – System initialization  
+2. **RealityCheckScreen** – Readiness confirmation  
+3. **IdentityScreen** – Handle initialization  
+4. **DashboardScreen** – Central command hub  
+5. **TracksScreen** – Context selection  
+6. **SyllabusScreen** – Objective definition  
+7. **PaywallScreen** – Commitment through payment (Stripe-ready)  
+8. **ContractScreen** – Final protocol agreement  
+9. **HardLockScreen** – Irreversible commitment gate  
+10. **NoirSessionScreen** – Active focus session  
+11. **FailureScreen** – Penalty state for violations  
+
+---
 
 ## 🛠️ Setup & Installation
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/likhithmamba/trackytimer.git
-    cd trackytimer
-    ```
-
-2.  **Install Dependencies:**
-    ```bash
-    npm install
-    ```
-
-3.  **Environment Variables:**
-    Create a `.env.local` file:
-    ```env
-    NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-    SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-    STRIPE_SECRET_KEY=your_stripe_key
-    ENABLE_EXTERNAL_APIS=true
-    ```
-
-4.  **Run Locally:**
-    ```bash
-    npm run dev
-    ```
-
-## 🔒 Security
-
-- **Anonymous Auth:** No email required. ID is tied to the device/browser via HTTP-Only cookies.
-- **No Client Trust:** Logic for session validation lives on the server.
-- **Clean Architecture:** No legacy SQLite files. Pure Cloud Native.
-
-## 📄 License
-
-Private / Proprietary.
+### Clone the repository
+```bash
+git clone https://github.com/likhithmamba/trackytimer.git
+cd trackytimer

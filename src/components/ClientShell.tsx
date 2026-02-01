@@ -4,8 +4,9 @@ import { DbSchema } from '@/lib/types';
 import BootScreen from '@/components/BootScreen';
 import RealityCheckScreen from '@/components/RealityCheckScreen';
 import IdentityScreen from '@/components/IdentityScreen';
-import Dashboard from '@/components/Dashboard'; // Phase 4
+import ExecutionHome from './ExecutionHome'; // Replaces Dashboard
 import TracksScreen from '@/components/TracksScreen';
+import ReadOnlyTrackView from './ReadOnlyTrackView';
 import SyllabusScreen from '@/components/SyllabusScreen';
 import PaywallScreen from '@/components/PaywallScreen'; // Phase 3
 import HardLockScreen from '@/components/HardLockScreen'; // Phase 3
@@ -37,6 +38,7 @@ export default function ClientShell({ db }: { db: DbSchema }) {
     // 1. Local State: Only tracks where we are in the "Setup" wizard
     // We default to BOOT, unless we decide to restore a specific wizard step (omitted for MVP)
     const [localSetupStep, setLocalSetupStep] = useState<SetupStep>('BOOT');
+    const [viewingTrack, setViewingTrack] = useState(false); // Modal state for ExecutionHome
 
     // 2. Boot Animation State
     const [bootProgress, setBootProgress] = useState(0);
@@ -174,7 +176,24 @@ export default function ClientShell({ db }: { db: DbSchema }) {
                 queue: [],
                 status: 'HOLD'
             };
-            return <Dashboard session={mockSession as any} onStart={handleDashboardStart} />;
+
+            if (viewingTrack) {
+                return <ReadOnlyTrackView onClose={() => setViewingTrack(false)} />;
+            }
+
+            return (
+                <ExecutionHome
+                    session={mockSession as any}
+                    onStart={handleDashboardStart}
+                    onViewTrack={() => setViewingTrack(true)}
+                    onExit={() => {
+                        if (confirm("WARNING: EXITING WILL LOSE EXECUTION STATE. PROCEED?")) {
+                            setLocalSetupStep('BOOT');
+                            window.location.reload();
+                        }
+                    }}
+                />
+            );
         case 'TRACKS':
             return <TracksScreen onSelect={handleTrack} />;
         case 'PAYWALL':

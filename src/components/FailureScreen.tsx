@@ -107,6 +107,13 @@ export default function FailureScreen({ violations }: { violations: Violation[] 
                         />
                     </div>
 
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', textAlign: 'left' }}>
+                        <div style={{ fontSize: '12px', color: '#f20d0d', marginBottom: '0.5rem' }}>
+                            Waiting 5 days increases daily load by +32 minutes.<br />
+                            Without this system, decisions are yours again.
+                        </div>
+                    </div>
+
                     <button
                         className={styles.restoreButton}
                         onClick={handleRestore}
@@ -117,7 +124,7 @@ export default function FailureScreen({ violations }: { violations: Violation[] 
                             pointerEvents: secondsLeft > 0 ? 'none' : 'auto'
                         }}
                     >
-                        <span>{isSubmitting ? "RESTORING..." : "ACKNOWLEDGE & RESTORE"}</span>
+                        <span>{isSubmitting ? "PROCESSING..." : "Restore 7-Day Lock — ₹99"}</span>
                         <span className="material-symbols-outlined">restart_alt</span>
                     </button>
 

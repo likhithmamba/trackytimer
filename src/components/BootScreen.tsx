@@ -12,25 +12,25 @@ export default function BootScreen({ progress = 0 }: { progress: number }) {
             </header>
 
             <main className={styles.main}>
-                <div className={styles.logoSvg}>
-                    <svg width="80" height="80" viewBox="0 0 100 100" fill="none">
-                        <rect x="10" y="10" width="80" height="80" stroke="white" strokeWidth="1" />
-                        <path d="M50 20V80" stroke="var(--primary)" strokeWidth="1" />
-                        <path d="M20 50H80" stroke="var(--primary)" strokeWidth="1" />
-                        <circle cx="50" cy="50" r="15" stroke="white" strokeWidth="1" />
-                    </svg>
+                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                    <h1 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem', color: '#e2e8f0' }}>This is not a productivity app.</h1>
+                    <p style={{ color: '#94a3b8', fontSize: '0.875rem', lineHeight: '1.6', maxWidth: '300px', margin: '0 auto' }}>
+                        This system removes daily decision-making.<br />
+                        It is strict by design.<br /><br />
+                        If you want flexibility, this is not for you.
+                    </p>
                 </div>
 
                 <div className={styles.progressContainer}>
                     <div className={styles.progressLabel}>
-                        <span>Initialization sequence</span>
+                        <span style={{ fontSize: '0.7rem', textTransform: 'uppercase' }}>System Initialization</span>
                         <span style={{ color: 'var(--primary)', fontWeight: 'bold' }}>{progress}%</span>
                     </div>
                     <div className={styles.progressBar}>
                         <div className={styles.progressFill} style={{ width: `${progress}%` }}></div>
                     </div>
                     <p className={styles.statusText}>
-                        {progress < 100 ? 'LOADING: CORE_ASSETS.LIB' : 'SYSTEM READY'}
+                        {progress < 100 ? 'LOADING: CONSTRAINT_ENGINE.LIB' : 'SYSTEM READY'}
                     </p>
                 </div>
             </main>

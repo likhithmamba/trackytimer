@@ -19,29 +19,22 @@ export default function PaywallScreen({ onPay }: { onPay: (tier: 'ACCESS') => vo
                     </div>
                 </div>
 
-                <div style={{ maxWidth: '600px', margin: '0 auto', border: '1px solid #1be4c9', backgroundColor: 'white', padding: '3rem' }}>
-                    <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '2rem', textAlign: 'center' }}>7-Day Lock Access</h2>
-                    <div style={{ fontSize: '4rem', fontWeight: 900, textAlign: 'center', marginBottom: '2rem', color: '#11211f' }}>₹49</div>
-
-                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '3rem', fontSize: '0.875rem', fontWeight: 500 }}>
-                        <li style={{ display: 'flex', gap: '0.5rem' }}>
-                            <span className="material-symbols-outlined" style={{ fontSize: '16px', color: '#1be4c9' }}>lock</span>
-                            Irreversible Execution State
-                        </li>
-                        <li style={{ display: 'flex', gap: '0.5rem' }}>
-                            <span className="material-symbols-outlined" style={{ fontSize: '16px', color: '#1be4c9' }}>gavel</span>
-                            Authority Enforcement
-                        </li>
-                        <li style={{ display: 'flex', gap: '0.5rem' }}>
-                            <span className="material-symbols-outlined" style={{ fontSize: '16px', color: '#1be4c9' }}>history</span>
-                            Memory of Failure
-                        </li>
+                <div className={styles.pricingCard}>
+                    <div className={styles.priceHeader}>
+                        <h3 style={{ margin: 0, fontSize: '1.25rem' }}>EXECUTION LOCK</h3>
+                        <div style={{ color: '#10b981', fontWeight: 700 }}>₹49.00</div>
+                    </div>
+                    <ul className={styles.features}>
+                        <li>7-day controlled environment</li>
+                        <li>Strict outcome enforcement</li>
+                        <li>No distraction tolerance</li>
                     </ul>
-
-                    <button className={styles.commitButton} onClick={() => onPay('ACCESS')}>
-                        Initiate Protocol
+                    <button className={styles.payBtn} onClick={() => onPay('ACCESS')}>
+                        UNLOCK AUTHORITY
                     </button>
-                    <p style={{ textAlign: 'center', fontSize: '0.75rem', marginTop: '1rem', color: '#9ca3af' }}>Re-entry requires additional payment.</p>
+                    <div style={{ textAlign: 'center', marginTop: '1rem', fontSize: '0.75rem', color: '#64748b' }}>
+                        Non-refundable. Commitment is final.
+                    </div>
                 </div>
             </main>
         </div>
