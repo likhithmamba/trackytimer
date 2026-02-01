@@ -21,7 +21,7 @@ export default function ReadOnlyTrackView({ onClose }: { onClose: () => void }) 
                 <div className={styles.topBar}>
                     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                         <span style={{ fontWeight: 700, color: '#94a3b8' }}>READ_ONLY_MODE</span>
-                        <span style={{ color: '#52525b' }}>// TRACK.VIEWER</span>
+                        <span style={{ color: '#52525b' }}>{'//'} TRACK.VIEWER</span>
                     </div>
                     <div><button onClick={onClose} style={{ background: 'none', border: 'none', color: '#ef4444', fontWeight: 700, cursor: 'pointer' }}>CLOSE X</button></div>
                 </div>

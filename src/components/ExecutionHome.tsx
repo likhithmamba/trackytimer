@@ -26,7 +26,7 @@ export default function ExecutionHome({ session, onStart, onViewTrack, onExit }:
             <main className={styles.main}>
                 {/* Requirements Block */}
                 <div className={styles.requirementsCard}>
-                    <h3 className={styles.cardTitle}>TODAY'S REQUIREMENT</h3>
+                    <h3 className={styles.cardTitle}>TODAY&apos;S REQUIREMENT</h3>
                     <div className={styles.reqList}>
                         <div className={styles.reqItem}>
                             <span className="material-symbols-outlined icon">timer</span>

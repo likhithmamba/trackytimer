@@ -44,6 +44,15 @@ export default function NoirSessionScreen({ session }: { session: ActiveSession 
         router.refresh();
     };
 
+    const handleAbort = async () => {
+        if (!confirm("Are you sure you want to abort? This counts as a failure.")) return;
+        await fetch('/api/session/current', {
+            method: 'POST',
+            body: JSON.stringify({ action: 'ABORT' })
+        });
+        router.refresh();
+    };
+
     // HEARTBEAT LOOP
     useEffect(() => {
         if (!session || session.status !== 'RUNNING') return;
@@ -152,7 +161,7 @@ export default function NoirSessionScreen({ session }: { session: ActiveSession 
                         <div className={styles.glassPanel}>
                             <h3 style={{ fontSize: '12px', fontWeight: 700, color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>Session Context</h3>
                             <h2 className={styles.sessionTitle}>Session 10</h2>
-                            <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.7)', fontStyle: 'italic' }}>"Active Discipline Variant. Maintain integrity at all costs."</p>
+                            <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.7)', fontStyle: 'italic' }}>&quot;Active Discipline Variant. Maintain integrity at all costs.&quot;</p>
                         </div>
 
                         <div className={styles.glassPanel}>
@@ -203,7 +212,7 @@ export default function NoirSessionScreen({ session }: { session: ActiveSession 
                                     <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>pause</span>
                                     Hold Session
                                 </button>
-                                <button className={`${styles.actionBtn} ${styles.abortBtn}`}>
+                                <button className={`${styles.actionBtn} ${styles.abortBtn}`} onClick={handleAbort}>
                                     <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>cancel</span>
                                     Abort
                                 </button>

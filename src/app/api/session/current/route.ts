@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getDb, updateSession } from '@/services/db';
+import { v4 as uuidv4 } from 'uuid';
 
 export const dynamic = 'force-dynamic';
 
@@ -41,6 +42,29 @@ export async function POST(request: Request) {
             const updated = await updateSession((session) => {
                 // Can always pause? Yes.
                 return { ...session, status: 'HOLD' };
+            });
+            return NextResponse.json(updated);
+        }
+
+        if (action === 'ABORT') {
+            const updated = await updateSession((session) => {
+                const newViolation = {
+                    id: uuidv4(),
+                    type: 'ABANDONED' as const,
+                    timestamp: new Date().toISOString()
+                };
+                return {
+                    ...session,
+                    status: 'LOCKED',
+                    violations: [...session.violations, newViolation]
+                };
+            });
+            return NextResponse.json(updated);
+        }
+
+        if (action === 'FINALIZE_FAILURE') {
+            const updated = await updateSession((session) => {
+                return { ...session, status: 'ABANDONED' };
             });
             return NextResponse.json(updated);
         }

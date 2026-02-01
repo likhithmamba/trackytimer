@@ -42,7 +42,7 @@ export default function SyllabusScreen({ onComplete }: { onComplete: (objectives
                 <div className={styles.topBar}>
                     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                         <span style={{ fontWeight: 700, color: '#c026d3' }}>MANUAL SYLLABUS ENTRY</span>
-                        <span style={{ color: '#52525b' }}>// COGNITIVE.OWNERSHIP</span>
+                        <span style={{ color: '#52525b' }}>{'//'} COGNITIVE.OWNERSHIP</span>
                     </div>
                     <div>STATUS: AWAITING INPUT</div>
                 </div>

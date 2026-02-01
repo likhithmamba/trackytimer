@@ -14,6 +14,7 @@ import NoirSessionScreen from '@/components/NoirSessionScreen'; // Phase 3
 import FailureScreen from '@/components/FailureScreen';
 import ContractScreen from '@/components/ContractScreen';
 import GlobalVisibilityGuard from '@/components/GlobalVisibilityGuard'; // Phase 4
+import PausedScreen from '@/components/PausedScreen';
 
 import { useRouter } from 'next/navigation';
 
@@ -30,7 +31,7 @@ import { useRouter } from 'next/navigation';
 type SetupStep = 'BOOT' | 'REALITY_CHECK' | 'IDENTITY' | 'DASHBOARD' | 'TRACKS' | 'SYLLABUS' | 'PAYWALL' | 'CONTRACT' | 'HARD_LOCK';
 
 // Combined FlowState includes Server States
-type EffectiveFlowState = SetupStep | 'SESSION' | 'LOCKED';
+type EffectiveFlowState = SetupStep | 'SESSION' | 'LOCKED' | 'PAUSED';
 
 export default function ClientShell({ db }: { db: DbSchema }) {
     const router = useRouter();
@@ -39,6 +40,7 @@ export default function ClientShell({ db }: { db: DbSchema }) {
     // We default to BOOT, unless we decide to restore a specific wizard step (omitted for MVP)
     const [localSetupStep, setLocalSetupStep] = useState<SetupStep>('BOOT');
     const [viewingTrack, setViewingTrack] = useState(false); // Modal state for ExecutionHome
+    const [tempDashboardAccess, setTempDashboardAccess] = useState(false);
 
     // 2. Boot Animation State
     const [bootProgress, setBootProgress] = useState(0);
@@ -62,9 +64,24 @@ export default function ClientShell({ db }: { db: DbSchema }) {
             effectiveFlowState = 'SESSION';
         } else if (db.currentSession.status === 'LOCKED') {
             effectiveFlowState = 'LOCKED';
+        } else if (db.currentSession.status === 'HOLD') {
+            if (tempDashboardAccess) {
+                effectiveFlowState = 'DASHBOARD';
+            } else {
+                effectiveFlowState = 'PAUSED';
+            }
         }
-        // If 'HOLD', we fall back to localSetupStep (the setup wizard)
     }
+
+    // Effect for Temp Dashboard Access Timer
+    useEffect(() => {
+        if (effectiveFlowState === 'DASHBOARD' && db.currentSession?.status === 'HOLD') {
+            const timer = setTimeout(() => {
+                setTempDashboardAccess(false);
+            }, 20000); // 20 seconds
+            return () => clearTimeout(timer);
+        }
+    }, [effectiveFlowState, db.currentSession]);
 
     // Effect: Boot Animation (Only runs if we are visibly in BOOT state)
     useEffect(() => {
@@ -96,6 +113,13 @@ export default function ClientShell({ db }: { db: DbSchema }) {
             setIsDemo(true);
             console.log("DEMO MODE ACTIVE");
         }
+
+        // Persist Identity
+        fetch('/api/user/identity', {
+            method: 'POST',
+            body: JSON.stringify({ identity: id, accessKey: key })
+        }).catch(err => console.error("Failed to persist identity", err));
+
         setBootState(prev => ({ ...prev, identitySet: true }));
         setLocalSetupStep('DASHBOARD');
     };
@@ -140,6 +164,14 @@ export default function ClientShell({ db }: { db: DbSchema }) {
         } catch (e) {
             setIsLocking(false);
         }
+    };
+
+    const handleResume = async () => {
+        await fetch('/api/session/current', {
+            method: 'POST',
+            body: JSON.stringify({ action: 'RESUME' })
+        });
+        router.refresh();
     };
 
     // --- Render Map ---
@@ -196,12 +228,16 @@ export default function ClientShell({ db }: { db: DbSchema }) {
             );
         case 'TRACKS':
             return <TracksScreen onSelect={handleTrack} />;
+        case 'SYLLABUS':
+            return <SyllabusScreen onComplete={handleSyllabus} />;
         case 'PAYWALL':
             return <PaywallScreen onPay={handlePay} />;
         case 'CONTRACT':
             return <ContractScreen onAccept={handleContract} />;
         case 'HARD_LOCK':
             return <HardLockScreen onLock={handleHardLock} loading={isLocking} />;
+        case 'PAUSED':
+            return <PausedScreen onResume={handleResume} onDashboard={() => setTempDashboardAccess(true)} />;
         default:
             return <div style={{ color: 'red' }}>ERROR: Unknown Flow State</div>;
     }

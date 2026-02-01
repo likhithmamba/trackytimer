@@ -1,9 +1,11 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import styles from './GlobalVisibilityGuard.module.css';
+import { useRouter } from 'next/navigation';
 
 export default function GlobalVisibilityGuard({ active }: { active: boolean }) {
     const [isVisible, setIsVisible] = useState(true);
+    const router = useRouter();
 
     useEffect(() => {
         if (!active) return;
@@ -29,6 +31,18 @@ export default function GlobalVisibilityGuard({ active }: { active: boolean }) {
             window.removeEventListener("focus", handleFocus);
         };
     }, [active]);
+
+    useEffect(() => {
+        if (!isVisible && active) {
+            // Report Violation
+            fetch('/api/session/violation', {
+                method: 'POST',
+                body: JSON.stringify({ type: 'TAB_SWITCH' })
+            }).then(() => {
+                router.refresh();
+            }).catch(console.error);
+        }
+    }, [isVisible, active, router]);
 
     // If active is false, render nothing
     if (!active) return null;
