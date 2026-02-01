@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+      font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .sidebar-item-active {
+      background: rgba(123, 92, 250, 0.15);
+      box-shadow: 0 0 15px rgba(123, 92, 250, 0.1);
+  }
+  .progress-ring-glow {
+      filter: drop-shadow(0 0 8px rgba(91, 124, 250, 0.3));
+  }
+}
