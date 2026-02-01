@@ -9,15 +9,16 @@ interface Violation {
 
 export default function FailureScreen({ violations }: { violations: Violation[] }) {
     // 1. Cooldown Logic
-    const [secondsLeft, setSecondsLeft] = React.useState(300); // 5 Minutes Cooldown
+    const [secondsLeft, setSecondsLeft] = React.useState(60); // 1 Minute Cooldown
     const [ritualText, setRitualText] = React.useState('');
     const [isSubmitting, setIsSubmitting] = React.useState(false);
 
     React.useEffect(() => {
         const timer = setInterval(() => {
             setSecondsLeft(prev => {
-                if (prev <= 0) {
+                if (prev <= 1) {
                     clearInterval(timer);
+                    handleFinalize(); // Auto-redirect after timeout
                     return 0;
                 }
                 return prev - 1;
@@ -30,6 +31,12 @@ export default function FailureScreen({ violations }: { violations: Violation[] 
         const mins = Math.floor(s / 60);
         const secs = s % 60;
         return `${mins}:${secs.toString().padStart(2, '0')}`;
+    };
+
+    const handleFinalize = async () => {
+         setIsSubmitting(true);
+         await fetch('/api/session/current', { method: 'POST', body: JSON.stringify({ action: 'FINALIZE_FAILURE' }) });
+         window.location.reload();
     };
 
     const handleRestore = async () => {

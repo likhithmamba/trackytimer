@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
  */
 
 // Helper to get the singleton user from Cookies (set by Middleware)
-function ensureUser(): string {
+export function ensureUser(): string {
     const cookieStore = cookies();
     const uid = cookieStore.get('uid')?.value;
 

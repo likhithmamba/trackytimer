@@ -57,7 +57,7 @@ export default function Dashboard({ session, onStart }: DashboardProps) {
                         {/* Header */}
                         <div className={styles.header}>
                             <div>
-                                <h1 className={styles.title}>Today's Plan</h1>
+                                <h1 className={styles.title}>Today&apos;s Plan</h1>
                                 <p className={styles.subtitle}>{session.date || 'Monday, October 24th'} • <span style={{ color: '#7b5cfa', fontWeight: 'bold' }}>High-Stakes Focus Mode</span></p>
                             </div>
                             <div className={styles.actions}>
