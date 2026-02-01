@@ -18,17 +18,18 @@ export default function GlobalVisibilityGuard({ active }: { active: boolean }) {
             }
         };
 
-        const handleBlur = () => setIsVisible(false);
-        const handleFocus = () => setIsVisible(true);
+        // Removed strict blur/focus checks to prevent false positives from system dialogs
+        // const handleBlur = () => setIsVisible(false);
+        // const handleFocus = () => setIsVisible(true);
 
         document.addEventListener("visibilitychange", handleVisibilityChange);
-        window.addEventListener("blur", handleBlur);
-        window.addEventListener("focus", handleFocus);
+        // window.addEventListener("blur", handleBlur);
+        // window.addEventListener("focus", handleFocus);
 
         return () => {
             document.removeEventListener("visibilitychange", handleVisibilityChange);
-            window.removeEventListener("blur", handleBlur);
-            window.removeEventListener("focus", handleFocus);
+            // window.removeEventListener("blur", handleBlur);
+            // window.removeEventListener("focus", handleFocus);
         };
     }, [active]);
 

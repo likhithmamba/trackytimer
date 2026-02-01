@@ -1,0 +1,9 @@
+src/scripts/verify_strictness.ts(11,33): error TS2353: Object literal may only specify known properties, and 'deepWorkStreak' does not exist in type 'UserSystemState'.
+src/scripts/verify_strictness.ts(13,9): error TS2741: Property 'warningTriggered' is missing in type '{ date: string; mainTitle: string; progressPercent: number; status: "RUNNING"; violations: never[]; queue: never[]; }' but required in type 'ActiveSession'.
+src/scripts/verify_strictness.ts(42,35): error TS2345: Argument of type '(s: ActiveSession) => { violations: { id: string; type: string; timestamp: string; }[]; status: SessionStatus; date: string; mainTitle: string; progressPercent: number; warningTriggered: boolean; queue: Objective[]; startTime?: string | undefined; durationMinutes?: number | undefined; }' is not assignable to parameter of type '(session: ActiveSession) => ActiveSession'.
+  Call signature return types '{ violations: { id: string; type: string; timestamp: string; }[]; status: SessionStatus; date: string; mainTitle: string; progressPercent: number; warningTriggered: boolean; queue: Objective[]; startTime?: string | undefined; durationMinutes?: number | undefined; }' and 'ActiveSession' are incompatible.
+    The types of 'violations' are incompatible between these types.
+      Type '{ id: string; type: string; timestamp: string; }[]' is not assignable to type 'Violation[]'.
+        Type '{ id: string; type: string; timestamp: string; }' is not assignable to type 'Violation'.
+          Types of property 'type' are incompatible.
+            Type 'string' is not assignable to type '"ABANDONED" | "PHONE_DETECTED" | "TAB_SWITCH"'.
