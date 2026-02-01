@@ -9,7 +9,11 @@ export async function POST(request: Request) {
         const body = await request.json();
         const { type } = body; // 'PHONE_DETECTED' | 'TAB_SWITCH' | 'ABANDONED'
 
-        if (!type) return NextResponse.json({ error: 'Missing violation type' }, { status: 400 });
+        // Validate type against allowed values to prevent DB pollution
+        const VALID_TYPES = ['PHONE_DETECTED', 'TAB_SWITCH', 'ABANDONED'];
+        if (!type || !VALID_TYPES.includes(type)) {
+            return NextResponse.json({ error: 'Invalid violation type' }, { status: 400 });
+        }
 
         const updated = await updateSession((session) => {
             if (session.status === 'LOCKED' || session.status === 'COMPLETED') {

@@ -1,4 +1,4 @@
-// File: D:\Downloads\antigravityfiles\trackytimer\src\app\api\session\heartbeat\route.ts
+// File: /app/src/app/api/session/heartbeat/route.ts
 import * as entry from '../../../../../../src/app/api/session/heartbeat/route.js'
 import type { NextRequest } from 'next/server.js'
 
