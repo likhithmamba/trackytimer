@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./templates_reference/stitch_screen_1.1_black_screen_boot/global_visibility_guard/code.html"],
+  content: ["./stitch_screen_1.1_black_screen_boot/global_visibility_guard/code.html"],
   darkMode: "class",
   theme: {
     extend: {

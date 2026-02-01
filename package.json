@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build:templates": "npx @tailwindcss/cli -i templates_reference/input.css -o templates_reference/stitch_screen_1.1_black_screen_boot/global_visibility_guard/styles.css --minify"
+    "build:templates": "cd templates_reference && npx @tailwindcss/cli -i input.css -o stitch_screen_1.1_black_screen_boot/global_visibility_guard/styles.css --minify"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.93.3",
