@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:template:10": "tailwindcss -i templates_reference/stitch_screen_1.1_black_screen_boot/10_session_active_console_1/input.css -o templates_reference/stitch_screen_1.1_black_screen_boot/10_session_active_console_1/styles.css"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.93.3",
@@ -17,12 +18,16 @@
     "uuid": "^13.0.0"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.11",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/uuid": "^10.0.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.0",
+    "tailwindcss": "^4.1.18",
     "typescript": "^5"
   }
 }
