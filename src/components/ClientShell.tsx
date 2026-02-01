@@ -15,6 +15,10 @@ import FailureScreen from '@/components/FailureScreen';
 import ContractScreen from '@/components/ContractScreen';
 import GlobalVisibilityGuard from '@/components/GlobalVisibilityGuard'; // Phase 4
 import PausedScreen from '@/components/PausedScreen';
+import AuthorityWarningScreen from '@/components/AuthorityWarningScreen';
+import LockedScreen from '@/components/LockedScreen';
+import RestoreScreen from '@/components/RestoreScreen';
+import ExitAndWipeConfirmationScreen from '@/components/ExitAndWipeConfirmationScreen';
 
 import { useRouter } from 'next/navigation';
 
@@ -31,7 +35,7 @@ import { useRouter } from 'next/navigation';
 type SetupStep = 'BOOT' | 'REALITY_CHECK' | 'IDENTITY' | 'DASHBOARD' | 'TRACKS' | 'SYLLABUS' | 'PAYWALL' | 'CONTRACT' | 'HARD_LOCK';
 
 // Combined FlowState includes Server States
-type EffectiveFlowState = SetupStep | 'SESSION' | 'LOCKED' | 'PAUSED';
+type EffectiveFlowState = SetupStep | 'SESSION' | 'LOCKED' | 'PAUSED' | 'WARNING' | 'RESTORE' | 'WIPE_CONFIRM';
 
 export default function ClientShell({ db }: { db: DbSchema }) {
     const router = useRouter();
@@ -41,6 +45,10 @@ export default function ClientShell({ db }: { db: DbSchema }) {
     const [localSetupStep, setLocalSetupStep] = useState<SetupStep>('BOOT');
     const [viewingTrack, setViewingTrack] = useState(false); // Modal state for ExecutionHome
     const [tempDashboardAccess, setTempDashboardAccess] = useState(false);
+
+    // UI State for Lock Screen Flow
+    const [showRestore, setShowRestore] = useState(false);
+    const [showWipe, setShowWipe] = useState(false);
 
     // 2. Boot Animation State
     const [bootProgress, setBootProgress] = useState(0);
@@ -63,7 +71,11 @@ export default function ClientShell({ db }: { db: DbSchema }) {
         if (db.currentSession.status === 'RUNNING') {
             effectiveFlowState = 'SESSION';
         } else if (db.currentSession.status === 'LOCKED') {
-            effectiveFlowState = 'LOCKED';
+            if (showRestore) effectiveFlowState = 'RESTORE';
+            else if (showWipe) effectiveFlowState = 'WIPE_CONFIRM';
+            else effectiveFlowState = 'LOCKED';
+        } else if (db.currentSession.status === 'WARNING') {
+            effectiveFlowState = 'WARNING';
         } else if (db.currentSession.status === 'HOLD') {
             if (tempDashboardAccess) {
                 effectiveFlowState = 'DASHBOARD';
@@ -174,6 +186,51 @@ export default function ClientShell({ db }: { db: DbSchema }) {
         router.refresh();
     };
 
+    const handleWarningContinue = async () => {
+        // Acknowledge warning and return to Dashboard logic (effectively resume running but keep visual warning state?)
+        // Prompt says "route -> ExecutionHome". Logic binding: "State transition: ACTIVE -> WARNING" (done).
+        // "On CTA: route -> ExecutionHome".
+        // But if DB status is WARNING, we render WARNING screen.
+        // We need to move status back to RUNNING or have a way to bypass.
+        // Prompt says "State transition: ACTIVE -> WARNING".
+        // And "On CTA: route -> ExecutionHome... do NOT reset timers... do NOT soften copy".
+
+        // If we set status to RUNNING, we lose the "Warning" state unless we keep `warningTriggered=true`.
+        // The `warningTriggered` flag already exists.
+        // So, we can set status back to RUNNING. The SessionScreen (or Dashboard?) will show the warning state.
+        // But wait, the user wants "ExecutionHome".
+        // If we go to ExecutionHome (Dashboard), we are effectively pausing/holding or just viewing?
+        // Usually, a running session is in `NoirSessionScreen`.
+        // If they go to `ExecutionHome`, it implies they are exiting the "Session" view.
+        // Let's assume for now we set it to 'RUNNING' and redirect to `NoirSessionScreen` or `ExecutionHome`?
+        // Actually, `ExecutionHome` IS the Dashboard.
+        // If session is RUNNING, we usually show `NoirSessionScreen`.
+        // If `ExecutionHome` is shown, session is usually HOLD or Setup.
+        // If status is WARNING, we show `AuthorityWarningScreen`.
+        // If they click Continue, maybe we set status to 'HOLD' (Paused) -> Dashboard?
+        // OR we set it to 'RUNNING' and go back to `NoirSessionScreen`.
+        // Prompt says "route -> ExecutionHome".
+        // Let's try setting status to 'HOLD' so they see the Dashboard.
+
+        await fetch('/api/session/current', {
+            method: 'POST',
+            body: JSON.stringify({ action: 'PAUSE' }) // Pause to go to dashboard?
+        });
+        setTempDashboardAccess(true); // Ensure they can see dashboard if HOLD
+        router.refresh();
+    };
+
+    const handleRestoreSuccess = () => {
+         setShowRestore(false);
+         router.refresh();
+    };
+
+    const handleWipeConfirm = () => {
+        // API call is handled inside component, we just reset local state to BOOT
+        setLocalSetupStep('BOOT');
+        window.location.reload();
+    };
+
     // --- Render Map ---
 
     // 1. Server-Authoritative Modes
@@ -185,8 +242,21 @@ export default function ClientShell({ db }: { db: DbSchema }) {
             </>
         );
     }
+
+    if (effectiveFlowState === 'WARNING') {
+        return <AuthorityWarningScreen onContinue={handleWarningContinue} />;
+    }
+
     if (effectiveFlowState === 'LOCKED') {
-        return <FailureScreen violations={db.currentSession?.violations || []} />;
+        return <LockedScreen onRestore={() => setShowRestore(true)} onExit={() => setShowWipe(true)} />;
+    }
+
+    if (effectiveFlowState === 'RESTORE') {
+        return <RestoreScreen onRestoreSuccess={handleRestoreSuccess} onCancel={() => setShowRestore(false)} />;
+    }
+
+    if (effectiveFlowState === 'WIPE_CONFIRM') {
+         return <ExitAndWipeConfirmationScreen onConfirm={handleWipeConfirm} onCancel={() => setShowWipe(false)} />;
     }
 
     // 2.Local Setup Modes
