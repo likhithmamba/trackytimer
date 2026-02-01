@@ -39,7 +39,7 @@ export async function getDb(): Promise<DbSchema> {
             .insert({
                 id: userId,
                 identity_hash: 'ANON_V1',
-                is_demo: 0,
+                is_demo: false,
                 uptime_seconds: 0
             })
             .select()
@@ -89,16 +89,29 @@ export async function getDb(): Promise<DbSchema> {
         };
     }
 
-    // 3. Mock Tracks (DB tracks TBD)
-    const tracks: TrackModule[] = [
-        {
-            id: "SYL_MOD_06_UPLINK",
-            name: "Module_06: Technical_Console",
-            riskLevel: "MEDIUM",
-            status: "ACTIVE",
-            objectives: []
-        }
-    ];
+    // 3. Fetch Tracks (Active Modules)
+    const { data: trackRows } = await supabase
+        .from('tracks')
+        .select(`
+            *,
+            track_objectives(*)
+        `)
+        .eq('status', 'ACTIVE');
+
+    const tracks: TrackModule[] = (trackRows || []).map((t: any) => ({
+        id: t.id,
+        name: t.name,
+        riskLevel: t.risk_level as any,
+        status: t.status as any,
+        objectives: (t.track_objectives || []).map((o: any) => ({
+            id: o.id,
+            title: o.title,
+            timeBlock: o.time_block,
+            intensity: o.intensity as any,
+            status: o.default_status as any,
+            progress: 0 // Templates don't track progress
+        }))
+    }));
 
     return {
         userState: {
@@ -161,7 +174,7 @@ export async function updateSession(updateFn: (session: ActiveSession) => Active
             start_time: Math.floor(Date.now() / 1000),
             main_title: updated.mainTitle,
             progress_percent: updated.progressPercent,
-            warning_triggered: updated.warningTriggered ? 1 : 0,
+            warning_triggered: updated.warningTriggered,
             started_at_iso: updated.startTime || new Date().toISOString(),
             duration_minutes: updated.durationMinutes
         });

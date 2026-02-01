@@ -8,7 +8,7 @@ export interface UserSystemState {
   specificityLevel: number;
 }
 
-export type SessionStatus = 'HOLD' | 'RUNNING' | 'LOCKED' | 'COMPLETED' | 'WARNING';
+export type SessionStatus = 'HOLD' | 'RUNNING' | 'LOCKED' | 'COMPLETED' | 'WARNING' | 'ABANDONED';
 
 export interface TrackModule {
   id: string; // e.g., "SYL_MOD_06_UPLINK"

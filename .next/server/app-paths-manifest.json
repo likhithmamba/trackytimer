@@ -1,9 +1,0 @@
-{
-  "/_not-found/page": "app/_not-found/page.js",
-  "/api/payment/create/route": "app/api/payment/create/route.js",
-  "/api/session/heartbeat/route": "app/api/session/heartbeat/route.js",
-  "/api/system/boot/route": "app/api/system/boot/route.js",
-  "/api/violation/record/route": "app/api/violation/record/route.js",
-  "/api/session/current/route": "app/api/session/current/route.js",
-  "/page": "app/page.js"
-}
