@@ -43,6 +43,7 @@ export interface ActiveSession {
   status: SessionStatus;
   startTime?: string; // ISO timestamp
   durationMinutes?: number; // e.g., 60
+  sessionId?: string; // Optimization: Cache ID to avoid DB lookup
 }
 
 export interface DbSchema {
