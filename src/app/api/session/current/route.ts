@@ -7,7 +7,7 @@ import { z } from 'zod';
 export const dynamic = 'force-dynamic';
 
 const ActionSchema = z.object({
-    action: z.enum(['RESUME', 'RESTORE', 'PAUSE', 'ABORT', 'FINALIZE_FAILURE', 'WIPE']),
+    action: z.enum(['RESUME', 'RESTORE', 'PAUSE', 'ABORT', 'FINALIZE_FAILURE', 'WIPE', 'COMPLETE']),
 });
 
 export async function GET() {
@@ -90,6 +90,13 @@ export async function POST(request: Request) {
                 return { ...session, status: 'LOCKED' }; // Changed from ABANDONED to LOCKED for LockedScreen flow
             });
             return NextResponse.json(updated);
+        }
+
+        if (action === 'COMPLETE') {
+             const updated = await updateSession((session) => {
+                 return { ...session, status: 'COMPLETED', progressPercent: 100 };
+             });
+             return NextResponse.json(updated);
         }
 
         if (action === 'WIPE') {

@@ -42,9 +42,28 @@ export default function ClientShell({ db }: { db: DbSchema }) {
 
     // 1. Local State: Only tracks where we are in the "Setup" wizard
     // We default to BOOT, unless we decide to restore a specific wizard step (omitted for MVP)
-    const [localSetupStep, setLocalSetupStep] = useState<SetupStep>('BOOT');
+    const [localSetupStep, setLocalSetupStep] = useState<SetupStep>(() => {
+        // Smart Boot: If user has an identity, skip the intro wizard
+        if (db.userState?.identity && db.userState.identity !== 'UNKNOWN' && db.userState.identity !== 'ANON_V1') {
+            return 'DASHBOARD';
+        }
+        return 'BOOT';
+    });
     const [viewingTrack, setViewingTrack] = useState(false); // Modal state for ExecutionHome
     const [tempDashboardAccess, setTempDashboardAccess] = useState(false);
+
+    // Session Transition Tracking
+    const wasRunning = React.useRef(false);
+    useEffect(() => {
+        if (db.currentSession?.status === 'RUNNING') {
+            wasRunning.current = true;
+        } else if (!db.currentSession && wasRunning.current) {
+            // Session just finished -> Reset to Dashboard
+            wasRunning.current = false;
+            setIsLocking(false);
+            setLocalSetupStep('DASHBOARD');
+        }
+    }, [db.currentSession]);
 
     // UI State for Lock Screen Flow
     const [showRestore, setShowRestore] = useState(false);
