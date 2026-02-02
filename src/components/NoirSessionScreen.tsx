@@ -8,6 +8,7 @@ export default function NoirSessionScreen({ session }: { session: ActiveSession 
     const router = useRouter();
     const [timeLeft, setTimeLeft] = useState<number | null>(null);
     const [isMounting, setIsMounting] = useState(true);
+    const [isCompleting, setIsCompleting] = useState(false);
 
     useEffect(() => {
         const timer = setTimeout(() => setIsMounting(false), 2000);
@@ -42,6 +43,23 @@ export default function NoirSessionScreen({ session }: { session: ActiveSession 
     const circumference = 1256;
     const strokeDashoffset = circumference - (progressRatio * circumference);
 
+    // Completion Check
+    useEffect(() => {
+        if (timeLeft !== null && timeLeft <= 0 && !isCompleting) {
+            setIsCompleting(true);
+            // Trigger Complete
+            fetch('/api/session/current', { method: 'POST', body: JSON.stringify({ action: 'COMPLETE' }) })
+            .then(() => {
+                // Force a hard reload to clear state and return to Dashboard
+                window.location.reload();
+            })
+            .catch(err => {
+                console.error("Completion failed", err);
+                setIsCompleting(false);
+            });
+        }
+    }, [timeLeft, isCompleting]);
+
     const handleHold = async () => {
         await fetch('/api/session/current', { method: 'POST', body: JSON.stringify({ action: 'PAUSE' }) });
         router.refresh();
@@ -70,6 +88,29 @@ export default function NoirSessionScreen({ session }: { session: ActiveSession 
 
     return (
         <div className={styles.container}>
+            {/* Completion Overlay */}
+            <div
+                style={{
+                    position: 'fixed',
+                    top: 0, left: 0, right: 0, bottom: 0,
+                    backgroundColor: '#050505',
+                    zIndex: 9999,
+                    display: isCompleting ? 'flex' : 'none',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'opacity 0.5s ease-out',
+                    opacity: isCompleting ? 1 : 0,
+                }}
+            >
+                <div style={{ color: '#2bd4bd', fontSize: '18px', fontWeight: 700, letterSpacing: '0.2em', marginBottom: '1rem', textTransform: 'uppercase' }}>
+                    SESSION COMPLETE
+                </div>
+                <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px' }}>
+                    SAVING OUTCOMES...
+                </div>
+            </div>
+
              {/* Resume Overlay */}
              <div
                 style={{
