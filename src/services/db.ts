@@ -85,7 +85,8 @@ export async function getDb(): Promise<DbSchema> {
                 progress: o.progress
             })),
             startTime: sessionRow.started_at_iso,
-            durationMinutes: sessionRow.duration_minutes
+            durationMinutes: sessionRow.duration_minutes,
+            sessionId: sessionRow.id
         };
     }
 
@@ -139,20 +140,30 @@ export async function updateSession(updateFn: (session: ActiveSession) => Active
     const updated = updateFn(session);
 
     // Determine Session ID
-    // Note: getDb above fetched the session row (if it existed). 
-    // We can infer existence.
-    const { data: existingSession } = await supabase
-        .from('sessions')
-        .select('id')
-        .eq('user_id', ensureUser())
-        .neq('status', 'COMPLETED')
-        .neq('status', 'ABANDONED')
-        .limit(1)
-        .single();
+    // OPTIMIZATION: Use cached ID if available to avoid redundant DB query
+    let sessionId = session.sessionId;
+    let isNewSession = false;
 
-    const sessionId = existingSession?.id || uuidv4(); // Generate if new
+    if (!sessionId) {
+        // Fallback: Query if ID is missing (should be rare if session exists)
+        const { data: existingSession } = await supabase
+            .from('sessions')
+            .select('id')
+            .eq('user_id', ensureUser())
+            .neq('status', 'COMPLETED')
+            .neq('status', 'ABANDONED')
+            .limit(1)
+            .single();
 
-    if (!existingSession) {
+        if (existingSession) {
+            sessionId = existingSession.id;
+        } else {
+            sessionId = uuidv4();
+            isNewSession = true;
+        }
+    }
+
+    if (isNewSession) {
         // Initial Creation (standard insert)
         await supabase.from('sessions').insert({
             id: sessionId,
