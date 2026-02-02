@@ -1,11 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { updateSession } from '@/services/db';
 import { v4 as uuidv4 } from 'uuid';
+import { z } from 'zod';
+
+// Schema for input validation
+const ViolationRequestSchema = z.object({
+    type: z.enum(['PHONE_DETECTED', 'TAB_SWITCH', 'ABANDONED']).optional().default('TAB_SWITCH')
+});
 
 export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
-        const { type } = body;
+
+        // Validate input
+        const result = ViolationRequestSchema.safeParse(body);
+        if (!result.success) {
+            return NextResponse.json(
+                { error: "Invalid violation type", details: result.error.flatten() },
+                { status: 400 }
+            );
+        }
+
+        const { type } = result.data;
 
         const updated = await updateSession((session) => {
              // If already completed or abandoned, don't modify (though updateSession usually handles status checks)
@@ -16,7 +32,7 @@ export async function POST(req: NextRequest) {
              // Append violation
              const newViolation = {
                  id: uuidv4(),
-                 type: type || 'TAB_SWITCH',
+                 type: type,
                  timestamp: new Date().toISOString()
              };
 
@@ -45,6 +61,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json(updated);
     } catch (error: any) {
         console.error("Violation error:", error);
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        // Security: Don't leak internal error details to client
+        return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
 }
