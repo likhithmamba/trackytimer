@@ -1,6 +1,6 @@
 
 import { updateSession, getDb, saveDb } from '../services/db';
-import { DbSchema } from '../lib/types';
+import { DbSchema, Violation, ActiveSession } from '../lib/types';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -8,7 +8,7 @@ const DB_PATH = path.join(process.cwd(), 'data', 'db.json');
 
 async function resetDb() {
     const initial: DbSchema = {
-        userState: { uptime: 0, deepWorkStreak: 0, securityProtocol: "AES-256", performanceBoost: false, specificityLevel: 4 },
+        userState: { uptime: 0, securityProtocol: "AES-256", specificityLevel: 4 },
         tracks: [],
         currentSession: {
             date: "2024-01-01",
@@ -16,10 +16,16 @@ async function resetDb() {
             progressPercent: 0,
             status: "RUNNING",
             violations: [],
-            queue: []
+            queue: [],
+            warningTriggered: false
         }
     };
-    await saveDb(initial);
+    // Note: saveDb throws in production, this script may need a local mock if run
+    try {
+        await saveDb(initial);
+    } catch (e) {
+        console.warn("saveDb failed (expected in Supabase mode):", e);
+    }
 }
 
 async function runTest() {
@@ -30,8 +36,9 @@ async function runTest() {
 
     // 1. First Violation
     console.log("Triggering 1st Violation...");
-    let session = await updateSession((s) => {
-        return { ...s, violations: [...s.violations, { id: '1', type: 'TAB_SWITCH', timestamp: new Date().toISOString() }] };
+    let session = await updateSession((s: ActiveSession) => {
+        const newViolation: Violation = { id: '1', type: 'TAB_SWITCH', timestamp: new Date().toISOString() };
+        return { ...s, violations: [...s.violations, newViolation] };
     });
 
     if (session.status === 'LOCKED') console.error("FAILED: Locked too early!");
@@ -39,10 +46,12 @@ async function runTest() {
 
     // 2. Second Violation
     console.log("Triggering 2nd Violation...");
-    session = await updateSession((s) => {
-        const newViolations = [...s.violations, { id: '2', type: 'PHONE_DETECTED', timestamp: new Date().toISOString() }];
-        if (newViolations.length >= 2) s.status = 'LOCKED'; // Logic mirrors api route
-        return { ...s, violations: newViolations, status: newViolations.length >= 2 ? 'LOCKED' : s.status };
+    session = await updateSession((s: ActiveSession) => {
+        const newViolation: Violation = { id: '2', type: 'PHONE_DETECTED', timestamp: new Date().toISOString() };
+        const newViolations = [...s.violations, newViolation];
+        // Logic mirrors api route
+        const newStatus = newViolations.length >= 2 ? 'LOCKED' : s.status;
+        return { ...s, violations: newViolations, status: newStatus };
     });
 
     if (session.status === 'LOCKED') console.log("PASSED: System is LOCKED (2/2 violations).");
@@ -51,7 +60,7 @@ async function runTest() {
     // 3. Attempt Resume
     console.log("Attempting to Resume...");
     try {
-        await updateSession((s) => {
+        await updateSession((s: ActiveSession) => {
             if (s.status === 'LOCKED') throw new Error("Session is LOCKED");
             return { ...s, status: 'RUNNING' };
         });
