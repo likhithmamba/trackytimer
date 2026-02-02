@@ -2,8 +2,13 @@ import { NextResponse } from 'next/server';
 import { getDb, updateSession } from '@/services/db';
 import { v4 as uuidv4 } from 'uuid';
 import { supabase } from '@/lib/supabase';
+import { z } from 'zod';
 
 export const dynamic = 'force-dynamic';
+
+const ActionSchema = z.object({
+    action: z.enum(['RESUME', 'RESTORE', 'PAUSE', 'ABORT', 'FINALIZE_FAILURE', 'WIPE']),
+});
 
 export async function GET() {
     const db = await getDb();
@@ -13,7 +18,13 @@ export async function GET() {
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-        const { action } = body;
+        const result = ActionSchema.safeParse(body);
+
+        if (!result.success) {
+            return NextResponse.json({ error: 'Invalid action payload', details: result.error.flatten() }, { status: 400 });
+        }
+
+        const { action } = result.data;
 
         if (action === 'RESUME') {
             const updated = await updateSession((session) => {
@@ -34,21 +45,18 @@ export async function POST(request: Request) {
                 // What remains unchanged: Dropped topics, Failure history, Outcome ceiling
                 // What is restored: Session access, Enforcement, Authority
                 // Status -> ACTIVE (RUNNING)
-                // Warning Triggered -> Should probably stay true or false?
-                // Logic: "FailureCount remains at 1" implies we don't clear violations.
+                // Logic: "FailureCount remains at 1".
+                // If we have >= 2 violations, we remove the most recent one (the lock trigger).
+                const newViolations = [...session.violations];
+                if (newViolations.length >= 2) {
+                    newViolations.pop();
+                }
 
                 return {
                     ...session,
                     status: 'RUNNING',
-                    warningTriggered: true, // Keep it high stakes? Or reset warning?
-                    // Prompt says "FailureCount remains at 1".
-                    // If we have 2 violations, and restore, do we keep them?
-                    // Usually we clear the *immediate* lock trigger or reduce count.
-                    // But if failure count remains at 1, that means next violation = lock again.
-                    // So we shouldn't wipe violations array, but maybe the logic that checks count needs to handle "restored" state?
-                    // OR we just keep 1 violation in the array and remove the 2nd one that caused the lock?
-                    // "FailureCount remains at 1".
-                    // So if we had 2, we remove 1.
+                    violations: newViolations,
+                    warningTriggered: newViolations.length > 0,
                 };
             });
             return NextResponse.json(updated);
