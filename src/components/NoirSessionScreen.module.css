@@ -1,14 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@700&display=swap');
 
-:root {
+.container {
     --primary: #2bd4bd;
     --bg-dark: #12201e;
     --bg-light: #f6f8f8;
     --font-display: 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
-}
 
-.container {
     background-color: var(--bg-dark);
     color: white;
     font-family: var(--font-display);

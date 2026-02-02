@@ -187,36 +187,11 @@ export default function ClientShell({ db }: { db: DbSchema }) {
     };
 
     const handleWarningContinue = async () => {
-        // Acknowledge warning and return to Dashboard logic (effectively resume running but keep visual warning state?)
-        // Prompt says "route -> ExecutionHome". Logic binding: "State transition: ACTIVE -> WARNING" (done).
-        // "On CTA: route -> ExecutionHome".
-        // But if DB status is WARNING, we render WARNING screen.
-        // We need to move status back to RUNNING or have a way to bypass.
-        // Prompt says "State transition: ACTIVE -> WARNING".
-        // And "On CTA: route -> ExecutionHome... do NOT reset timers... do NOT soften copy".
-
-        // If we set status to RUNNING, we lose the "Warning" state unless we keep `warningTriggered=true`.
-        // The `warningTriggered` flag already exists.
-        // So, we can set status back to RUNNING. The SessionScreen (or Dashboard?) will show the warning state.
-        // But wait, the user wants "ExecutionHome".
-        // If we go to ExecutionHome (Dashboard), we are effectively pausing/holding or just viewing?
-        // Usually, a running session is in `NoirSessionScreen`.
-        // If they go to `ExecutionHome`, it implies they are exiting the "Session" view.
-        // Let's assume for now we set it to 'RUNNING' and redirect to `NoirSessionScreen` or `ExecutionHome`?
-        // Actually, `ExecutionHome` IS the Dashboard.
-        // If session is RUNNING, we usually show `NoirSessionScreen`.
-        // If `ExecutionHome` is shown, session is usually HOLD or Setup.
-        // If status is WARNING, we show `AuthorityWarningScreen`.
-        // If they click Continue, maybe we set status to 'HOLD' (Paused) -> Dashboard?
-        // OR we set it to 'RUNNING' and go back to `NoirSessionScreen`.
-        // Prompt says "route -> ExecutionHome".
-        // Let's try setting status to 'HOLD' so they see the Dashboard.
-
+        // Acknowledge warning and return to Active Session
         await fetch('/api/session/current', {
             method: 'POST',
-            body: JSON.stringify({ action: 'PAUSE' }) // Pause to go to dashboard?
+            body: JSON.stringify({ action: 'RESUME' })
         });
-        setTempDashboardAccess(true); // Ensure they can see dashboard if HOLD
         router.refresh();
     };
 

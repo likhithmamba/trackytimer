@@ -1,0 +1,16 @@
+src/app/api/session/current/route.ts(24,95): error TS2339: Property 'errors' does not exist on type 'ZodError<{ action: "RESUME" | "RESTORE" | "PAUSE" | "ABORT" | "FINALIZE_FAILURE" | "WIPE"; }>'.
+src/app/api/session/current/route.ts(103,54): error TS2345: Argument of type '(session: ActiveSession) => { status: "ABANDONED"; date: string; mainTitle: string; progressPercent: number; violations: Violation[]; warningTriggered: boolean; queue: Objective[]; startTime?: string | undefined; durationMinutes?: number | undefined; }' is not assignable to parameter of type '(session: ActiveSession) => ActiveSession'.
+  Call signature return types '{ status: "ABANDONED"; date: string; mainTitle: string; progressPercent: number; violations: Violation[]; warningTriggered: boolean; queue: Objective[]; startTime?: string | undefined; durationMinutes?: number | undefined; }' and 'ActiveSession' are incompatible.
+    The types of 'status' are incompatible between these types.
+      Type '"ABANDONED"' is not assignable to type 'SessionStatus'.
+src/app/api/session/violation/route.ts(12,52): error TS2367: This comparison appears to be unintentional because the types '"HOLD" | "RUNNING" | "LOCKED" | "WARNING"' and '"ABANDONED"' have no overlap.
+src/app/api/user/identity/route.ts(17,97): error TS2339: Property 'errors' does not exist on type 'ZodError<{ identity: string; accessKey?: string | undefined; }>'.
+src/scripts/verify_strictness.ts(11,33): error TS2353: Object literal may only specify known properties, and 'deepWorkStreak' does not exist in type 'UserSystemState'.
+src/scripts/verify_strictness.ts(13,9): error TS2741: Property 'warningTriggered' is missing in type '{ date: string; mainTitle: string; progressPercent: number; status: "RUNNING"; violations: never[]; queue: never[]; }' but required in type 'ActiveSession'.
+src/scripts/verify_strictness.ts(42,35): error TS2345: Argument of type '(s: ActiveSession) => { violations: { id: string; type: string; timestamp: string; }[]; status: SessionStatus; date: string; mainTitle: string; progressPercent: number; warningTriggered: boolean; queue: Objective[]; startTime?: string | undefined; durationMinutes?: number | undefined; }' is not assignable to parameter of type '(session: ActiveSession) => ActiveSession'.
+  Call signature return types '{ violations: { id: string; type: string; timestamp: string; }[]; status: SessionStatus; date: string; mainTitle: string; progressPercent: number; warningTriggered: boolean; queue: Objective[]; startTime?: string | undefined; durationMinutes?: number | undefined; }' and 'ActiveSession' are incompatible.
+    The types of 'violations' are incompatible between these types.
+      Type '{ id: string; type: string; timestamp: string; }[]' is not assignable to type 'Violation[]'.
+        Type '{ id: string; type: string; timestamp: string; }' is not assignable to type 'Violation'.
+          Types of property 'type' are incompatible.
+            Type 'string' is not assignable to type '"PHONE_DETECTED" | "TAB_SWITCH" | "ABANDONED"'.

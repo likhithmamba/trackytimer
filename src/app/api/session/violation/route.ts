@@ -29,6 +29,7 @@ export async function POST(req: NextRequest) {
 
              if (violationCount === 1) {
                  warningTriggered = true;
+                 status = 'WARNING';
              } else if (violationCount >= 2) {
                  status = 'LOCKED';
              }
