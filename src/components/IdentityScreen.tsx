@@ -25,10 +25,13 @@ export default function IdentityScreen({ onCommit }: { onCommit: (id: string, ke
                     </h1>
 
                     <div className={styles.inputGroup}>
-                        <label style={{ width: '100%' }}>
-                            <p className={styles.label}>Subject Identifier</p>
+                        <div style={{ width: '100%' }}>
+                            <label htmlFor="identity-input" className={styles.label}>Subject Identifier</label>
                             <div className={styles.inputWrapper}>
                                 <input
+                                    id="identity-input"
+                                    name="identity"
+                                    autoComplete="off"
                                     type="text"
                                     className={styles.input}
                                     placeholder="SEC-ALPHA-9920-X"
@@ -39,12 +42,15 @@ export default function IdentityScreen({ onCommit }: { onCommit: (id: string, ke
                                     <span className="material-symbols-outlined">fingerprint</span>
                                 </div>
                             </div>
-                        </label>
+                        </div>
 
-                        <label style={{ width: '100%' }}>
-                            <p className={styles.label}>Access Key (Optional)</p>
+                        <div style={{ width: '100%' }}>
+                            <label htmlFor="access-key-input" className={styles.label}>Access Key (Optional)</label>
                             <div className={styles.inputWrapper}>
                                 <input
+                                    id="access-key-input"
+                                    name="accessKey"
+                                    autoComplete="off"
                                     type="password"
                                     className={styles.input}
                                     placeholder="••••••••"
@@ -55,7 +61,7 @@ export default function IdentityScreen({ onCommit }: { onCommit: (id: string, ke
                                     <span className="material-symbols-outlined">key</span>
                                 </div>
                             </div>
-                        </label>
+                        </div>
 
                         <label style={{ width: '100%', opacity: 0.5 }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
@@ -73,7 +79,9 @@ export default function IdentityScreen({ onCommit }: { onCommit: (id: string, ke
 
                     <button
                         className={styles.commitButton}
-                        onClick={() => identity && onCommit(identity, accessKey)}
+                        onClick={() => onCommit(identity, accessKey)}
+                        disabled={!identity.trim()}
+                        aria-disabled={!identity.trim()}
                     >
                         <span>Commit Identity Anchor</span>
                         <span className="material-symbols-outlined">bolt</span>
