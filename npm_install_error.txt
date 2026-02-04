@@ -1,0 +1,27 @@
+npm error code ERESOLVE
+npm error ERESOLVE could not resolve
+npm error
+npm error While resolving: openai@6.17.0
+npm error Found: zod@3.23.8
+npm error node_modules/zod
+npm error   zod@"^3.23.8" from the root project
+npm error
+npm error Could not resolve dependency:
+npm error peerOptional zod@"^3.25 || ^4.0" from openai@6.17.0
+npm error node_modules/openai
+npm error   openai@"^6.17.0" from the root project
+npm error
+npm error Conflicting peer dependency: zod@4.3.6
+npm error node_modules/zod
+npm error   peerOptional zod@"^3.25 || ^4.0" from openai@6.17.0
+npm error   node_modules/openai
+npm error     openai@"^6.17.0" from the root project
+npm error
+npm error Fix the upstream dependency conflict, or retry
+npm error this command with --force or --legacy-peer-deps
+npm error to accept an incorrect (and potentially broken) dependency resolution.
+npm error
+npm error
+npm error For a full report see:
+npm error C:\Users\likhith c k\AppData\Local\npm-cache\_logs\2026-02-04T06_44_36_570Z-eresolve-report.txt
+npm error A complete log of this run can be found in: C:\Users\likhith c k\AppData\Local\npm-cache\_logs\2026-02-04T06_44_36_570Z-debug-0.log

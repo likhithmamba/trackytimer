@@ -1,6 +1,6 @@
 import { supabase } from '@/lib/supabase';
 import { DbSchema, ActiveSession, TrackModule, SessionStatus } from '@/lib/types';
-import { cookies } from 'next/headers';
+// import { cookies } from 'next/headers'; -- Moved to dynamic import
 import { v4 as uuidv4 } from 'uuid';
 
 /**
@@ -8,7 +8,10 @@ import { v4 as uuidv4 } from 'uuid';
  */
 
 // Helper to get the singleton user from Cookies (set by Middleware)
-export function ensureUser(): string {
+export async function ensureUser(): Promise<string> {
+    if (process.env.TEST_USER_ID) return process.env.TEST_USER_ID;
+
+    const { cookies } = await import('next/headers');
     const cookieStore = cookies();
     const uid = cookieStore.get('uid')?.value;
 
@@ -21,7 +24,7 @@ export function ensureUser(): string {
 }
 
 export async function getDb(): Promise<DbSchema> {
-    const userId = ensureUser();
+    const userId = await ensureUser();
 
     // 1. Fetch User State
     // We try to fetch. If not found, we insert on the fly (JIT provisioning)
@@ -149,7 +152,7 @@ export async function updateSession(updateFn: (session: ActiveSession) => Active
         const { data: existingSession } = await supabase
             .from('sessions')
             .select('id')
-            .eq('user_id', ensureUser())
+            .eq('user_id', await ensureUser())
             .neq('status', 'COMPLETED')
             .neq('status', 'ABANDONED')
             .limit(1)
@@ -167,7 +170,7 @@ export async function updateSession(updateFn: (session: ActiveSession) => Active
         // Initial Creation (standard insert)
         await supabase.from('sessions').insert({
             id: sessionId,
-            user_id: ensureUser(),
+            user_id: await ensureUser(),
             status: updated.status,
             start_time: Math.floor(Date.now() / 1000),
             main_title: updated.mainTitle,

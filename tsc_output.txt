@@ -1,0 +1,4 @@
+src/app/api/session/current/route.ts(5,19): error TS2307: Cannot find module 'zod' or its corresponding type declarations.
+src/app/api/session/violation/route.ts(4,19): error TS2307: Cannot find module 'zod' or its corresponding type declarations.
+src/app/api/user/identity/route.ts(4,19): error TS2307: Cannot find module 'zod' or its corresponding type declarations.
+src/services/ai.ts(1,20): error TS2307: Cannot find module 'openai' or its corresponding type declarations.

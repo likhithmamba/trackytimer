@@ -24,38 +24,38 @@ export async function POST(req: NextRequest) {
         const { type } = result.data;
 
         const updated = await updateSession((session) => {
-             // If already completed or abandoned, don't modify (though updateSession usually handles status checks)
-             if (session.status === 'COMPLETED' || session.status === 'ABANDONED') {
-                 return session;
-             }
+            // If already completed or abandoned, don't modify (though updateSession usually handles status checks)
+            if (session.status === 'COMPLETED' || session.status === 'ABANDONED' || session.status === 'LOCKED') {
+                return session;
+            }
 
-             // Append violation
-             const newViolation = {
-                 id: uuidv4(),
-                 type: type,
-                 timestamp: new Date().toISOString()
-             };
+            // Append violation
+            const newViolation = {
+                id: uuidv4(),
+                type: type,
+                timestamp: new Date().toISOString()
+            };
 
-             // Check logic: 2nd violation locks access
-             // Logic from prompt: "First failure triggers warning. Second failure revokes access."
+            // Check logic: 2nd violation locks access
+            // Logic from prompt: "First failure triggers warning. Second failure revokes access."
 
-             const violationCount = session.violations.length + 1;
-             let status = session.status;
-             let warningTriggered = session.warningTriggered;
+            const violationCount = session.violations.length + 1;
+            let status: import('@/lib/types').SessionStatus = session.status;
+            let warningTriggered = session.warningTriggered;
 
-             if (violationCount === 1) {
-                 warningTriggered = true;
-                 status = 'WARNING';
-             } else if (violationCount >= 2) {
-                 status = 'LOCKED';
-             }
+            if (violationCount === 1) {
+                warningTriggered = true;
+                status = 'WARNING';
+            } else if (violationCount >= 2) {
+                status = 'LOCKED';
+            }
 
-             return {
-                 ...session,
-                 violations: [...session.violations, newViolation],
-                 warningTriggered,
-                 status
-             };
+            return {
+                ...session,
+                violations: [...session.violations, newViolation],
+                warningTriggered,
+                status
+            };
         });
 
         return NextResponse.json(updated);

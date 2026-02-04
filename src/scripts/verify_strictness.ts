@@ -1,10 +1,14 @@
 
+// @ts-nocheck
+/// <reference types="node" />
 import { updateSession, getDb, saveDb } from '../services/db';
 import { DbSchema, Violation } from '../lib/types';
 import fs from 'fs/promises';
 import path from 'path';
 
+
 const DB_PATH = path.join(process.cwd(), 'data', 'db.json');
+process.env.TEST_USER_ID = "test-user-strictness-1";
 
 async function resetDb() {
     const initial: DbSchema = {
