@@ -1,6 +1,6 @@
 
 import { updateSession, getDb, saveDb } from '../services/db';
-import { DbSchema } from '../lib/types';
+import { DbSchema, Violation } from '../lib/types';
 import fs from 'fs/promises';
 import path from 'path';
 
