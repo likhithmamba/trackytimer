@@ -6,6 +6,7 @@ export interface UserSystemState {
   uptime: number; // accumulated seconds
   securityProtocol: "AES-256";
   specificityLevel: number;
+  deepWorkStreak?: number;
 }
 
 export type SessionStatus = 'HOLD' | 'RUNNING' | 'LOCKED' | 'COMPLETED' | 'WARNING' | 'ABANDONED';

@@ -93,26 +93,26 @@ export async function POST(request: Request) {
         }
 
         if (action === 'COMPLETE') {
-             const updated = await updateSession((session) => {
-                 return { ...session, status: 'COMPLETED', progressPercent: 100 };
-             });
-             return NextResponse.json(updated);
+            const updated = await updateSession((session) => {
+                return { ...session, status: 'COMPLETED', progressPercent: 100 };
+            });
+            return NextResponse.json(updated);
         }
 
         if (action === 'WIPE') {
             // Hard wipe of session
             const dbData = await getDb();
             if (dbData.currentSession) {
-                 // We can delete the row via supabase directly or use updateSession to mark invalid?
-                 // Prompt says "wipe all execution-related state".
-                 // Best to delete the session row or archive it.
-                 // Since getDb finds the "active" session, marking it COMPLETED or ABANDONED hides it.
-                 const updated = await updateSession((session) => {
-                     return { ...session, status: 'ABANDONED' };
-                 });
-                 return NextResponse.json({ status: 'WIPED' });
+                // We can delete the row via supabase directly or use updateSession to mark invalid?
+                // Prompt says "wipe all execution-related state".
+                // Best to delete the session row or archive it.
+                // Since getDb finds the "active" session, marking it COMPLETED or ABANDONED hides it.
+                const updated = await updateSession((session) => {
+                    return { ...session, status: 'ABANDONED' };
+                });
+                return NextResponse.json({ status: 'WIPED' });
             }
-             return NextResponse.json({ status: 'NO_SESSION' });
+            return NextResponse.json({ status: 'NO_SESSION' });
         }
 
         return NextResponse.json({ error: 'Invalid action' }, { status: 400 });

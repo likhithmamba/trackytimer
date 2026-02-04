@@ -15,7 +15,7 @@
     "react-dom": "^18",
     "stripe": "^20.3.0",
     "uuid": "^13.0.0",
-    "zod": "^4.3.6"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20",

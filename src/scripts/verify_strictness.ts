@@ -8,7 +8,7 @@ const DB_PATH = path.join(process.cwd(), 'data', 'db.json');
 
 async function resetDb() {
     const initial: DbSchema = {
-        userState: { uptime: 0, deepWorkStreak: 0, securityProtocol: "AES-256", performanceBoost: false, specificityLevel: 4 },
+        userState: { uptime: 0, deepWorkStreak: 0, securityProtocol: "AES-256", specificityLevel: 4 },
         tracks: [],
         currentSession: {
             date: "2024-01-01",
@@ -16,6 +16,7 @@ async function resetDb() {
             progressPercent: 0,
             status: "RUNNING",
             violations: [],
+            warningTriggered: false,
             queue: []
         }
     };
@@ -31,7 +32,7 @@ async function runTest() {
     // 1. First Violation
     console.log("Triggering 1st Violation...");
     let session = await updateSession((s) => {
-        return { ...s, violations: [...s.violations, { id: '1', type: 'TAB_SWITCH', timestamp: new Date().toISOString() }] };
+        return { ...s, violations: [...s.violations, { id: '1', type: 'TAB_SWITCH' as const, timestamp: new Date().toISOString() }] };
     });
 
     if (session.status === 'LOCKED') console.error("FAILED: Locked too early!");
@@ -40,7 +41,7 @@ async function runTest() {
     // 2. Second Violation
     console.log("Triggering 2nd Violation...");
     session = await updateSession((s) => {
-        const newViolations = [...s.violations, { id: '2', type: 'PHONE_DETECTED', timestamp: new Date().toISOString() }];
+        const newViolations = [...s.violations, { id: '2', type: 'PHONE_DETECTED' as const, timestamp: new Date().toISOString() }];
         if (newViolations.length >= 2) s.status = 'LOCKED'; // Logic mirrors api route
         return { ...s, violations: newViolations, status: newViolations.length >= 2 ? 'LOCKED' : s.status };
     });
